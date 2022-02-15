@@ -1,12 +1,12 @@
-#myFlix-client
+# myFlix-client
 MyFlix is a small app that showcases various informations from a small database (REST API) of movies. Users can register, update/add information about themselves (securely via password hashing) and add/remove movie titles to a list of their favourites. 
 
-##The client-side for myFlix is developed using REACT, HTML5, and SCSS
-##The server-side development for myFlix can be accessed [here]https://github.com/valvegan/movie_api
+## The client-side for myFlix is developed using REACT, HTML5, and SCSS
+## The server-side development for myFlix can be accessed [here]https://github.com/valvegan/movie_api
 
-##Build tools: Parcel
+## Build tools: Parcel
 
-##App features
+## App features
 Essential Views and Features:
 Main view
 ● Returns a list of ALL movies to the user (each listed item with an image, title, and description)
@@ -41,7 +41,7 @@ Actors view
 Profile view, single movie view, and all movies view
 ● Allow users to create a “To Watch” list in addition to their “Favorite Movies” list
 
-##Launch
+## Launch
 1)
 1) Install parcel globally and fix vulnerabilities
 >npm install -g parcel-bundler
