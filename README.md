@@ -43,10 +43,10 @@ Profile view, single movie view, and all movies view
 
 ## Launch
 1)
-1) Install parcel globally and fix vulnerabilities
->npm install -g parcel-bundler
+1) Install parcel locally 
+>npm install --save-dev parcel @parcel/transformer-sass
 
 2) Run parcel build
->parcel src/index.html
+>npm run start
 
 3) Navigate to http://localhost:1234 
