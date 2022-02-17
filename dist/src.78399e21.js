@@ -29642,9 +29642,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "main-view"
       }, movies.map(function (movie) {
-        return /*#__PURE__*/_react.default.createElement("div", {
-          key: movie._id
-        }, movie.Title);
+        return /*#__PURE__*/_react.default.createElement(MovieCard, null);
       }));
     }
   }]);
