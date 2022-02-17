@@ -1009,23 +1009,16 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactDom = require("react-dom");
 var _reactDomDefault = parcelHelpers.interopDefault(_reactDom);
-// Import statement to indicate that you need to bundle `./index.scss`
+var _mainView = require("./components/main-view/main-view");
+//import statement to indicate that you need to bundle `./index.scss`
 var _indexScss = require("./index.scss");
 // Main component (will eventually use all the others)
 class MyFlixApplication extends _reactDefault.default.Component {
     render() {
-        return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
-            className: "my-flix",
-            children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
-                children: "Good morning"
-            }, void 0, false, {
-                fileName: "careerfoundry_4/myFlix-client/src/index.jsx",
-                lineNumber: 12,
-                columnNumber: 9
-            }, this)
+        return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_mainView.MainView, {
         }, void 0, false, {
             fileName: "careerfoundry_4/myFlix-client/src/index.jsx",
-            lineNumber: 11,
+            lineNumber: 14,
             columnNumber: 7
         }, this));
     }
@@ -1040,7 +1033,7 @@ _reactDomDefault.default.render(/*#__PURE__*/ _reactDefault.default.createElemen
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"5VHcY","react":"2JFdp","react-dom":"j4evX","./index.scss":"kZhQL","@parcel/transformer-js/src/esmodule-helpers.js":"4xKx9","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6D2cZ"}],"5VHcY":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"5VHcY","react":"2JFdp","react-dom":"j4evX","./index.scss":"kZhQL","@parcel/transformer-js/src/esmodule-helpers.js":"4xKx9","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6D2cZ","./components/main-view/main-view":"522Ab"}],"5VHcY":[function(require,module,exports) {
 'use strict';
 module.exports = require('./cjs/react-jsx-dev-runtime.development.js');
 
@@ -22936,6 +22929,225 @@ function registerExportsForReactRefresh(module) {
     }
 }
 
-},{"react-refresh/runtime":"4RKYp"}]},["g0H6o","kqY9g","guDeq"], "guDeq", "parcelRequire94c2")
+},{"react-refresh/runtime":"4RKYp"}],"522Ab":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$b714 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$b714.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MainView", ()=>MainView
+);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _movieCard = require("../movie-card/movie-card");
+var _movieView = require("../movie-view/movie-view");
+class MainView extends _reactDefault.default.Component {
+    constructor(){
+        super();
+        this.state = {
+            movies: [
+                {
+                    _id: 1,
+                    Title: 'Inception',
+                    Description: 'desc1...',
+                    ImagePath: '...'
+                },
+                {
+                    _id: 2,
+                    Title: 'The Shawshank Redemption',
+                    Description: 'desc2...',
+                    ImagePath: '...'
+                },
+                {
+                    _id: 3,
+                    Title: 'Gladiator',
+                    Description: 'desc3...',
+                    ImagePath: '...'
+                }
+            ],
+            selectedMovie: null
+        };
+    }
+    render() {
+        const { movies , selectedMovie  } = this.state;
+        if (selectedMovie) return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_movieView.MovieView, {
+            movieData: selectedMovie
+        }, void 0, false, {
+            fileName: "careerfoundry_4/myFlix-client/src/components/main-view/main-view.jsx",
+            lineNumber: 20,
+            columnNumber: 35
+        }, this));
+        if (movies.length === 0) return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
+            className: "main-view",
+            children: "The list is empty!"
+        }, void 0, false, {
+            fileName: "careerfoundry_4/myFlix-client/src/components/main-view/main-view.jsx",
+            lineNumber: 23,
+            columnNumber: 18
+        }, this));
+        return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
+            className: "main-view",
+            children: movies.map((movie)=>/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_movieCard.MovieCard, {
+                    onMovieClick: (newSelectedMovie)=>{
+                        this.state.selectedMovie = newSelectedMovie;
+                    }
+                }, movie._id, false, {
+                    fileName: "careerfoundry_4/myFlix-client/src/components/main-view/main-view.jsx",
+                    lineNumber: 27,
+                    columnNumber: 38
+                }, this)
+            )
+        }, void 0, false, {
+            fileName: "careerfoundry_4/myFlix-client/src/components/main-view/main-view.jsx",
+            lineNumber: 26,
+            columnNumber: 13
+        }, this));
+    }
+}
+
+  $parcel$ReactRefreshHelpers$b714.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"5VHcY","react":"2JFdp","../movie-card/movie-card":"6Vv1z","../movie-view/movie-view":"hgPzE","@parcel/transformer-js/src/esmodule-helpers.js":"4xKx9","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6D2cZ"}],"6Vv1z":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$30fb = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$30fb.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieCard", ()=>MovieCard
+);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+class MovieCard extends _reactDefault.default.Component {
+    render() {
+        const { movieData , onMovieClick  } = this.props;
+        return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
+            className: "movie-card",
+            onClick: ()=>{
+                onMovieClick(movie);
+            },
+            children: movieData.Title
+        }, void 0, false, {
+            fileName: "careerfoundry_4/myFlix-client/src/components/movie-card/movie-card.jsx",
+            lineNumber: 6,
+            columnNumber: 12
+        }, this));
+    }
+}
+
+  $parcel$ReactRefreshHelpers$30fb.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"5VHcY","react":"2JFdp","@parcel/transformer-js/src/esmodule-helpers.js":"4xKx9","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6D2cZ"}],"hgPzE":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$35bb = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$35bb.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieView", ()=>MovieView
+);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+class MovieView extends _reactDefault.default.Component {
+    render() {
+        const { movieData  } = this.props;
+        return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
+            className: "movie-view",
+            children: [
+                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
+                    className: "movie-poster",
+                    children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV("img", {
+                        src: movieData.ImagePath
+                    }, void 0, false, {
+                        fileName: "careerfoundry_4/myFlix-client/src/components/movie-view/movie-view.jsx",
+                        lineNumber: 9,
+                        columnNumber: 17
+                    }, this)
+                }, void 0, false, {
+                    fileName: "careerfoundry_4/myFlix-client/src/components/movie-view/movie-view.jsx",
+                    lineNumber: 8,
+                    columnNumber: 13
+                }, this),
+                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
+                    className: "movie-title",
+                    children: [
+                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
+                            className: "label",
+                            children: "Title:"
+                        }, void 0, false, {
+                            fileName: "careerfoundry_4/myFlix-client/src/components/movie-view/movie-view.jsx",
+                            lineNumber: 12,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
+                            className: "label",
+                            children: movieData.Title
+                        }, void 0, false, {
+                            fileName: "careerfoundry_4/myFlix-client/src/components/movie-view/movie-view.jsx",
+                            lineNumber: 13,
+                            columnNumber: 21
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "careerfoundry_4/myFlix-client/src/components/movie-view/movie-view.jsx",
+                    lineNumber: 11,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
+                    className: "movie-description",
+                    children: [
+                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
+                            className: "label",
+                            children: "Description:"
+                        }, void 0, false, {
+                            fileName: "careerfoundry_4/myFlix-client/src/components/movie-view/movie-view.jsx",
+                            lineNumber: 16,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
+                            className: "label",
+                            children: movieData.Description
+                        }, void 0, false, {
+                            fileName: "careerfoundry_4/myFlix-client/src/components/movie-view/movie-view.jsx",
+                            lineNumber: 17,
+                            columnNumber: 21
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "careerfoundry_4/myFlix-client/src/components/movie-view/movie-view.jsx",
+                    lineNumber: 15,
+                    columnNumber: 17
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "careerfoundry_4/myFlix-client/src/components/movie-view/movie-view.jsx",
+            lineNumber: 7,
+            columnNumber: 11
+        }, this));
+    }
+}
+
+  $parcel$ReactRefreshHelpers$35bb.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"5VHcY","react":"2JFdp","@parcel/transformer-js/src/esmodule-helpers.js":"4xKx9","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6D2cZ"}]},["g0H6o","kqY9g","guDeq"], "guDeq", "parcelRequire94c2")
 
 //# sourceMappingURL=index.3e138ed0.js.map
