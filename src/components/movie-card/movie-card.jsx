@@ -6,10 +6,10 @@ export class MovieCard extends React.Component {
     const { movie, onMovieClick } = this.props
     //conditional to check if death year is present for Director.Death and Actors.Death 
     //actors.Death and Director.Death
-    if(Actors.Death in this.props === null 
+   /* if(Actors.Death in this.props === null 
       || Director.Death in this.props === null){
       console.log("no death year")
-    }
+    }*/
 
 
     return (

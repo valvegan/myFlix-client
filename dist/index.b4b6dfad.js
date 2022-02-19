@@ -24610,8 +24610,12 @@ var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 class MovieCard extends _reactDefault.default.Component {
     render() {
         const { movie , onMovieClick  } = this.props;
-        Actors.Death, this.props, Director.Death, this.props;
-        return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
+        //conditional to check if death year is present for Director.Death and Actors.Death 
+        //actors.Death and Director.Death
+        /* if(Actors.Death in this.props === null 
+      || Director.Death in this.props === null){
+      console.log("no death year")
+    }*/ return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
             className: "movie-card",
             onClick: ()=>onMovieClick(movie)
             ,
