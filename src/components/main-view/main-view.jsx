@@ -1,9 +1,11 @@
 import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 import {LoginView} from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+import { UserRegistration } from '../registration-view/registration-view';
 
 export class MainView extends React.Component {
     constructor(){
