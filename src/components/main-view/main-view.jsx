@@ -11,7 +11,8 @@ export class MainView extends React.Component {
         //initial state is set to null
         this.state = {
           movies: [],
-          selectedMovie: null
+          selectedMovie: null,
+          user: null
         }
       }
 
@@ -30,7 +31,7 @@ export class MainView extends React.Component {
       setSelectedMovie (newSelectedMovie){
           this.setState({
               selectedMovie: newSelectedMovie
-          })
+          });
       }
 
       /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
@@ -46,7 +47,7 @@ export class MainView extends React.Component {
 /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
 if (!user) return <LoginView onLoggedIn={
   user=>this.onLoggedIn(user)
-}/>
+}/>;
 
 //before the movies have loaded
         if (movies.length === 0)
@@ -62,8 +63,9 @@ if (!user) return <LoginView onLoggedIn={
                     {this.setSelectedMovie(newSelectedMovie)}}/>
               : movies.map(movie => (
               <MovieCard key={movie._id} movie={movie}
-              onMovieClick={(newSelectedMovie)=> {this.setSelectedMovie(newSelectedMovie)}} 
-              />))}
+              onMovieClick={(movie)=> {this.setSelectedMovie(movie)}} 
+              />))
+              }
             </div>
           );
         }
