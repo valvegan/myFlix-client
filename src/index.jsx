@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { MainView } from './components/main-view/main-view';
+import Container from 'react-bootstrap/Container';
 
 //import statement to indicate that you need to bundle `./index.scss`
 import './index.scss';
@@ -11,7 +12,10 @@ import './index.scss';
 class MyFlixApplication extends React.Component {
   render() {
     return (
+      <Container>
       <MainView />
+
+      </Container>
     );
   }
 }
