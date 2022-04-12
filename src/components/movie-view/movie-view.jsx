@@ -72,3 +72,37 @@ export class MovieView extends React.Component {
       )
   }}
 
+MovieView.propTypes={
+  movie: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+
+    Genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired,
+    }).isRequired,
+
+    Featured: PropTypes.bool.isRequired,
+
+    Director: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Bio: PropTypes.string.isRequired,
+      Birth: PropTypes.string.isRequired,
+      Death: PropTypes.string,
+    }).isRequired,
+
+    Description: PropTypes.string.isRequired,
+    releaseYear: PropTypes.arrayOf(PropTypes.number).isRequired,
+
+    Actors: PropTypes.arrayOf(PropTypes.shape(
+      {
+      Name: PropTypes.string.isRequired,
+      Bio: PropTypes.string.isRequired,
+      Birth: PropTypes.string.isRequired,
+      Death: PropTypes.string,
+      Movies: PropTypes.arrayOf(PropTypes.string).isRequired
+    })).isRequired,
+
+    ImagePath: PropTypes.string.isRequired,
+  }).isRequired,
+  onMovieClick: PropTypes.func.isRequired
+}
