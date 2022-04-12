@@ -59,6 +59,16 @@ export function UserRegistration(props){
 }
 
 UserRegistration.propTypes={
-    onLoggedIn: PropTypes.func.isRequired
-}
+
+    newUser: PropTypes.shape({
+        username: PropTypes.string.isRequired,
+        password: PropTypes.string.isRequired,
+
+        //custom proptype
+        email: PropTypes.string.isRequired,
+        Birthday: PropTypes.instanceOf(Date).isRequired,
+    }).isRequired,
+    //
+    registered: PropTypes.func,
+  }
   
