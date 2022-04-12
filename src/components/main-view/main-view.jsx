@@ -69,7 +69,7 @@ if (!user) return <LoginView onLoggedIn={
                     </Col> )
               : 
               movies.map(movie => (
-                <Col md={3}>
+                <Col lg={3} md={4}>
               <MovieCard key={movie._id} movie={movie}
               onMovieClick={(movie)=> {this.setSelectedMovie(movie)}} 
               /></Col>

@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 
@@ -44,12 +43,6 @@ export function LoginView(props){
                 Submit
             </Button>
             </Form>
-            //non  react bootstrap 
-            /*<label>Username: <input type="text" value={username}
-            onChange={e=>setUsername(e.target.value)}/>
-            </label>
-
-            <button type="submit" onClick={handleSubmit}>Submit</button>*/
         
     )
 }

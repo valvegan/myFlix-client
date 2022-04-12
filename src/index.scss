@@ -1,5 +1,17 @@
-$color: steelblue;
+//color variables
+$buttons-primary: #75ca60;
+$backgrounds: #202020;
+$text-main: #eeeeee;
+$titles: #cf6628;
+$buttons-primary-text: #141414;
+$borders: #dffd71;
 
-.my-flix {
-  color: $color;
-}
+//google fonts
+@import url('https://fonts.googleapis.com/css2?family=Anek+Tamil&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anek+Tamil&display=swap');
+
+
+//font variables
+$main-font: 'Anek Tamil', sans-serif;
+$titles-font: 'Lobster', cursive;
