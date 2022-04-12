@@ -32,13 +32,13 @@ export function LoginView(props){
    
                  <h1>Sign in to your account</h1>
                     <Form className="register-form">
-                <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Group className="mb-3" controlId="formEmail">
                      <Form.Label>Username: </Form.Label>
                       <Form.Control type="text" placeholder="Enter a username" value={username}
                        onChange={e=>
                            setUsername(e.target.value)} />
                  </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Group className="mb-3" controlId="formPassword">
                      <Form.Label>Password</Form.Label>
                          <Form.Control type="password" placeholder="Your password" value={password}
                           onChange={e=>
