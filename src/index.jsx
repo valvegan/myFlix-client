@@ -14,7 +14,7 @@ class MyFlixApplication extends React.Component {
     return (
       <Container>
 
-                <Navbar bg="light" expand="md">
+                <Navbar expand="md">
       <Container>
     <Navbar.Brand href="#home">My-Flix</Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -44,8 +44,8 @@ export function LoginView(props){
                           onChange={e=>
                          setPassword(e.target.value)}/>
                  </Form.Group>
-            Already have an account?
-            <Button variant="primary" type="submit" onClick={handleSubmit}>
+            <p>Already have an account?</p>
+            <Button variant="primary" className="custom-btn" type="submit" onClick={handleSubmit}>
                 Sign in
             </Button><br></br>
                          </Form>

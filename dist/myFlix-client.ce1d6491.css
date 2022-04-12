@@ -1,0 +1,34 @@
+@import "https://fonts.googleapis.com/css2?family=Anek+Tamil&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Lobster&display=swap";
+.navbar-brand, h1, .nav-link, .titles {
+  color: #cf6628 !important;
+  font-family: "Lobster", cursive !important;
+}
+.navbar-brand, h1, .nav-link {
+  font-size: 1.7rem !important;
+}
+.titles {
+  font-size: 2rem !important;
+}
+.navbar-brand {
+  font-size: 4rem !important;
+}
+p, .card-text {
+  color: #eeeeee;
+}
+* {
+  background-color: #202020;
+  font-family: "Anek Tamil", sans-serif !important;
+}
+.custom-btn {
+  background-color: #75ca60 !important;
+  border-color: #75ca60 !important;
+  color: #141414 !important;
+}
+.card {
+  border: 2px solid #dffd71 !important;
+}
+.extra-info {
+  zoom: 0.8;
+}
+/*# sourceMappingURL=myFlix-client.ce1d6491.css.map */

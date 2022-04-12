@@ -16,3 +16,40 @@ $borders: #dffd71;
 $main-font: 'Anek Tamil', sans-serif;
 $titles-font: 'Lobster', cursive;
 
+.navbar-brand, h1, .nav-link, .titles{
+  color: $titles !important;
+  font-family: $titles-font !important;
+
+  
+}
+.navbar-brand, h1, .nav-link{
+  font-size: 1.7rem !important;
+}
+.titles{
+  font-size: 2rem !important;
+}
+
+.navbar-brand{
+  font-size: 4rem !important;
+}
+
+p, .card-text{
+  color: $text-main;
+}
+
+*{
+  background-color: $backgrounds;
+  font-family: $main-font !important;
+}
+
+.custom-btn {
+  background-color: $buttons-primary !important;
+    border-color: $buttons-primary !important;
+    color: $buttons-primary-text !important
+}
+.card{
+  border: 2px solid $borders !important;
+}
+.extra-info{
+zoom: 0.8
+}

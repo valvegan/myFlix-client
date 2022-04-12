@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Button, Card} from 'react-bootstrap';
+import {Button, Card, Container} from 'react-bootstrap';
 
 export class MovieCard extends React.Component {
   render() {
@@ -17,46 +17,23 @@ export class MovieCard extends React.Component {
       <Card>
         <Card.Img variant="top" src={movie.ImagePath}/>
         <Card.Body>
-          <Card.Title>{movie.Title}</Card.Title>
+          <Card.Title className="titles text-center">{movie.Title}</Card.Title>
           <Card.Text>{movie.Description}</Card.Text>
-          <Button onClick={()=> onMovieClick(movie)} variant="link">Open</Button>
+          <Container className="text-center">
+          <Button className="custom-btn" onClick={()=> onMovieClick(movie)} variant="link">Open</Button>
+          </Container>
         </Card.Body>
       </Card>
     
     )}
 }
 
-MovieCard.propTypes={
+
+MovieCard.propTypes = {
   movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
-
-    Genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired,
-    }).isRequired,
-
-    Featured: PropTypes.bool.isRequired,
-
-    Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Bio: PropTypes.string.isRequired,
-      Birth: PropTypes.string.isRequired,
-      Death: PropTypes.string,
-    }).isRequired,
-
     Description: PropTypes.string.isRequired,
-    releaseYear: PropTypes.arrayOf(PropTypes.number).isRequired,
-
-    Actors: PropTypes.arrayOf(PropTypes.shape(
-      {
-      Name: PropTypes.string.isRequired,
-      Bio: PropTypes.string.isRequired,
-      Birth: PropTypes.string.isRequired,
-      Death: PropTypes.string,
-      Movies: PropTypes.arrayOf(PropTypes.string).isRequired
-    })).isRequired,
-
-    ImagePath: PropTypes.string.isRequired,
   }).isRequired,
   onMovieClick: PropTypes.func.isRequired
-}
+};
+
