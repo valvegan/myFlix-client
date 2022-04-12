@@ -1,12 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 import {Row, Col} from 'react-bootstrap';
 
 import {LoginView} from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { UserRegistration } from '../registration-view/registration-view';
+import { timeStamp } from 'console';
 
 export class MainView extends React.Component {
     constructor(){
@@ -38,10 +38,15 @@ export class MainView extends React.Component {
       }
 
       /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
-      onLoggedIn(user){
+      onLoggedIn(authData){
+        console.log(authData);
         this.setState({
-          user
-        })
+          user: authData.user.username
+        });
+
+        localStorage.setItem('token', authData.token);
+        localStorage.setItem('user', authData.user.username);
+        this.getMovies(authData.token);
       }
     
       render() {
