@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import {Button, Form} from 'react-bootstrap';
+import {Button, Form, Container, Row, Col, CardGroup, Card, CardBody} from 'react-bootstrap';
 
 export function UserRegistration(props){
     const [username, setUsername] = useState('');
@@ -22,6 +22,13 @@ export function UserRegistration(props){
        
 
     return (
+        <Container>
+            <Row>
+            <Col>
+            <CardGroup>
+                <Card>
+                    <CardBody>
+            <Card.Title>Sign up here</Card.Title>
         <Form className="register-form">
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -40,7 +47,7 @@ export function UserRegistration(props){
           </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" value={password}
+          <Form.Control type="password" placeholder="Your password should be at least 8 characters" value={password}
             onChange={e=>
                 setPassword(e.target.value)}/>
         </Form.Group>
@@ -53,7 +60,17 @@ export function UserRegistration(props){
         <Button variant="primary" type="submit" onClick={handleRegistration}>
           Sign me up!
         </Button>
-      </Form>
+        Already have an account?
+            <Button variant="secondary" type="submit" onClick={handleSubmit}>
+                Sign in
+            </Button>
+                         </Form>
+                     </CardBody>
+                 </Card>
+             </CardGroup>
+             </Col>
+         </Row>
+      </Container>
 
     )
 }
