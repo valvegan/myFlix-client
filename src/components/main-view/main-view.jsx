@@ -77,4 +77,4 @@ if (!user) return <LoginView onLoggedIn={
                }
               
               </Row>
-          )
+          )}}
