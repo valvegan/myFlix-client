@@ -22922,8 +22922,13 @@ class MainView extends _reactDefault.default.Component {
             user: null
         };
     }
-    componentDidMount() {
-        _axiosDefault.default.get('https://my-flix-api-2022.herokuapp.com/movies').then((response)=>{
+    getMovies(token) {
+        _axiosDefault.default.get('https://my-flix-api-2022.herokuapp.com/movies', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            //assign the result to the state
             this.setState({
                 movies: response.data
             });
@@ -22951,7 +22956,7 @@ class MainView extends _reactDefault.default.Component {
             onLoggedIn: (user)=>this.onLoggedIn(user)
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 56,
+            lineNumber: 60,
             columnNumber: 19
         }, this));
         //before the movies have loaded
@@ -22959,7 +22964,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view"
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 62,
+            lineNumber: 66,
             columnNumber: 18
         }, this));
         return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Row, {
@@ -22973,12 +22978,12 @@ class MainView extends _reactDefault.default.Component {
                     }
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 71,
+                    lineNumber: 75,
                     columnNumber: 19
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 70,
+                lineNumber: 74,
                 columnNumber: 19
             }, this) : movies.map((movie1)=>/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
                     lg: 3,
@@ -22990,18 +22995,18 @@ class MainView extends _reactDefault.default.Component {
                         }
                     }, movie1._id, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 77,
+                        lineNumber: 81,
                         columnNumber: 15
                     }, this)
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 76,
+                    lineNumber: 80,
                     columnNumber: 17
                 }, this)
             )
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 65,
+            lineNumber: 69,
             columnNumber: 13
         }, this));
     }
