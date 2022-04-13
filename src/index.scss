@@ -19,7 +19,9 @@ $titles-font: 'Lobster', cursive;
 .navbar-brand, h1, .nav-link, .titles{
   color: $titles !important;
   font-family: $titles-font !important;
-
+.custom-icon{
+  color: $borders !important;
+}
   
 }
 .navbar-brand, h1, .nav-link{

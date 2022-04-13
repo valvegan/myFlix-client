@@ -7,6 +7,7 @@ import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { UserRegistration } from '../registration-view/registration-view';
 import { timeStamp } from 'console';
+import { ThemeConsumer } from 'react-bootstrap/esm/ThemeProvider';
 
 export class MainView extends React.Component {
     constructor(){
@@ -19,7 +20,16 @@ export class MainView extends React.Component {
         }
       }
 
-     
+      componentDidMount(){
+        let accessToken= localStorage.getItem('token');
+        if (accessToken !== null){
+          this.setState({
+            user: localStorage.getItem('user')
+          });
+          this.getMovies(accessToken);
+        }
+      }
+      
         getMovies(token){
         axios.get('https://my-flix-api-2022.herokuapp.com/movies',{
           headers: { Authorization: `Bearer ${token}`}
