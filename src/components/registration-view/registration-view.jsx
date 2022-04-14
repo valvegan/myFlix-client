@@ -3,12 +3,56 @@ import PropTypes from 'prop-types';
 import {Button, Form, Container, Row, Col, CardGroup, Card, CardBody} from 'react-bootstrap';
 
 export function UserRegistration(props){
+    const [name, setName] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [birthday, setBirthday] = useState('');
+    const [values, setValues] = useState({
+      nameErr: '',
+      usernameErr: '',
+      passwordErr: '',
+      emailErr: '',
+      birthdayErr: '',
+    });
 
     //form validation logic
+    const validate = () =>{
+      let isReq = true;
+      if(!name){
+        setValues({...values, nameErr: 'Name is required'
+        });
+        isReq = false
+      }
+      if(!username){
+        setValues({...values, usernameErr: 'username is required'});
+        isReq = false;
+      }else if(username.length<2){
+        setValues({...values, usernameErr: 'Username must be 2 characters long'});
+        isReq  = false;
+      }
+      if(!password){
+        setValues({...values, passwordErr: 'Password required'});
+        isReq = false;
+      }else if(password.length<6){
+        setValues({...values, passwordErr: 'Password must be 6 characters long'});
+        isReq = false;
+      };
+      if(!email){
+        setValues({...values, emailErr: 'Email address is required'});
+        isReq = false;
+      }else if(email.indexOf('@')===-1){
+        setValues({...values, emailErr: 'Email must be a valid email address'});
+        isReq = false
+      }
+      if(!birthday){
+        setValues({...values, birthdayErr: 'You must enter a date of birth'});
+        isReq = false
+      }else if(birthday.typeOf(!date)){
+        setValues({...values, birthdayErr: 'Birthday must be in the following format: yyyy/mm/dd'});
+        isReq = false
+      }
+    }
        
     const handleRegistration=(e)=>{
         e.preventDefault();
