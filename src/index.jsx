@@ -25,6 +25,7 @@ class MyFlixApplication extends React.Component {
           <NavDropdown.Item href="#action/3.1">Info</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.2">Privacy</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.3">Favorite movies</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.3">Logout</NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item href="#action/3.4">Terms and Conditions</NavDropdown.Item>
         </NavDropdown>

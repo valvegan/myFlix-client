@@ -20,6 +20,8 @@ export class MainView extends React.Component {
         }
       }
 
+        
+
       componentDidMount(){
         let accessToken= localStorage.getItem('token');
         if (accessToken !== null){
@@ -29,7 +31,7 @@ export class MainView extends React.Component {
           this.getMovies(accessToken);
         }
       }
-      
+
         getMovies(token){
         axios.get('https://my-flix-api-2022.herokuapp.com/movies',{
           headers: { Authorization: `Bearer ${token}`}
@@ -62,14 +64,27 @@ export class MainView extends React.Component {
         localStorage.setItem('user', authData.user.username);
         this.getMovies(authData.token);
       }
+
+      //when a user logs out, this function updates the user property in state, to remove it
+      onLoggedOut() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        this.setState({
+          user: null
+        });
+      }      
     
       render() {
         const { movies, selectedMovie, user } = this.state;
+
 
 /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
 if (!user) return <LoginView onLoggedIn={
   user=>this.onLoggedIn(user)
 }/>;
+
+//logout button
+
 
 //before the movies have loaded
         if (movies.length === 0)
