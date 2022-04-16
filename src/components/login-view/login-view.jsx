@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Form, Container, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
+import { Link } from 'react-router-dom';
+import { RegistrationView } from "../registration-view/registration-view";
 
 export function LoginView(props) {
   const [username, setUsername] = useState("");
@@ -69,8 +71,9 @@ export function LoginView(props) {
               {/*code added here to display validation error*/}
               {usernameErr && <p>{usernameErr}</p>}
             </Form.Group>
+
             <Form.Group className="mb-3" controlId="formPassword">
-              <Form.Label>Password</Form.Label>
+              <Form.Label>Password: </Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Your password"
@@ -80,15 +83,26 @@ export function LoginView(props) {
               {/*code added here to display validation error*/}
               {passwordErr && <p>{passwordErr}</p>}
             </Form.Group>
-            <p>Already have an account?</p>
+
             <Button
               variant="primary"
               className="custom-btn"
-              type="submit"
+              type="submit" 
               onClick={handleSubmit}
             >
               Sign in
             </Button>
+            <br></br>
+            <br></br>
+            <p>Don't have an account?<span>
+            <Link to={'/register'}>
+            <Button
+              variant="primary"
+              className="custom-btn"
+              type="submit" 
+            >
+              Sign up
+            </Button></Link></span></p>
             <br></br>
           </Form>
         </Col>

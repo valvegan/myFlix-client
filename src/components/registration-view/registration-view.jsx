@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import {
   Button,
@@ -11,28 +11,25 @@ import {
   CardBody,
 } from "react-bootstrap";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
-export function UserRegistration(props) {
-  const [name, setName] = useState("");
+export function RegistrationView(props) {
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
+  //useState hook
   const [values, setValues] = useState({
-    nameErr: "",
     usernameErr: "",
     passwordErr: "",
     emailErr: "",
-    birthdayErr: "",
+
   });
 
   //form validation logic
   const validate = () => {
-    let isReq = true;
-    if (!name) {
-      setValues({ ...values, nameErr: "Name is required" });
-      isReq = false;
-    }
+
     if (!username) {
       setValues({ ...values, usernameErr: "username is required" });
       isReq = false;
@@ -60,16 +57,9 @@ export function UserRegistration(props) {
       setValues({ ...values, emailErr: "Email must be a valid email address" });
       isReq = false;
     }
-    if (!birthday) {
-      setValues({ ...values, birthdayErr: "You must enter a date of birth" });
-      isReq = false;
-    } else if (birthday.typeOf(!date)) {
-      setValues({
-        ...values,
-        birthdayErr: "Birthday must be in the following format: yyyy/mm/dd",
-      });
-      isReq = false;
-    }
+
+    return isReq
+    
   };
 
   const handleSubmit = (e) => {
@@ -78,7 +68,6 @@ export function UserRegistration(props) {
     if (isReq) {
       axios
         .post("https://my-flix-api-2022.herokuapp.com/users", {
-          name: name,
           username: username,
           password: password,
           email: email,
@@ -91,7 +80,7 @@ export function UserRegistration(props) {
           window.open("/", "_self");
         })
         .catch((response) => {
-          console.error(response);
+          console.log(response);
           alert("unable to register");
         });
     }
@@ -106,17 +95,7 @@ export function UserRegistration(props) {
               <CardBody>
                 <Card.Title>Sign up here</Card.Title>
                 <Form className="register-form">
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Name: </Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Enter your first name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                    />
-                    {values.name && <p>{values.nameErr}</p>}
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Group className="mb-3" controlId="formBasicUsername">
                     <Form.Label>Username: </Form.Label>
                     <Form.Control
                       type="text"
@@ -162,11 +141,12 @@ export function UserRegistration(props) {
                   <Button
                     variant="primary"
                     type="submit"
-                    onClick={handleRegistration}
+                    onClick={handleSubmit}
                   >
                     Sign me up!
                   </Button>
                   Already have an account?
+                  <Link to={`/`}>
                   <Button
                     variant="secondary"
                     type="submit"
@@ -174,6 +154,8 @@ export function UserRegistration(props) {
                   >
                     Sign in
                   </Button>
+                  </Link>
+                  
                 </Form>
               </CardBody>
             </Card>
@@ -184,12 +166,11 @@ export function UserRegistration(props) {
   );
 }
 
-UserRegistration.propTypes = {
+RegistrationView.propTypes = {
   register: PropTypes.shape({
-    name: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
-    Birthday: PropTypes.instanceOf(Date).isRequired,
+    birthday: PropTypes.instanceOf(Date)
   }),
 };

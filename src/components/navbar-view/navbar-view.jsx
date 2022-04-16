@@ -1,0 +1,57 @@
+import React from "react";
+import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
+import { Link } from 'react-router-dom';
+
+export function Navbar(user){
+
+  const onLoggedOut = ()=>{
+    localStorage.clear();
+    window.open('/', '_self');
+  }
+
+  const isAuth = () =>{
+    if (typeof window == 'undefined'){
+      return false;
+    }
+    if(localStorage.getItem('token')){
+      return localStorage.getItem('token');
+    }else {
+      return false
+    }
+  };
+  
+  return (
+
+<Navbar expand="md">
+    <Navbar.Brand as={Link} to={'/'}>My-Flix</Navbar.Brand>
+    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+    
+    {isAuth() && (
+      <Navbar.Collapse id="basic-navbar-nav">
+      <Nav className="me-auto">
+        <Nav.Link href="#home">Home</Nav.Link>
+        <Nav.Link href="#home">Register</Nav.Link>
+        <NavDropdown title="My Account" id="basic-nav-dropdown">
+          <NavDropdown.Item as={Link} to={'/users/${user}'}>Profile</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.2">
+            Privacy
+          </NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.3">
+            Favorite movies
+          </NavDropdown.Item>
+          <NavDropdown.Item onClick={()=>{onLoggedOut()}}>Logout</NavDropdown.Item>
+          <NavDropdown.Divider />
+          <NavDropdown.Item href="#action/3.4">
+            Terms and Conditions
+          </NavDropdown.Item>
+        </NavDropdown>
+      </Nav>
+      
+    </Navbar.Collapse>
+    )}
+</Navbar>
+
+
+
+  )
+}
