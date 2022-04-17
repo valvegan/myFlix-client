@@ -2,7 +2,9 @@ import React from "react";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
-export function Navbar(user){
+export function Navbar(){
+
+  let user = localStorage.getItem('user');
 
   const onLoggedOut = ()=>{
     localStorage.clear();
@@ -29,7 +31,7 @@ export function Navbar(user){
     {isAuth() && (
       <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
-        <Nav.Link to={`/`}>Home</Nav.Link>
+        <Nav.Link to={`/`}>Hi, {user}</Nav.Link>
         <Nav.Link onClick={()=>{onLoggedOut()}}>Logout</Nav.Link>
         <NavDropdown title="My Account" id="basic-nav-dropdown">
           <NavDropdown.Item as={Link} to={'/users/${user}'}>Profile</NavDropdown.Item>

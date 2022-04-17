@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Form, Container, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import { Link } from 'react-router-dom';
-import { RegistrationView } from "../registration-view/registration-view";
 
 export function LoginView(props) {
   const [username, setUsername] = useState("");

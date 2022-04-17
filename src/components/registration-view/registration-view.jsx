@@ -63,7 +63,7 @@ export function RegistrationView(props) {
         })
         .catch((response) => {
           console.error(response);
-          alert("something wasn't entered right");
+          alert("error registering the user");
         });
     }
   };
@@ -77,7 +77,7 @@ export function RegistrationView(props) {
               <Card.Title>Sign up here</Card.Title>
               <Form className="register-form">
                 <Form.Group className="mb-3" controlId="formBasicUsername">
-                  <Form.Label>Username: </Form.Label>
+                  <Form.Label className="titles">Username: </Form.Label>
                   <Form.Control
                     type="text"
                     placeholder="Enter a username"
@@ -88,7 +88,7 @@ export function RegistrationView(props) {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label>Password</Form.Label>
+                  <Form.Label className="titles">Password</Form.Label>
                   <Form.Control
                     type="password"
                     placeholder="Your password should be at least 8 characters"
@@ -99,7 +99,7 @@ export function RegistrationView(props) {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Email address</Form.Label>
+                  <Form.Label className="titles">Email address</Form.Label>
                   <Form.Control
                     type="email"
                     placeholder="Enter email"
@@ -113,7 +113,7 @@ export function RegistrationView(props) {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicBirthdate">
-                  <Form.Label>Birth date: </Form.Label>
+                  <Form.Label className="titles">Birth date: </Form.Label>
                   <Form.Control
                     type="date"
                     placeholder="yyyy/mm/dd"
