@@ -1,84 +1,81 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import PropTypes from 'prop-types';
-import {Form, Button, Card, Container, Col, Row} from 'react-bootstrap';
+import PropTypes from "prop-types";
+import { Form, Button, Card, Container, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export function RegistrationView(props) {
-  
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
-  const [birthday, setBirthday] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [birthday, setBirthday] = useState("");
 
   //Declare hook for each input
-  const [usernameErr, setUsernameErr] = useState('');
-  const [passwordErr, setPasswordErr] = useState('');
-  const [emailErr, setEmailErr] = useState('');
+  const [usernameErr, setUsernameErr] = useState("");
+  const [passwordErr, setPasswordErr] = useState("");
+  const [emailErr, setEmailErr] = useState("");
 
-//form validation logic
+  //form validation logic
   const validate = () => {
-    let isReq = true; 
-    if(!username){
-      setUsernameErr('Username is required');
-      isReq = false; 
-    } else if(username.length < 4){
-      setUsernameErr('Username must be 4 characters long');
+    let isReq = true;
+    if (!username) {
+      setUsernameErr("Username is required");
+      isReq = false;
+    } else if (username.length < 4) {
+      setUsernameErr("Username must be 4 characters long");
       isReq = false;
     }
-    if(!password){
-      setPasswordErr('Password is required (6 characters long)');
-      isReq=false;
-    }else if (password.length < 6){
-      setPasswordErr('Password must be 6 characters long');
-      isReq=false;
-    }
-    if(!email){
-      setEmailErr('Add Email');
+    if (!password) {
+      setPasswordErr("Password is required (6 characters long)");
       isReq = false;
-    } else if(email.indexOf('@') === -1){
-      setEmail('Email must be a valid email address');
-      isReq = false; 
+    } else if (password.length < 6) {
+      setPasswordErr("Password must be 6 characters long");
+      isReq = false;
     }
-   
+    if (!email) {
+      setEmailErr("Add Email");
+      isReq = false;
+    } else if (email.indexOf("@") === -1) {
+      setEmail("Email must be a valid email address");
+      isReq = false;
+    }
+
     return isReq;
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const isReq = validate();
-    if (isReq){
-    axios.post('https://my-flix-api-2022.herokuapp.com/users',{
-    username: username,
-    password: password,
-    email: email,
-    birthday: birthday
-  })
-    .then(response => {
-      const data = response.data; 
-      console.log(data);
-      alert('Registration successful, please login!')
-      window.open('/', '_self');
-      //open in the current tab
-    })
-    .catch(response => {
-      console.error(response);
-      alert('something wasn\'t entered right');
-    });
-  }
-};
+    if (isReq) {
+      axios
+        .post("https://my-flix-api-2022.herokuapp.com/users", {
+          username: username,
+          password: password,
+          email: email,
+          birthday: birthday,
+        })
+        .then((response) => {
+          const data = response.data;
+          console.log(data);
+          alert("Registration successful, please login!");
+          window.open("/", "_self");
+          //open in the current tab
+        })
+        .catch((response) => {
+          console.error(response);
+          alert("something wasn't entered right");
+        });
+    }
+  };
 
   return (
-
     <Container>
-    <Row>
-      <Col med={4}>
-      
+      <Row>
+        <Col med={4}>
           <Card>
             <Card.Body>
               <Card.Title>Sign up here</Card.Title>
               <Form className="register-form">
-
                 <Form.Group className="mb-3" controlId="formBasicUsername">
                   <Form.Label>Username: </Form.Label>
                   <Form.Control
@@ -123,7 +120,6 @@ export function RegistrationView(props) {
                     value={birthday}
                     onChange={(e) => setBirthday(e.target.value)}
                   />
-                  
                 </Form.Group>
 
                 <Button
@@ -135,33 +131,22 @@ export function RegistrationView(props) {
                   Sign me up!
                 </Button>
 
-
-               <p> Already have an account?</p>
+                <p> Already have an account?</p>
                 <Link to={`/`}>
-                <Button
-                  variant="primary"
-                  className="custom-btn"
-                  type="submit" 
-                >
-                  Sign in
-                </Button>
-
-                
-
-
-
+                  <Button
+                    variant="primary"
+                    className="custom-btn"
+                    type="submit"
+                  >
+                    Sign in
+                  </Button>
                 </Link>
-                
               </Form>
             </Card.Body>
           </Card>
-       
-      </Col>
-    </Row>
-  </Container>
-
-
-    
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

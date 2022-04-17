@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, Card, Container, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+
 export class MovieView extends React.Component {
   //implementing a show more and show less button
 
@@ -52,12 +53,13 @@ export class MovieView extends React.Component {
               </Link>  
           </Col>
 
+{movie.Actors[0] && (
           <Col className="d-sm-flex justify-content-between justify-content-lg-start">
             <Card.Text className="label titles">Main Actor: </Card.Text>
             <span className="movie-actor titles ml-3 ">
               {movie.Actors[0].Name}
             </span>
-          </Col>
+          </Col>)}
 
           <Container className="text-center p-2">
             <Button
@@ -103,7 +105,7 @@ MovieView.propTypes = {
         Bio: PropTypes.string.isRequired,
         Birth: PropTypes.string.isRequired,
         Death: PropTypes.string,
-        Movies: PropTypes.arrayOf(PropTypes.string).isRequired,
+        Movies: PropTypes.arrayOf(PropTypes.string),
       })
     ),
 

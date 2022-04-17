@@ -29,8 +29,8 @@ export function Navbar(user){
     {isAuth() && (
       <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
-        <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#home">Register</Nav.Link>
+        <Nav.Link to={`/`}>Home</Nav.Link>
+        <Nav.Link onClick={()=>{onLoggedOut()}}>Logout</Nav.Link>
         <NavDropdown title="My Account" id="basic-nav-dropdown">
           <NavDropdown.Item as={Link} to={'/users/${user}'}>Profile</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.2">
@@ -39,7 +39,6 @@ export function Navbar(user){
           <NavDropdown.Item href="#action/3.3">
             Favorite movies
           </NavDropdown.Item>
-          <NavDropdown.Item onClick={()=>{onLoggedOut()}}>Logout</NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item href="#action/3.4">
             Terms and Conditions
