@@ -34,11 +34,11 @@ export function Navbar(){
         <Nav.Link to={`/`}>Hi, {user}</Nav.Link>
         <Nav.Link onClick={()=>{onLoggedOut()}}>Logout</Nav.Link>
         <NavDropdown title="My Account" id="basic-nav-dropdown">
-          <NavDropdown.Item as={Link} to={'/users/${user}'}>Profile</NavDropdown.Item>
+          <NavDropdown.Item as={Link} to={`/users/${user}`}>Profile</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.2">
             Privacy
           </NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">
+          <NavDropdown.Item as={Link} to={`/users/${user}/favoriteMovies/`}>
             Favorite movies
           </NavDropdown.Item>
           <NavDropdown.Divider />

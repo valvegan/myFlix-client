@@ -53,13 +53,14 @@ export class MovieView extends React.Component {
               </Link>  
           </Col>
 
-{movie.Actors && (
+{movie.Actors[0] && (
           <Col className="d-sm-flex justify-content-between justify-content-lg-start">
             <Card.Text className="label titles">Main Actor: </Card.Text>
             <Link className="titles movie-actor ml-3" to={`/actors/${movie.Actors[0].Name}`}>
                 {movie.Actors[0].Name}
               </Link>
           </Col>)}
+          
 
           <Container className="text-center p-2">
             <Button

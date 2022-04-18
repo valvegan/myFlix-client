@@ -15,7 +15,7 @@ export class DirectorView extends React.Component {
 
         <Col className="d-sm-flex justify-content-between justify-content-lg-start">
               <Card.Text className="label titles">Name: </Card.Text>
-              <span className="movie-director-bio card-text  ml-3 ">
+              <span className="movie-director-bio titles ml-3 ">
                 {director.Name}
               </span>
             </Col>
@@ -44,9 +44,11 @@ export class DirectorView extends React.Component {
               </Col>
             )}
           </Container>
+          <Container className="d-flex justify-content-between">
           <Button className="custom-btn" type="submit" onClick={()=>{onBackClick()}}>Go back</Button>
           <Link to={`/`}>
           <Button className="custom-btn" type="submit">Back to List</Button></Link>
+          </Container>
                   </Card.Body>
       </Card>
     );

@@ -5,9 +5,9 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
-import { DirectorView } from '../director-view/director-view';
-import { GenreView } from '../genre-view/genre-view';
-import { ProfileView } from '../profile-view/profile-view';
+import { DirectorView } from "../director-view/director-view";
+import { GenreView } from "../genre-view/genre-view";
+import { ProfileView } from "../profile-view/profile-view";
 import { Navbar } from "../navbar-view/navbar-view";
 import { ActorView } from "../actor-view/actor-view";
 //import {UserUpdate} from '../profile-view/user-update'
@@ -68,10 +68,12 @@ export class MainView extends React.Component {
     this.setState({
       user: null,
     });
-  }
+  };
+
 
   render() {
     const { movies, user } = this.state;
+
 
     return (
       <Router>
@@ -175,9 +177,10 @@ export class MainView extends React.Component {
 
               return (
                 <Col md={8}>
+           
                   <DirectorView
                     director={
-                      movies.find((d) => d.Director.Name === match.params.name)
+                      movies.find((m) => m.Director.Name === match.params.name)
                         .Director
                     }
                     onBackClick={() => history.goBack()}
@@ -187,9 +190,9 @@ export class MainView extends React.Component {
             }}
           />
 
-<Route
+          <Route
             path="/actors/:name"
-            render={({ match, history }) => {
+            render={({  match, history }) => {
               if (!user)
                 return (
                   <Row>
@@ -203,10 +206,10 @@ export class MainView extends React.Component {
               return (
                 <Col md={8}>
                   <ActorView
-                    actor={
-                      movies.find((m) => m.Actors[0].Name === match.params.name).Actor
-                        
-                    }
+                   actor={
+                    movies.find((m) => m.Actors[0].Name === match.params.name)
+                      .Actors}
+                      
                     onBackClick={() => history.goBack()}
                   />
                 </Col>
@@ -219,41 +222,24 @@ export class MainView extends React.Component {
             render={({ match, history }) => {
               if (!user)
                 return (
-                    <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                  <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
                 );
               if (movies.length === 0) return <div className="main-view" />;
-              return
-                  <ProfileView history= {history} 
-                    movies={movies}
-                    user={user === match.params.username}
-                    onBackClick={() => history.goBack()}
-                  />
-              
-            }}
-          />
-
-          <Route
-            path={`/user-update/${user}`}
-            render={({ match, history }) => {
-              if (!user)
-                return (
-                  <Col>
-                    <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
-                  </Col>
-                );
-              if (movies.length === 0) return <div className="main-view" />;
-
-              if (!user) return <Redirect to="/" />;
               return (
-                <Col>
-                  <UserUpdate
-                    user={user}
-                    onBackClick={() => history.goBack()}
-                  />
-                </Col>
-              );
+                <Col md={8}>
+              <ProfileView
+                history={history}
+                movies={movies}
+                user={user}
+                onBackClick={() => history.goBack()}
+              />
+              
+              </Col>
+              )
             }}
           />
+
+          
         </Row>
       </Router>
     );
