@@ -6,10 +6,7 @@ import {Link} from 'react-router-dom';
 export class MovieCard extends React.Component {
   render() {
     const { movie } = this.props
-    let movieActors = movie.Actors
-    let actorss = movieActors[0];
    
-
     return (
       <Card className="m-1">
         <Card.Img variant="top" src={movie.ImagePath} className="img-responsive"/>
@@ -17,11 +14,7 @@ export class MovieCard extends React.Component {
           <Card.Title className="titles custom-card-title text-center">{movie.Title}</Card.Title>
         
           <Card.Text>{movie.Description}</Card.Text>
-          <Card.Text>{}</Card.Text>
           <Link to={`/movies/${movie._id}`}>
-         
-         
-      
           <Container className="text-center">
           <Button className="custom-btn" variant="link">Open</Button>
           </Container></Link>

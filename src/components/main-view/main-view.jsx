@@ -10,6 +10,7 @@ import { GenreView } from "../genre-view/genre-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { Navbar } from "../navbar-view/navbar-view";
 import { ActorView } from "../actor-view/actor-view";
+//import {UserUpdate} from '../profile-view/user-update'
 import { RegistrationView } from "../registration-view/registration-view";
 
 export class MainView extends React.Component {
@@ -72,7 +73,8 @@ export class MainView extends React.Component {
 
   render() {
     const { movies, user } = this.state;
-    
+
+
     return (
       <Router>
         <Navbar user={user} />
@@ -204,7 +206,10 @@ export class MainView extends React.Component {
               return (
                 <Col md={8}>
                   <ActorView
-                    movie={movies}
+                   actor={
+                    movies.find((m) => m.Actors[0].Name === match.params.name)
+                      .Actors}
+                      
                     onBackClick={() => history.goBack()}
                   />
                 </Col>
@@ -221,7 +226,7 @@ export class MainView extends React.Component {
                 );
               if (movies.length === 0) return <div className="main-view" />;
               return (
-                <Col md={9}>
+                <Col md={8}>
               <ProfileView
                 history={history}
                 movies={movies}
