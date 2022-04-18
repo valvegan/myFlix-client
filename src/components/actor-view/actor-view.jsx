@@ -16,17 +16,25 @@ export class ActorView extends React.Component {
       <Card>
         <Card.Body>
         <Container className="extra-info">
+
+        <Col className="d-sm-flex justify-content-between justify-content-lg-start">
+              <Card.Text className="label titles">Bio: </Card.Text>
+              <span className="card-text ml-3 titles h1">
+                {actor[0].Name}
+              </span>
+            </Col>
+
             <Col className="d-sm-flex justify-content-between justify-content-lg-start">
               <Card.Text className="label titles">Bio: </Card.Text>
               <span className="card-text ml-3">
-                {actor[0].Name}
+                {actor[0].Bio}
               </span>
             </Col>
 
             <Col className="d-sm-flex justify-content-between justify-content-lg-start">
               <Card.Text className="label titles">Born: </Card.Text>
               <span className="titles ml-3 ">
-                {actor[0].Name}
+                {actor[0].Birth}
               </span>
             </Col>
 

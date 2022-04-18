@@ -42450,21 +42450,46 @@ class ActorView extends _reactDefault.default.Component {
                                         children: "Bio: "
                                     }, void 0, false, {
                                         fileName: "src/components/actor-view/actor-view.jsx",
-                                        lineNumber: 20,
+                                        lineNumber: 21,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
-                                        className: "card-text ml-3",
+                                        className: "card-text ml-3 titles h1",
                                         children: actor[0].Name
                                     }, void 0, false, {
                                         fileName: "src/components/actor-view/actor-view.jsx",
-                                        lineNumber: 21,
+                                        lineNumber: 22,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/actor-view/actor-view.jsx",
-                                lineNumber: 19,
+                                lineNumber: 20,
+                                columnNumber: 9
+                            }, this),
+                            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
+                                className: "d-sm-flex justify-content-between justify-content-lg-start",
+                                children: [
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
+                                        className: "label titles",
+                                        children: "Bio: "
+                                    }, void 0, false, {
+                                        fileName: "src/components/actor-view/actor-view.jsx",
+                                        lineNumber: 28,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
+                                        className: "card-text ml-3",
+                                        children: actor[0].Bio
+                                    }, void 0, false, {
+                                        fileName: "src/components/actor-view/actor-view.jsx",
+                                        lineNumber: 29,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/actor-view/actor-view.jsx",
+                                lineNumber: 27,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
@@ -42475,21 +42500,21 @@ class ActorView extends _reactDefault.default.Component {
                                         children: "Born: "
                                     }, void 0, false, {
                                         fileName: "src/components/actor-view/actor-view.jsx",
-                                        lineNumber: 27,
+                                        lineNumber: 35,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
                                         className: "titles ml-3 ",
-                                        children: actor[0].Name
+                                        children: actor[0].Birth
                                     }, void 0, false, {
                                         fileName: "src/components/actor-view/actor-view.jsx",
-                                        lineNumber: 28,
+                                        lineNumber: 36,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/actor-view/actor-view.jsx",
-                                lineNumber: 26,
+                                lineNumber: 34,
                                 columnNumber: 13
                             }, this),
                             actor.Death && /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
@@ -42500,7 +42525,7 @@ class ActorView extends _reactDefault.default.Component {
                                         children: "Died: "
                                     }, void 0, false, {
                                         fileName: "src/components/actor-view/actor-view.jsx",
-                                        lineNumber: 35,
+                                        lineNumber: 43,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
@@ -42508,13 +42533,13 @@ class ActorView extends _reactDefault.default.Component {
                                         children: actor[0].Death
                                     }, void 0, false, {
                                         fileName: "src/components/actor-view/actor-view.jsx",
-                                        lineNumber: 36,
+                                        lineNumber: 44,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/actor-view/actor-view.jsx",
-                                lineNumber: 34,
+                                lineNumber: 42,
                                 columnNumber: 15
                             }, this)
                         ]
@@ -42532,7 +42557,7 @@ class ActorView extends _reactDefault.default.Component {
                         children: "Go back"
                     }, void 0, false, {
                         fileName: "src/components/actor-view/actor-view.jsx",
-                        lineNumber: 44,
+                        lineNumber: 52,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Link, {
@@ -42543,12 +42568,12 @@ class ActorView extends _reactDefault.default.Component {
                             children: "Back to List"
                         }, void 0, false, {
                             fileName: "src/components/actor-view/actor-view.jsx",
-                            lineNumber: 46,
+                            lineNumber: 54,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "src/components/actor-view/actor-view.jsx",
-                        lineNumber: 45,
+                        lineNumber: 53,
                         columnNumber: 11
                     }, this)
                 ]
