@@ -11,7 +11,8 @@ export class MovieCard extends React.Component {
       <Card className="m-1">
         <Card.Img variant="top" src={movie.ImagePath} className="img-responsive"/>
         <Card.Body>
-          <Card.Title className="titles text-center">{movie.Title}</Card.Title>
+          <Card.Title className="titles custom-card-title text-center">{movie.Title}</Card.Title>
+        
           <Card.Text>{movie.Description}</Card.Text>
           <Link to={`/movies/${movie._id}`}>
           <Container className="text-center">

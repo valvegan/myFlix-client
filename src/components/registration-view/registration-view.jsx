@@ -80,7 +80,7 @@ export function RegistrationView(props) {
                   <Form.Label className="titles">Username: </Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter a username"
+                    placeholder="Your Username should be at least 4 characters long"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                   />
