@@ -20,43 +20,43 @@ export class MovieView extends React.Component {
         </Container>
 
         <Card.Body>
-          <Col className="d-sm-flex justify-content-between justify-content-lg-start">
-            <Card.Text className="label titles">Title: </Card.Text>
-            <span className="movie-title titles ml-3 ">{movie.Title}</span>
+          <Col className="d-sm-flex justify-content-between justify-content-xl-start">
+            <Card.Text className="label titles h3">Title: </Card.Text>
+            <span className="movie-title titles ml-3 h1">{movie.Title}</span>
           </Col>
 
-          <Col className="d-sm-flex justify-content-between justify-content-lg-start">
-            <Card.Text className="label titles">Description: </Card.Text>
+          <Col className="d-sm-flex justify-content-between justify-content-xl-start">
+            <Card.Text className="label titles h3">Description: </Card.Text>
             <span className="movie-description card-text ml-3 ">
               {movie.Description}
             </span>
           </Col>
 
-          <Col className="d-sm-flex justify-content-between justify-content-lg-start">
-            <Card.Text className="label titles">Genre: </Card.Text>
-              <Link className="titles movie-genre ml-3" to={`/genres/${movie.Genre.Name}`}>
+          <Col className="d-sm-flex justify-content-between justify-content-xl-start">
+            <Card.Text className="label titles h3">Genre: </Card.Text>
+              <Link className="titles movie-genre ml-3 h1" to={`/genres/${movie.Genre.Name}`}>
                 {movie.Genre.Name}
               </Link>      
           </Col>
 
-          <Col className="d-sm-flex justify-content-between justify-content-lg-start">
-            <Card.Text className="label titles">Release Year: </Card.Text>
-            <span className="movie-release titles ml-3 ">
+          <Col className="d-sm-flex justify-content-between justify-content-xl-start">
+            <Card.Text className="label titles h3">Release Year: </Card.Text>
+            <span className="movie-release titles ml-3 h1 ">
               {movie.releaseYear}
             </span>
           </Col>
 
-          <Col className="d-sm-flex justify-content-between justify-content-lg-start">
-            <Card.Text className="label titles">Director: </Card.Text>
-            <Link className="movie-director titles ml-3" to={`/directors/${movie.Director.Name}`}>
+          <Col className="d-sm-flex justify-content-between justify-content-xl-start">
+            <Card.Text className="label titles h3">Director: </Card.Text>
+            <Link className="movie-director titles ml-3 h1" to={`/directors/${movie.Director.Name}`}>
                 {movie.Director.Name}
               </Link>  
           </Col>
 
-{movie.Actors[0] && (
-          <Col className="d-sm-flex justify-content-between justify-content-lg-start">
-            <Card.Text className="label titles">Main Actor: </Card.Text>
-            <Link className="titles movie-actor ml-3" to={`/actors/${movie.Actors[0].Name}`}>
+{movie.Actors[0].Name && (
+          <Col className="d-sm-flex justify-content-between justify-content-xl-start">
+            <Card.Text className="label titles h3">Main Actor: </Card.Text>
+            <Link className="titles movie-actor ml-3 h1" to={`/actors/${movie.Actors[0].Name}`}>
                 {movie.Actors[0].Name}
               </Link>
           </Col>)}
