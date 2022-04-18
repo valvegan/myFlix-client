@@ -19,12 +19,13 @@ export class MovieView extends React.Component {
    
   }
 
-removeFav (movie) {
+removeFav () {
   const user = localStorage.getItem("user");
   const token = localStorage.getItem("token");
+  const id = this.props.movie._id
   axios
     .delete(
-      `https://my-flix-api-2022.herokuapp.com/users/${user}/movies/${movie._id}`,
+      `https://my-flix-api-2022.herokuapp.com/users/${user}/movies/${id}`,
 
       { headers: { Authorization: `Bearer ${token}` } }
     )
@@ -37,9 +38,11 @@ removeFav (movie) {
 };
 
 
- addFav (id)  {{
+ addFav ()  {{
   const user = localStorage.getItem("user");
   const token = localStorage.getItem("token");
+  const id = this.props.movie._id
+  console.log(id)
 
   axios
     .post(
@@ -49,7 +52,7 @@ removeFav (movie) {
     )
     .then((response) => {
       console.log(response);
-      alert(`${id.Title} has been added to your list of favorites`);
+      alert(`${this.props.movie.Title} has been added to your list of favorites`);
       window.open(`/movies/${id}`, '_self')
     })
     .catch((e) => console.log(e));
@@ -58,11 +61,10 @@ removeFav (movie) {
 
   render() {
     const { movie, onBackClick } = this.props;
-    let movieId = movie._id
 
     return (
       <Card>
-        {console.log(movieId)}
+  
         <Container className="text-left p-4">
             <Button
               variant="primary"
@@ -129,7 +131,7 @@ removeFav (movie) {
             <Button
               variant="primary"
               className="custom-btn"
-              onClick={this.addFav(movie._id)}>
+              onClick={this.addFav}>
                 
               Add to favorites
             </Button>

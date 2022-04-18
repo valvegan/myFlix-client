@@ -38,9 +38,6 @@ export function Navbar(){
           <NavDropdown.Item href="#action/3.2">
             Privacy
           </NavDropdown.Item>
-          <NavDropdown.Item as={Link} to={`/users/${user}/favoriteMovies/`}>
-            Favorite movies
-          </NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item href="#action/3.4">
             Terms and Conditions

@@ -11,6 +11,7 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
+import { throws } from "assert";
 
 export class ProfileView extends React.Component {
   constructor() {
@@ -82,7 +83,7 @@ export class ProfileView extends React.Component {
         alert("profile updated successfully!");
         window.open("/profile", "_self");
       });
-  }
+  };
 
   deleteProfile() {
     const username = localStorage.getItem("user");
@@ -122,7 +123,23 @@ export class ProfileView extends React.Component {
       birthday: value,
     });
   }
+  removeFav(movie) {
+    const user = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+    ;
+    axios
+      .delete(
+        `https://my-flix-api-2022.herokuapp.com/users/${user}/movies/${movie}`,
 
+        { headers: { Authorization: `Bearer ${token}` } }
+      )
+      .then((response) => {
+        console.log(response);
+        alert("Movie deleted from favorites!");
+        window.open(`/movies/${movie}`, "_self");
+      })
+      .catch((err) => console.log(err));
+  }
 
   render() {
     const { movies, onBackClick } = this.props;
@@ -185,9 +202,6 @@ export class ProfileView extends React.Component {
                     </Container>
                   </FormGroup>
 
-
-
-
                   <FormGroup>
                     <Form.Label className="titles h3">Password</Form.Label>
                     <Container className="d-flex flex-column flex-sm-row justify-content-between p-1">
@@ -213,12 +227,11 @@ export class ProfileView extends React.Component {
                           required
                         />
                         <Form.Text className="text-muted">
-                        Your password should be at least 8 characters long
+                          Your password should be at least 8 characters long
                         </Form.Text>
                       </div>
                     </Container>
                   </FormGroup>
-
 
                   <FormGroup>
                     <Form.Label className="titles h3">Email</Form.Label>
@@ -243,11 +256,10 @@ export class ProfileView extends React.Component {
                           placeholder="insert your new email here"
                           onChange={(e) => this.setEmail(e.target.value)}
                           required
-                        />        
+                        />
                       </div>
                     </Container>
                   </FormGroup>
-
 
                   <FormGroup>
                     <Form.Label className="titles h3">Birth date</Form.Label>
@@ -272,12 +284,10 @@ export class ProfileView extends React.Component {
                           placeholder="insert your new email here"
                           onChange={(e) => this.setBirthday(e.target.value)}
                           required
-                        />        
+                        />
                       </div>
                     </Container>
                   </FormGroup>
-
-
 
                   <Container>
                     <Button
@@ -287,72 +297,71 @@ export class ProfileView extends React.Component {
                     >
                       Update profile info
                     </Button>
-                    
                   </Container>
                 </Form>
               </Card.Body>
             </Card>
             <Card className="mt-2 mb-2">
-                <Container className="p-1 text-center">
-              <Button
-              style={{ width: "80%" }}
-                className="custom-btn-delete m-1"
-                variant="primary"
-                type="submit"
-                onClick={this.deleteProfile}
-              >
-                Delete your entire profile
-              </Button></Container>
+              <Container className="p-1 text-center">
+                <Button
+                  style={{ width: "80%" }}
+                  className="custom-btn-delete m-1"
+                  variant="primary"
+                  type="submit"
+                  onClick={this.deleteProfile}
+                >
+                  Delete your entire profile
+                </Button>{" "}
+              </Container>
             </Card>
           </Col>
         </Row>
 
         <Card>
-              <Card.Body>
-                {favoriteMovies.length === 0 && (
-                 <div className="titles h1 text-center">
-                 <h1>There's no movies in your list of favorites!</h1>
-                 <p className="h5">
-                     Head over to the <Link to={`/`}>
-     <Button className="custom-btn" type="submit">List of movies</Button></Link> to add some
-                 </p>
-                 
-                 </div>
-                )}
-                <Row className="favorite-movies d-flex justify-content-around">
-                  {favoriteMovies.length > 0 &&
-                    movies.map((movie) => {
-                      if (
-                        movie._id ===
-                        favoriteMovies.find((fav) => fav === movie._id)
-                      ) {
-                        return (
-                          <Card className="favorite-movie m-2" key={movie._id}>
-                            <Card.Img
-                              src={movie.ImagePath}
-                            />
-                            <Card.Body>
-                              <Card.Title className="h1 titles">
-                                {movie.Title}
-                              </Card.Title>
-                              <Button
-                              className="custom-btn"
-                                value={movie._id}
-                                onClick={(e) => this.removeFav(e, movie)}
-                              >
-                                Remove from List
-                              </Button>
-                            </Card.Body>
-                          </Card>
-                        );
-                      }
-                    })}
-                </Row>
-              </Card.Body>
-            </Card>
-
-
-
+          <Card.Body>
+            {favoriteMovies.length === 0 && (
+              <div className="titles h1 text-center">
+                <h1>There's no movies in your list of favorites!</h1>
+                <p className="h5">
+                  Head over to the{" "}
+                  <Link to={`/`}>
+                    <Button className="custom-btn" type="submit">
+                      List of movies
+                    </Button>
+                  </Link>{" "}
+                  to add some
+                </p>
+              </div>
+            )}
+            <Row className="favorite-movies d-flex justify-content-around">
+              {favoriteMovies.length > 0 &&
+                movies.map((movie) => {
+                  if (
+                    movie._id ===
+                    favoriteMovies.find((fav) => fav === movie._id)
+                  ) {
+                    return (
+                      <Card className="favorite-movie m-2" key={movie._id}>
+                        <Card.Img src={movie.ImagePath} />
+                        <Card.Body>
+                          <Card.Title className="h1 titles">
+                            {movie.Title}
+                          </Card.Title>
+                          <Button
+                            className="custom-btn"
+                            value={movie._id}
+                            onClick={(e) => this.removeFav(movie._id)}
+                          >
+                            Remove from List
+                          </Button>
+                        </Card.Body>
+                      </Card>
+                    );
+                  }
+                })}
+            </Row>
+          </Card.Body>
+        </Card>
       </Container>
     );
   }
