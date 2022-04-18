@@ -13,10 +13,13 @@ export class MovieView extends React.Component {
       favoriteMovies: []
     }
 
+    this.addFav = this.addFav.bind(this);
+    this.removeFav = this.removeFav.bind(this);
+
    
   }
 
-removeFav = (movie) => {
+removeFav (movie) {
   const user = localStorage.getItem("user");
   const token = localStorage.getItem("token");
   axios
@@ -28,44 +31,38 @@ removeFav = (movie) => {
     .then((response) => {
       console.log(response);
       alert("Movie deleted from favorites!");
-      window.open(`/movies/${this.props.movie._id}`, '_self')
+      window.open(`/movies/${movie._id}`, '_self')
     })
     .catch((e) => console.log(e));
 };
 
-addFav = (movie) => {
+
+ addFav (id)  {{
   const user = localStorage.getItem("user");
   const token = localStorage.getItem("token");
+
   axios
     .post(
-      `https://my-flix-api-2022.herokuapp.com/users/${user}/movies/${movie._id}`,
+      `https://my-flix-api-2022.herokuapp.com/users/${user}/favoriteMovies/${id}`,
 
       { headers: { Authorization: `Bearer ${token}` } }
     )
     .then((response) => {
       console.log(response);
-      alert(`${this.movie.Title} has been added to your list of favorites`);
-      window.open(`/movies/${this.props.movie._id}`, '_self')
+      alert(`${id.Title} has been added to your list of favorites`);
+      window.open(`/movies/${id}`, '_self')
     })
     .catch((e) => console.log(e));
-};
-
+}};
 
 
   render() {
     const { movie, onBackClick } = this.props;
-    let faves = this.state.favoriteMovies
-    let isFav = false
-     
-    if( faves.includes(movie)){
-      isFav= true
-    }else {
-      isFav=false
-    }
+    let movieId = movie._id
 
     return (
       <Card>
-        {console.log(movie._id)}
+        {console.log(movieId)}
         <Container className="text-left p-4">
             <Button
               variant="primary"
@@ -132,7 +129,8 @@ addFav = (movie) => {
             <Button
               variant="primary"
               className="custom-btn"
-              onClick={()=>{this.addFav(movie)}}>
+              onClick={this.addFav(movie._id)}>
+                
               Add to favorites
             </Button>
           </Container>

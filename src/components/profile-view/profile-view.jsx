@@ -319,7 +319,7 @@ export class ProfileView extends React.Component {
                  
                  </div>
                 )}
-                <Row className="favorite-movies-container">
+                <Row className="favorite-movies d-flex justify-content-around">
                   {favoriteMovies.length > 0 &&
                     movies.map((movie) => {
                       if (
@@ -327,10 +327,8 @@ export class ProfileView extends React.Component {
                         favoriteMovies.find((fav) => fav === movie._id)
                       ) {
                         return (
-                          <Card className="favorite-movie" key={movie._id}>
+                          <Card className="favorite-movie m-2" key={movie._id}>
                             <Card.Img
-                              className="favorite-movie-image"
-                              variant="top"
                               src={movie.ImagePath}
                             />
                             <Card.Body>
