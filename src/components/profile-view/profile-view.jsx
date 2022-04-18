@@ -202,9 +202,6 @@ export class ProfileView extends React.Component {
                     </Container>
                   </FormGroup>
 
-
-
-
                   <FormGroup>
                     <Form.Label className="titles h3">Password</Form.Label>
                     <Container className="d-flex flex-column flex-sm-row justify-content-between p-1">
@@ -230,12 +227,11 @@ export class ProfileView extends React.Component {
                           required
                         />
                         <Form.Text className="text-muted">
-                        Your password should be at least 8 characters long
+                          Your password should be at least 8 characters long
                         </Form.Text>
                       </div>
                     </Container>
                   </FormGroup>
-
 
                   <FormGroup>
                     <Form.Label className="titles h3">Email</Form.Label>
@@ -257,14 +253,13 @@ export class ProfileView extends React.Component {
                         <FormControl
                           type="email"
                           name="email"
-                          placeholder="insert your new email here"
+                          placeholder="name@example.com"
                           onChange={(e) => this.setEmail(e.target.value)}
                           required
-                        />        
+                        />
                       </div>
                     </Container>
                   </FormGroup>
-
 
                   <FormGroup>
                     <Form.Label className="titles h3">Birth date</Form.Label>
@@ -289,41 +284,57 @@ export class ProfileView extends React.Component {
                           placeholder="insert your new email here"
                           onChange={(e) => this.setBirthday(e.target.value)}
                           required
-                        />        
+                        />
                       </div>
                     </Container>
                   </FormGroup>
 
-
-
-                  <Container>
-                    <Button
-                      variant="primary custom-btn"
+                  <Container className="text-right">
+                    <Button 
+                      className="custom-btn m-1"
+                      variant="primary"
                       type="submit"
                       onClick={this.editProfile}
                     >
                       Update profile info
                     </Button>
-                    <Button
-                      variant="primary custom-btn"
-                      type="submit"
-                      onClick={this.deleteProfile}
-                    >
-                      Delete entire profile
-                    </Button>
                   </Container>
                 </Form>
               </Card.Body>
             </Card>
+            <Card className="mt-2 mb-2">
+                <Container className="p-1 text-center">
+              <Button
+              style={{ width: "80%" }}
+                className="custom-btn-delete m-1"
+                variant="primary"
+                type="submit"
+                onClick={this.deleteProfile}
+              >
+                Delete your entire profile
+              </Button></Container>
+            </Card>
           </Col>
         </Row>
+
         <Row>
           <Col>
             <Card>
               <Card.Body>
                 {favoriteMovies.length === 0 && (
-                  <div className="text-center">No favorite movies</div>
+                  <div className="titles h1 text-center">
+                      <h1>There's no movies in your list of favorites!</h1>
+                      <p className="h5">
+                          Head over to the <Link to={`/`}>
+          <Button className="custom-btn" type="submit">List of movies</Button></Link> to add some
+                      </p>
+                      
+                      </div>
+                      
                 )}
+
+
+
                 <Row className="favorite-movies-container">
                   {favoriteMovies.length > 0 &&
                     movies.map((movie) => {
