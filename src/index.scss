@@ -1,5 +1,6 @@
 //color variables
 $buttons-primary: #75ca60;
+$buttons-delete: #972d2d;
 $backgrounds: #202020;
 $text-main: #eeeeee;
 $titles: #cf6628;
@@ -47,6 +48,10 @@ p, .card-text{
   background-color: $buttons-primary !important;
     border-color: $buttons-primary !important;
     color: $buttons-primary-text !important
+}
+.custom-btn-delete {
+  background-color: $buttons-delete !important;
+  border-color: $buttons-delete !important;
 }
 .card{
   border: 2px solid $borders !important;

@@ -2,15 +2,81 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, Card, Container, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export class MovieView extends React.Component {
-  //implementing a show more and show less button
+  //add favorite
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      favoriteMovies: []
+    }
+
+   
+  }
+
+removeFav = (movie) => {
+  const user = localStorage.getItem("user");
+  const token = localStorage.getItem("token");
+  axios
+    .delete(
+      `https://my-flix-api-2022.herokuapp.com/users/${user}/movies/${movie._id}`,
+
+      { headers: { Authorization: `Bearer ${token}` } }
+    )
+    .then((response) => {
+      console.log(response);
+      alert("Movie deleted from favorites!");
+      window.open(`/movies/${this.props.movie._id}`, '_self')
+    })
+    .catch((e) => console.log(e));
+};
+
+addFav = (movie) => {
+  const user = localStorage.getItem("user");
+  const token = localStorage.getItem("token");
+  axios
+    .put(
+      `https://my-flix-api-2022.herokuapp.com/users/${user}/movies/${movie._id}`,
+
+      { headers: { Authorization: `Bearer ${token}` } }
+    )
+    .then((response) => {
+      console.log(response);
+      alert(`${this.movie.Title} has been added to your list of favorites`);
+      window.open(`/movies/${this.props.movie._id}`, '_self')
+    })
+    .catch((e) => console.log(e));
+};
+
+
 
   render() {
     const { movie, onBackClick } = this.props;
+    let faves = this.state.favoriteMovies
+    let isFav = false
+     
+    if( faves.includes(movie)){
+      isFav= true
+    }else {
+      isFav=false
+    }
 
     return (
       <Card>
+        {console.log(movie._id)}
+        <Container className="text-left p-4">
+            <Button
+              variant="primary"
+              className="custom-btn"
+              onClick={() => {
+                onBackClick(null);
+              }}
+            >
+              Go Back
+            </Button>
+          </Container>
         <Container className="text-center p-3">
           <Card.Img
             className="movie-poster"
@@ -62,15 +128,12 @@ export class MovieView extends React.Component {
           </Col>)}
           
 
-          <Container className="text-center p-2">
+          <Container className="text-left p-2">
             <Button
               variant="primary"
               className="custom-btn"
-              onClick={() => {
-                onBackClick(null);
-              }}
-            >
-              Go Back
+              onClick={()=>{this.addFav(movie)}}>
+              Add to favorites
             </Button>
           </Container>
         </Card.Body>
@@ -102,9 +165,9 @@ MovieView.propTypes = {
 
     Actors: PropTypes.arrayOf(
       PropTypes.shape({
-        Name: PropTypes.string.isRequired,
-        Bio: PropTypes.string.isRequired,
-        Birth: PropTypes.string.isRequired,
+        Name: PropTypes.string,
+        Bio: PropTypes.string,
+        Birth: PropTypes.string,
         Death: PropTypes.string,
         Movies: PropTypes.arrayOf(PropTypes.string),
       })

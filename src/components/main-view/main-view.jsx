@@ -10,7 +10,6 @@ import { GenreView } from "../genre-view/genre-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { Navbar } from "../navbar-view/navbar-view";
 import { ActorView } from "../actor-view/actor-view";
-//import {UserUpdate} from '../profile-view/user-update'
 import { RegistrationView } from "../registration-view/registration-view";
 
 export class MainView extends React.Component {
@@ -238,6 +237,8 @@ export class MainView extends React.Component {
               )
             }}
           />
+
+
 
           
         </Row>

@@ -82,25 +82,7 @@ export class ProfileView extends React.Component {
         alert("profile updated successfully!");
         window.open("/profile", "_self");
       });
-  };
-
-  removeFav = (e, movies) => {
-    e.preventDefault();
-    const username = localStorage.getItem("user");
-    const token = localStorage.getItem("token");
-    axios
-      .delete(
-        `https://my-flix-api-2022.herokuapp.com/users/${username}/movies/${movie._id}`,
-
-        { headers: { Authorization: `Bearer ${token}` } }
-      )
-      .then((response) => {
-        console.log(response);
-        alert("Movie deleted from favorites!");
-        this.componentDidMount();
-      })
-      .catch((e) => console.log(e));
-  };
+  }
 
   deleteProfile() {
     const username = localStorage.getItem("user");
@@ -140,6 +122,7 @@ export class ProfileView extends React.Component {
       birthday: value,
     });
   }
+
 
   render() {
     const { movies, onBackClick } = this.props;
@@ -304,25 +287,37 @@ export class ProfileView extends React.Component {
                     >
                       Update profile info
                     </Button>
-                    <Button
-                      variant="primary custom-btn"
-                      type="submit"
-                      onClick={this.deleteProfile}
-                    >
-                      Delete entire profile
-                    </Button>
+                    
                   </Container>
                 </Form>
               </Card.Body>
             </Card>
+            <Card className="mt-2 mb-2">
+                <Container className="p-1 text-center">
+              <Button
+              style={{ width: "80%" }}
+                className="custom-btn-delete m-1"
+                variant="primary"
+                type="submit"
+                onClick={this.deleteProfile}
+              >
+                Delete your entire profile
+              </Button></Container>
+            </Card>
           </Col>
         </Row>
-        <Row>
-          <Col>
-            <Card>
+
+        <Card>
               <Card.Body>
                 {favoriteMovies.length === 0 && (
-                  <div className="text-center">No favorite movies</div>
+                 <div className="titles h1 text-center">
+                 <h1>There's no movies in your list of favorites!</h1>
+                 <p className="h5">
+                     Head over to the <Link to={`/`}>
+     <Button className="custom-btn" type="submit">List of movies</Button></Link> to add some
+                 </p>
+                 
+                 </div>
                 )}
                 <Row className="favorite-movies-container">
                   {favoriteMovies.length > 0 &&
@@ -339,10 +334,11 @@ export class ProfileView extends React.Component {
                               src={movie.ImagePath}
                             />
                             <Card.Body>
-                              <Card.Title className="movie-title">
+                              <Card.Title className="h1 titles">
                                 {movie.Title}
                               </Card.Title>
                               <Button
+                              className="custom-btn"
                                 value={movie._id}
                                 onClick={(e) => this.removeFav(e, movie)}
                               >
@@ -356,8 +352,9 @@ export class ProfileView extends React.Component {
                 </Row>
               </Card.Body>
             </Card>
-          </Col>
-        </Row>
+
+
+
       </Container>
     );
   }

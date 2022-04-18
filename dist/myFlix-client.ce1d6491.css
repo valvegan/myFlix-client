@@ -25,6 +25,10 @@ p, .card-text {
   border-color: #75ca60 !important;
   color: #141414 !important;
 }
+.custom-btn-delete {
+  background-color: #972d2d !important;
+  border-color: #972d2d !important;
+}
 .card {
   border: 2px solid #dffd71 !important;
 }
