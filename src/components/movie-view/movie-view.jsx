@@ -37,7 +37,7 @@ addFav = (movie) => {
   const user = localStorage.getItem("user");
   const token = localStorage.getItem("token");
   axios
-    .put(
+    .post(
       `https://my-flix-api-2022.herokuapp.com/users/${user}/movies/${movie._id}`,
 
       { headers: { Authorization: `Bearer ${token}` } }

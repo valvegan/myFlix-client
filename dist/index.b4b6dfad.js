@@ -40799,7 +40799,7 @@ class MovieView extends _reactDefault.default.Component {
     addFav = (movie)=>{
         const user = localStorage.getItem("user");
         const token = localStorage.getItem("token");
-        _axiosDefault.default.put(`https://my-flix-api-2022.herokuapp.com/users/${user}/movies/${movie._id}`, {
+        _axiosDefault.default.post(`https://my-flix-api-2022.herokuapp.com/users/${user}/movies/${movie._id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
