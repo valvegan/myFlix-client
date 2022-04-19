@@ -17,48 +17,14 @@ export class MovieView extends React.Component {
     this.removeFav = this.removeFav.bind(this);
   }
 
-  
- //check if movie is favortied, if not add to favorties
- /*validate (){
-  const user = localStorage.getItem("user");
- let isFav = false;
- if (user){
-   console.log(user)
-   isFav = true
- }
- return isFav;
-};*/
-getUser(token) {
-  let user = localStorage.getItem("user");
-  axios
-    .get(`https://my-flix-api-2022.herokuapp.com/users/${user}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((response) => {
-      //assign the result to the state
-      this.setState({
-        username: response.data.username,
-        password: response.data.password,
-        email: response.data.email,
-        birthday: response.data.birthday,
-        favoriteMovies: response.data.favoriteMovies,
-      });
-    })
-    .catch((e) => console.log(e));
-}
-componentDidMount() {
-  const token = localStorage.getItem("token");
-  this.getUser(token);
-  console.log(this.getUser(token))
-}
-
   //add favorite
+
   addFav() {
     {
       const user = localStorage.getItem("user");
       const token = localStorage.getItem("token");
       const id = this.props.movie._id;
-      console.log(user)
+      console.log(id);
 
       axios
         .post(
@@ -105,8 +71,7 @@ removeFav() {
   }
 }
   render() {
-    const { user, movie, onBackClick } = this.props;
-    
+    const { movie, onBackClick } = this.props;
 
     return (
       <Card>
