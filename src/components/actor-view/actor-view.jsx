@@ -33,8 +33,7 @@ export class ActorView extends React.Component {
               </Col>
             )}
 
-
-<Col className="d-sm-flex justify-content-between justify-content-lg-start">
+            <Col className="d-sm-flex justify-content-between justify-content-lg-start">
               <Card.Text className="label titles h3">Featured in: </Card.Text>
               <span className="titles ml-3 h1">{actor[0].Movies}</span>
             </Col>

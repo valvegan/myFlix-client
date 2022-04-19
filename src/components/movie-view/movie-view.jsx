@@ -101,7 +101,7 @@ export class MovieView extends React.Component {
   render() {
     const { movie, onBackClick } = this.props;
     const { favoriteMovies, username, password, email, birthday } = this.state;
-    let movieId = this.props.movie._id
+    let movieId = this.props.movie._id;
     let userFav = this.state.favoriteMovies;
     let isFav = userFav.includes(movieId);
 
@@ -179,22 +179,24 @@ export class MovieView extends React.Component {
           )}
 
           <Container className="text-center p-2">
-          {(!isFav) &&
-            <Button
-              variant="primary"
-              className="custom-btn"
-              onClick={this.addFav}
-            >
-              Add to favorites
-            </Button>}
-            {(isFav) &&
-            <Button
-              variant="primary"
-              className="custom-btn"
-              onClick={this.removeFav}
-            >
-              Remove from favorites
-            </Button>}
+            {!isFav && (
+              <Button
+                variant="primary"
+                className="custom-btn"
+                onClick={this.addFav}
+              >
+                Add to favorites
+              </Button>
+            )}
+            {isFav && (
+              <Button
+                variant="primary"
+                className="custom-btn"
+                onClick={this.removeFav}
+              >
+                Remove from favorites
+              </Button>
+            )}
           </Container>
         </Card.Body>
       </Card>

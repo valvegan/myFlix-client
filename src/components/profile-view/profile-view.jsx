@@ -132,7 +132,8 @@ export class ProfileView extends React.Component {
       .delete(
         `https://my-flix-api-2022.herokuapp.com/users/${user}/favoriteMovies/${id}`,
 
-        { headers: { Authorization: `Bearer ${token}` } },{}
+        { headers: { Authorization: `Bearer ${token}` } },
+        {}
       )
       .then((response) => {
         console.log(response);
@@ -350,7 +351,6 @@ export class ProfileView extends React.Component {
                           </Card.Title>
                           <Button
                             className="custom-btn"
-                           
                             onClick={this.removeFav}
                           >
                             Remove from List

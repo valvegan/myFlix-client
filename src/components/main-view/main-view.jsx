@@ -67,12 +67,10 @@ export class MainView extends React.Component {
     this.setState({
       user: null,
     });
-  };
-
+  }
 
   render() {
     const { movies, user } = this.state;
-
 
     return (
       <Router>
@@ -176,7 +174,6 @@ export class MainView extends React.Component {
 
               return (
                 <Col md={8}>
-           
                   <DirectorView
                     director={
                       movies.find((m) => m.Director.Name === match.params.name)
@@ -191,7 +188,7 @@ export class MainView extends React.Component {
 
           <Route
             path="/actors/:name"
-            render={({  match, history }) => {
+            render={({ match, history }) => {
               if (!user)
                 return (
                   <Row>
@@ -205,10 +202,10 @@ export class MainView extends React.Component {
               return (
                 <Col md={8}>
                   <ActorView
-                   actor={
-                    movies.find((m) => m.Actors[0].Name === match.params.name)
-                      .Actors}
-                      
+                    actor={
+                      movies.find((m) => m.Actors[0].Name === match.params.name)
+                        .Actors
+                    }
                     onBackClick={() => history.goBack()}
                   />
                 </Col>
@@ -226,20 +223,16 @@ export class MainView extends React.Component {
               if (movies.length === 0) return <div className="main-view" />;
               return (
                 <Col md={8}>
-              <ProfileView
-                history={history}
-                movies={movies}
-                user={user}
-                onBackClick={() => history.goBack()}
-              />
-              
-              </Col>
-              )
+                  <ProfileView
+                    history={history}
+                    movies={movies}
+                    user={user}
+                    onBackClick={() => history.goBack()}
+                  />
+                </Col>
+              );
             }}
           />
-
-
-          
         </Row>
       </Router>
     );
