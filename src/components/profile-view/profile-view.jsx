@@ -126,35 +126,41 @@ export class ProfileView extends React.Component {
     });
   }
   removeFav() {
-    const user = localStorage.getItem("user");
-    const token = localStorage.getItem("token");
-    const id = this.props.movie._id;
-    console.log(id)
-    axios
-      .delete(
-        `https://my-flix-api-2022.herokuapp.com/users/${user}/movies/${id}`,
-        {},
-
-        { headers: { Authorization: `Bearer ${token}` } }
-      )
-      .then((response) => {
-        console.log(response);
-        alert("Movie deleted from favorites!");
-        window.open(`/movies/${id}`, "_self");
-      })
-      .catch((err) => console.log(err));
+    {
+      const user = localStorage.getItem("user");
+      const token = localStorage.getItem("token");
+   const id = movie._id
+  
+      axios
+        .delete(
+          `https://my-flix-api-2022.herokuapp.com/users/${user}/favoriteMovies/${id}`,
+          
+  
+          { headers: { Authorization: `Bearer ${token}` } },
+          {}
+        )
+        .then((response) => {
+          console.log(response);
+          alert(
+            `${this.props.movie.Title} has been deleted from your list of favorites`
+          );
+          window.open(`/movies/${id}`, "_self");
+        })
+        .catch((e) => console.log(e));
+    }
   }
 
   render() {
     const { movies, onBackClick } = this.props;
     const { favoriteMovies, username, password, email, birthday } = this.state;
-
+  
     if (!username) {
       return null;
     }
 
     return (
       <Container>
+      
         <Row>
           <Col>
             <Card>
