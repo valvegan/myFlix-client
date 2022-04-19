@@ -22,8 +22,6 @@ export class ProfileView extends React.Component {
       birthday: null,
       favoriteMovies: [],
     };
-
-    
     this.removeFav = this.removeFav.bind(this);
   }
 

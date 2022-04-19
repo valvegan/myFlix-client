@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 export class MovieView extends React.Component {
-  
-
   constructor(props) {
     super(props);
     this.state = {
+      username: null,
+      password: null,
+      email: null,
+      birthday: null,
       favoriteMovies: [],
     };
 
@@ -17,9 +19,63 @@ export class MovieView extends React.Component {
     this.removeFav = this.removeFav.bind(this);
   }
 
-  //add favorite
+  getUser(token) {
+    let user = localStorage.getItem("user");
+    axios
+      .get(`https://my-flix-api-2022.herokuapp.com/users/${user}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        //assign the result to the state
+        this.setState({
+          username: response.data.username,
+          password: response.data.password,
+          email: response.data.email,
+          birthday: response.data.birthday,
+          favoriteMovies: response.data.favoriteMovies,
+        });
+      })
+      .catch((e) => console.log(e));
+  }
+  componentDidMount() {
+    const accessToken = localStorage.getItem("token");
+    this.getUser(accessToken);
+  }
 
+  //add favorite
   addFav() {
+    {
+      const user = localStorage.getItem("user");
+      const token = localStorage.getItem("token");
+      const id = this.props.movie._id;
+      //prevent adding duplicate movies
+      let userFavorites = this.state.favoriteMovies;
+      let isFav = userFavorites.includes(id);
+      if (!isFav) {
+        axios
+          .post(
+            `https://my-flix-api-2022.herokuapp.com/users/${user}/favoriteMovies/${id}`,
+            {},
+
+            { headers: { Authorization: `Bearer ${token}` } }
+          )
+          .then((response) => {
+            console.log(response);
+            alert(
+              `${this.props.movie.Title} has been added to your list of favorites`
+            );
+            window.open(`/movies/${id}`, "_self");
+          })
+          .catch((e) => console.log(e));
+      } else if (isFav) {
+        alert(
+          `${this.props.movie.Title} is already in your list of favorite movies!`
+        );
+      }
+    }
+  }
+  //remove favorite
+  removeFav() {
     {
       const user = localStorage.getItem("user");
       const token = localStorage.getItem("token");
@@ -27,51 +83,28 @@ export class MovieView extends React.Component {
       console.log(id);
 
       axios
-        .post(
+        .delete(
           `https://my-flix-api-2022.herokuapp.com/users/${user}/favoriteMovies/${id}`,
-          {},
 
-          { headers: { Authorization: `Bearer ${token}` } }
+          { headers: { Authorization: `Bearer ${token}` } },
+          {}
         )
         .then((response) => {
           console.log(response);
           alert(
-            `${this.props.movie.Title} has been added to your list of favorites`
+            `${this.props.movie.Title} has been deleted from your list of favorites`
           );
           window.open(`/movies/${id}`, "_self");
         })
         .catch((e) => console.log(e));
     }
   }
-//remove favorite
-
-removeFav() {
-  {
-    const user = localStorage.getItem("user");
-    const token = localStorage.getItem("token");
-    const id = this.props.movie._id;
-    console.log(id);
-
-    axios
-      .delete(
-        `https://my-flix-api-2022.herokuapp.com/users/${user}/favoriteMovies/${id}`,
-        
-
-        { headers: { Authorization: `Bearer ${token}` } },
-        {}
-      )
-      .then((response) => {
-        console.log(response);
-        alert(
-          `${this.props.movie.Title} has been deleted from your list of favorites`
-        );
-        window.open(`/movies/${id}`, "_self");
-      })
-      .catch((e) => console.log(e));
-  }
-}
   render() {
     const { movie, onBackClick } = this.props;
+    const { favoriteMovies, username, password, email, birthday } = this.state;
+    let movieId = this.props.movie._id
+    let userFav = this.state.favoriteMovies;
+    let isFav = userFav.includes(movieId);
 
     return (
       <Card>
@@ -146,21 +179,23 @@ removeFav() {
             </Col>
           )}
 
-          <Container className="text-left p-2">
+          <Container className="text-center p-2">
+          {(!isFav) &&
             <Button
               variant="primary"
               className="custom-btn"
               onClick={this.addFav}
             >
               Add to favorites
-            </Button>
+            </Button>}
+            {(isFav) &&
             <Button
               variant="primary"
               className="custom-btn"
               onClick={this.removeFav}
             >
               Remove from favorites
-            </Button>
+            </Button>}
           </Container>
         </Card.Body>
       </Card>
