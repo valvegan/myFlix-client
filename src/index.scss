@@ -21,6 +21,9 @@ $titles-font: "Lobster", cursive;
 .container .card-custom {
   background-color: $card-bg !important;
 }
+:root{
+  background-color: $backgrounds !important;
+}
 
 .navbar-brand,
 h1,

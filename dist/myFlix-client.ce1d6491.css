@@ -4,6 +4,9 @@
 .container .card-custom {
   background-color: #110307 !important;
 }
+:root {
+  background-color: #202020 !important;
+}
 .navbar-brand,
 h1,
 .nav-link,

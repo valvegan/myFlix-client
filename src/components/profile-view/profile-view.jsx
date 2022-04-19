@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import axios from "axios";
 import {
   Card,
@@ -11,6 +12,7 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
+
 
 export class ProfileView extends React.Component {
   constructor() {
@@ -367,3 +369,5 @@ export class ProfileView extends React.Component {
     );
   }
 }
+
+
