@@ -1,22 +1,32 @@
 @import "https://fonts.googleapis.com/css2?family=Anek+Tamil&display=swap";
 @import "https://fonts.googleapis.com/css2?family=Lobster&display=swap";
-.card-body, .container .card-custom {
+.card-body,
+.container .card-custom {
   background-color: #110307 !important;
 }
-.navbar-brand, h1, .nav-link, .titles {
+.navbar-brand,
+h1,
+.nav-link,
+.titles {
   color: #cf6628 !important;
   font-family: "Lobster", cursive !important;
 }
-.navbar-brand .custom-icon, h1 .custom-icon, .nav-link .custom-icon, .titles .custom-icon {
+.navbar-brand .custom-icon,
+h1 .custom-icon,
+.nav-link .custom-icon,
+.titles .custom-icon {
   color: #dffd71 !important;
 }
-.navbar-brand, .nav-link, .custom-card-title {
+.navbar-brand,
+.nav-link,
+.custom-card-title {
   font-size: 1.7rem !important;
 }
 .navbar-brand {
   font-size: 4rem !important;
 }
-p, .card-text {
+p,
+.card-text {
   color: #eeeeee;
 }
 .app-container {

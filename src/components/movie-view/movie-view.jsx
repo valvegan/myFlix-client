@@ -24,6 +24,7 @@ export class MovieView extends React.Component {
     axios
       .delete(
         `https://my-flix-api-2022.herokuapp.com/users/${user}/movies/${id}`,
+        {},
 
         { headers: { Authorization: `Bearer ${token}` } }
       )
@@ -45,6 +46,7 @@ export class MovieView extends React.Component {
       axios
         .post(
           `https://my-flix-api-2022.herokuapp.com/users/${user}/favoriteMovies/${id}`,
+          {},
 
           { headers: { Authorization: `Bearer ${token}` } }
         )

@@ -11,7 +11,6 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
-import { throws } from "assert";
 
 export class ProfileView extends React.Component {
   constructor() {
@@ -23,6 +22,9 @@ export class ProfileView extends React.Component {
       birthday: null,
       favoriteMovies: [],
     };
+
+    
+    this.removeFav = this.removeFav.bind(this);
   }
 
   getUser(token) {
@@ -123,19 +125,22 @@ export class ProfileView extends React.Component {
       birthday: value,
     });
   }
-  removeFav(movie) {
+  removeFav() {
     const user = localStorage.getItem("user");
     const token = localStorage.getItem("token");
+    const id = this.props.movie._id;
+    console.log(id)
     axios
       .delete(
-        `https://my-flix-api-2022.herokuapp.com/users/${user}/movies/${movie}`,
+        `https://my-flix-api-2022.herokuapp.com/users/${user}/movies/${id}`,
+        {},
 
         { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((response) => {
         console.log(response);
         alert("Movie deleted from favorites!");
-        window.open(`/movies/${movie}`, "_self");
+        window.open(`/movies/${id}`, "_self");
       })
       .catch((err) => console.log(err));
   }
@@ -301,7 +306,7 @@ export class ProfileView extends React.Component {
               </Card.Body>
             </Card>
             <Card className="mt-2 mb-2">
-              <Container className="p-1 text-center">
+              <Container className="p-1 text-center card-custom">
                 <Button
                   style={{ width: "80%" }}
                   className="custom-btn-delete m-1"
@@ -348,8 +353,8 @@ export class ProfileView extends React.Component {
                           </Card.Title>
                           <Button
                             className="custom-btn"
-                            value={movie._id}
-                            onClick={(e) => this.removeFav(movie._id)}
+                           
+                            onClick={this.removeFav}
                           >
                             Remove from List
                           </Button>
