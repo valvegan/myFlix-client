@@ -80,7 +80,6 @@ export class MovieView extends React.Component {
       const user = localStorage.getItem("user");
       const token = localStorage.getItem("token");
       const id = this.props.movie._id;
-      console.log(id);
 
       axios
         .delete(

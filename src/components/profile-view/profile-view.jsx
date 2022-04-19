@@ -126,14 +126,13 @@ export class ProfileView extends React.Component {
   removeFav() {
     const user = localStorage.getItem("user");
     const token = localStorage.getItem("token");
-    const id = this.props.movie._id;
-    console.log(id)
+    const id = this.state.favoriteMovies;
+
     axios
       .delete(
-        `https://my-flix-api-2022.herokuapp.com/users/${user}/movies/${id}`,
-        {},
+        `https://my-flix-api-2022.herokuapp.com/users/${user}/favoriteMovies/${id}`,
 
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${token}` } },{}
       )
       .then((response) => {
         console.log(response);
