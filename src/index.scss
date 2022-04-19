@@ -2,6 +2,7 @@
 $buttons-primary: #75ca60;
 $buttons-delete: #972d2d;
 $backgrounds: #202020;
+$card-bg: #110307;
 $text-main: #eeeeee;
 $titles: #cf6628;
 $buttons-primary-text: #141414;
@@ -16,6 +17,11 @@ $borders: #dffd71;
 //font variables
 $main-font: 'Anek Tamil', sans-serif;
 $titles-font: 'Lobster', cursive;
+
+ .card-body, .container .card-custom{
+  background-color: $card-bg !important;
+
+}
 
 .navbar-brand, h1, .nav-link, .titles{
   color: $titles !important;
@@ -39,7 +45,7 @@ p, .card-text{
   color: $text-main;
 }
 
-*{
+.app-container{
   background-color: $backgrounds;
   font-family: $main-font !important;
 }

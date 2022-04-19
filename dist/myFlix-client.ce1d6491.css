@@ -1,5 +1,8 @@
 @import "https://fonts.googleapis.com/css2?family=Anek+Tamil&display=swap";
 @import "https://fonts.googleapis.com/css2?family=Lobster&display=swap";
+.card-body, .container .card-custom {
+  background-color: #110307 !important;
+}
 .navbar-brand, h1, .nav-link, .titles {
   color: #cf6628 !important;
   font-family: "Lobster", cursive !important;
@@ -16,7 +19,7 @@
 p, .card-text {
   color: #eeeeee;
 }
-* {
+.app-container {
   background-color: #202020;
   font-family: "Anek Tamil", sans-serif !important;
 }

@@ -266,7 +266,7 @@ export class ProfileView extends React.Component {
                       <FormControl
                         className="mb-3"
                         style={{ width: "40%" }}
-                        type="date"
+                        type="text"
                         name="birthday"
                         placeholder={birthday}
                         disabled

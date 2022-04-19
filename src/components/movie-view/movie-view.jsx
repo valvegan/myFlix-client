@@ -64,7 +64,7 @@ export class MovieView extends React.Component {
 
     return (
       <Card>
-        <Container className="text-left p-4">
+        <Container className="text-left p-4 card-custom">
           <Button
             variant="primary"
             className="custom-btn"
@@ -75,7 +75,7 @@ export class MovieView extends React.Component {
             Go Back
           </Button>
         </Container>
-        <Container className="text-center p-3">
+        <Container className="text-center p-3 card-custom">
           <Card.Img
             className="movie-poster"
             variant="top"
