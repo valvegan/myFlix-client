@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 export class MovieView extends React.Component {
-  //add favorite
+  
 
   constructor(props) {
     super(props);
@@ -17,24 +17,7 @@ export class MovieView extends React.Component {
     this.removeFav = this.removeFav.bind(this);
   }
 
-  removeFav() {
-    const user = localStorage.getItem("user");
-    const token = localStorage.getItem("token");
-    const id = this.props.movie._id;
-    axios
-      .delete(
-        `https://my-flix-api-2022.herokuapp.com/users/${user}/movies/${id}`,
-        {},
-
-        { headers: { Authorization: `Bearer ${token}` } }
-      )
-      .then((response) => {
-        console.log(response);
-        alert("Movie deleted from favorites!");
-        window.open(`/movies/${id}`, "_self");
-      })
-      .catch((e) => console.log(e));
-  }
+  //add favorite
 
   addFav() {
     {
@@ -60,7 +43,32 @@ export class MovieView extends React.Component {
         .catch((e) => console.log(e));
     }
   }
+//remove favorite
 
+removeFav() {
+  {
+    const user = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+    const id = this.props.movie._id;
+    console.log(id);
+
+    axios
+      .delete(
+        `https://my-flix-api-2022.herokuapp.com/users/${user}/favoriteMovies/${id}`,
+        {},
+
+        { headers: { Authorization: `Bearer ${token}` } }
+      )
+      .then((response) => {
+        console.log(response);
+        alert(
+          `${this.props.movie.Title} has been deleted from your list of favorites`
+        );
+        window.open(`/movies/${id}`, "_self");
+      })
+      .catch((e) => console.log(e));
+  }
+}
   render() {
     const { movie, onBackClick } = this.props;
 
@@ -144,6 +152,13 @@ export class MovieView extends React.Component {
               onClick={this.addFav}
             >
               Add to favorites
+            </Button>
+            <Button
+              variant="primary"
+              className="custom-btn"
+              onClick={this.removeFav}
+            >
+              Remove from favorites
             </Button>
           </Container>
         </Card.Body>
