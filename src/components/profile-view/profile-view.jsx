@@ -17,9 +17,15 @@ import "../../index.scss";
 export class ProfileView extends React.Component {
   constructor() {
     super();
-    
+    this.state = {
+      username: null,
+      password: null,
+      email: null,
+      birthday: null,
+      favoriteMovies: [],
+    };
 
-   // this.removeFav = this.removeFav.bind(this);
+    this.removeFav = this.removeFav.bind(this);
   }
  
 
@@ -29,8 +35,39 @@ export class ProfileView extends React.Component {
   // the labels on the left need to remain unchanged,
   //
 
-  
-  /*editProfile = (e) => {
+  getUser(token) {
+    let user = localStorage.getItem("user");
+    axios
+      .get(`https://my-flix-api-2022.herokuapp.com/users/${user}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        //assign the result to the state
+        this.setState({
+          username: response.data.username,
+          password: response.data.password,
+          email: response.data.email,
+          birthday: response.data.birthday,
+          favoriteMovies: response.data.favoriteMovies,
+        });
+      })
+      .catch((e) => console.log(e));
+  }
+  componentDidMount() {
+    const accessToken = localStorage.getItem("token");
+    this.getUser(accessToken);
+  }
+
+  onLoggedOut() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    this.setState({
+      user: null,
+    });
+    window.open("/", "_self");
+  }
+
+  editProfile = (e) => {
     e.preventDefault();
     const user = localStorage.getItem("user");
     const token = localStorage.getItem("token");
@@ -78,11 +115,10 @@ export class ProfileView extends React.Component {
       .catch((e) => console.log(e));
   }
 
-*/
   setUsername(value) {
     this.setState({
-      password: value,
-    })
+      username: value,
+    });
   }
   setPassword(value) {
     this.setState({
@@ -122,8 +158,12 @@ export class ProfileView extends React.Component {
   render() {
     const { movies, onBackClick, userData } = this.props;
     const { favoriteMovies, username, password, email, birthday } = this.state;
+<<<<<<< HEAD
    console.log(userData)
 
+=======
+    let prevState = JSON.stringify(this.state.username);
+>>>>>>> parent of ccfe81b (trials)
 
     if (!username) {
       return null;
@@ -134,9 +174,9 @@ export class ProfileView extends React.Component {
         <Row>
           <Col>
             <Card>
-              
+              {console.log(prevState)}
               <Card.Body>
-                <div className="titles h1 text-center">Hi, {this.props.user}</div>
+                <div className="titles h1 text-center">Hi, {username}</div>
                 <Card.Title className="titles text-center custom-card-title">
                   View and update your details
                 </Card.Title>
@@ -160,7 +200,7 @@ export class ProfileView extends React.Component {
                         style={{ width: "40%" }}
                         type="text"
                         name="username"
-                        placeholder={username}
+                        placeholder={prevState}
                         disabled
                       ></FormControl>
 

@@ -5,18 +5,45 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../index.scss";
 export class MovieView extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state ={}
+  constructor() {
+    super();
+    this.state = {
+      username: null,
+      password: null,
+      email: null,
+      birthday: null,
+      favoriteMovies: [],
+    };
 
-  //  this.addFav = this.addFav.bind(this);
-//    this.removeFav = this.removeFav.bind(this);
+    this.addFav = this.addFav.bind(this);
+    this.removeFav = this.removeFav.bind(this);
   }
 
- 
+  getUser(token) {
+    let user = localStorage.getItem("user");
+    axios
+      .get(`https://my-flix-api-2022.herokuapp.com/users/${user}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        //assign the result to the state
+        this.setState({
+          username: response.data.username,
+          password: response.data.password,
+          email: response.data.email,
+          birthday: response.data.birthday,
+          favoriteMovies: response.data.favoriteMovies,
+        });
+      })
+      .catch((e) => console.log(e));
+  }
+  componentDidMount() {
+    const accessToken = localStorage.getItem("token");
+    this.getUser(accessToken);
+  }
 
   //add favorite
-/*  addFav() {
+  addFav() {
     {
       const user = localStorage.getItem("user");
       const token = localStorage.getItem("token");
@@ -70,14 +97,13 @@ export class MovieView extends React.Component {
         })
         .catch((e) => console.log(e));
     }
-  }*/
+  }
   render() {
-    const { movie, onBackClick, userData } = this.props;
-   // const { favoriteMovies, username, password, email, birthday } = this.state;
+    const { movie, onBackClick } = this.props;
+    const { favoriteMovies, username, password, email, birthday } = this.state;
     let movieId = this.props.movie._id;
-   console.log(this.props)
-    //let userFav = this.state.favoriteMovies;
-   // let isFav = userFav.includes(movieId);
+    let userFav = this.state.favoriteMovies;
+    let isFav = userFav.includes(movieId);
 
     return (
       <Card>
@@ -152,11 +178,26 @@ export class MovieView extends React.Component {
             </Col>
           )}
 
-       
-
-
-
-
+          <Container className="text-center p-2">
+            {!isFav && (
+              <Button
+                variant="primary"
+                className="custom-btn"
+                onClick={this.addFav}
+              >
+                Add to favorites
+              </Button>
+            )}
+            {isFav && (
+              <Button
+                variant="primary"
+                className="custom-btn"
+                onClick={this.removeFav}
+              >
+                Remove from favorites
+              </Button>
+            )}
+          </Container>
         </Card.Body>
       </Card>
     );
