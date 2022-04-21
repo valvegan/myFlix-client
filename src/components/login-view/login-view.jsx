@@ -28,7 +28,7 @@ export function LoginView(props) {
     } else if (password.length < 6) {
       setPassword("Password must be 6 characters long!");
       isReq = false;
-    }
+    }else if (username)
     return isReq;
   };
 
@@ -48,7 +48,8 @@ export function LoginView(props) {
           props.onLoggedIn(data);
         })
         .catch((e) => {
-          console.log("no such user");
+          alert("you're not already registered or you have deleted your profile! Please register");
+          window.open("/register", "_self");
         });
     }
   };

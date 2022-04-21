@@ -99,8 +99,10 @@ export class ProfileView extends React.Component {
       .then((response) => {
         console.log(response);
         alert("profile deleted");
+        window.open("/register", "_self");
         localStorage.removeItem("user");
         localStorage.removeItem("token");
+        
       })
       .catch((e) => console.log(e));
   }
@@ -307,6 +309,7 @@ export class ProfileView extends React.Component {
             </Card>
             <Card className="mt-2 mb-2">
               <Container className="p-1 text-center card-custom">
+             
                 <Button
                   style={{ width: "80%" }}
                   className="custom-btn-delete m-1"
@@ -315,7 +318,7 @@ export class ProfileView extends React.Component {
                   onClick={this.deleteProfile}
                 >
                   Delete your entire profile
-                </Button>{" "}
+                </Button>
               </Container>
             </Card>
           </Col>
