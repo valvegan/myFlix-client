@@ -65,6 +65,9 @@ export function RegistrationView(props) {
           console.error(response);
           alert("error registering the user");
         });
+    }else if (!isReq){
+      alert("Please fill in your details in order to register!");
+      window.open("/register", "_self");
     }
   };
 
