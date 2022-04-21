@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Form, Container, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "../../index.scss";
+
 export function LoginView(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -48,7 +48,6 @@ export function LoginView(props) {
           props.onLoggedIn(data);
         })
         .catch((e) => {
-          console.log(e);
           alert("you're not already registered or you have deleted your profile! Please register");
           window.open("/register", "_self");
         });

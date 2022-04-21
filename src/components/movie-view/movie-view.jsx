@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import { Button, Card, Container, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "../../index.scss";
+
 export class MovieView extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       username: null,
       password: null,

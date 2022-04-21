@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "../../index.scss";
+
 export function Navbar() {
   let user = localStorage.getItem("user");
 

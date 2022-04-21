@@ -13,7 +13,7 @@ import {
   Button,
 } from "react-bootstrap";
 
-import "../../index.scss";
+
 export class ProfileView extends React.Component {
   constructor() {
     super();
@@ -24,16 +24,8 @@ export class ProfileView extends React.Component {
       birthday: null,
       favoriteMovies: [],
     };
-
     this.removeFav = this.removeFav.bind(this);
   }
- 
-
-  //need to validate data before updating,
-  //show an error message if the new data isn't valid or empty
-  // 
-  // the labels on the left need to remain unchanged,
-  //
 
   getUser(token) {
     let user = localStorage.getItem("user");
@@ -107,10 +99,8 @@ export class ProfileView extends React.Component {
       .then((response) => {
         console.log(response);
         alert("profile deleted");
-        window.open("/register", "_self");
         localStorage.removeItem("user");
         localStorage.removeItem("token");
-        
       })
       .catch((e) => console.log(e));
   }
@@ -156,14 +146,8 @@ export class ProfileView extends React.Component {
   }
 
   render() {
-    const { movies, onBackClick, userData } = this.props;
+    const { movies, onBackClick } = this.props;
     const { favoriteMovies, username, password, email, birthday } = this.state;
-<<<<<<< HEAD
-   console.log(userData)
-
-=======
-    let prevState = JSON.stringify(this.state.username);
->>>>>>> parent of ccfe81b (trials)
 
     if (!username) {
       return null;
@@ -174,7 +158,6 @@ export class ProfileView extends React.Component {
         <Row>
           <Col>
             <Card>
-              {console.log(prevState)}
               <Card.Body>
                 <div className="titles h1 text-center">Hi, {username}</div>
                 <Card.Title className="titles text-center custom-card-title">
@@ -200,7 +183,7 @@ export class ProfileView extends React.Component {
                         style={{ width: "40%" }}
                         type="text"
                         name="username"
-                        placeholder={prevState}
+                        placeholder={username}
                         disabled
                       ></FormControl>
 
@@ -324,7 +307,6 @@ export class ProfileView extends React.Component {
             </Card>
             <Card className="mt-2 mb-2">
               <Container className="p-1 text-center card-custom">
-             
                 <Button
                   style={{ width: "80%" }}
                   className="custom-btn-delete m-1"
@@ -333,7 +315,7 @@ export class ProfileView extends React.Component {
                   onClick={this.deleteProfile}
                 >
                   Delete your entire profile
-                </Button>
+                </Button>{" "}
               </Container>
             </Card>
           </Col>
@@ -387,5 +369,3 @@ export class ProfileView extends React.Component {
     );
   }
 }
-
-

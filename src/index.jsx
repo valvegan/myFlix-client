@@ -8,7 +8,7 @@ import MainView from "./components/main-view/main-view";
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
 //import statement to indicate that you need to bundle `./index.scss`
-import "./index.scss"
+import "./index.scss";
 
 const store = createStore(moviesApp, devToolsEnhancer());
 // Main component (will eventually use all the others)

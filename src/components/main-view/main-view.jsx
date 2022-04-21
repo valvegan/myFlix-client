@@ -15,7 +15,7 @@ import { ActorView } from "../actor-view/actor-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import "../../index.scss";
 
-class MainView extends React.Component {
+export class MainView extends React.Component {
   constructor() {
     super();
     //initial state is set to null
@@ -31,9 +31,9 @@ class MainView extends React.Component {
       })
       .then((response) => {
         //assign the result to the state
-        this.props.setMovies(
-          response.data,
-        );
+        this.setState({
+          movies: response.data,
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -53,12 +53,8 @@ class MainView extends React.Component {
 
   /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
   onLoggedIn(authData) {
-<<<<<<< HEAD
-    this.getUser({
-=======
     console.log(authData);
     this.setState({
->>>>>>> parent of ccfe81b (trials)
       user: authData.user.username,
     });
 
@@ -67,16 +63,6 @@ class MainView extends React.Component {
     this.getMovies(authData.token);
   }
 
-<<<<<<< HEAD
-  render() {
-    let {movies, userData} = this.props;
-    //let {user} = this.state;
-    let userName = localStorage.getItem("user")
-    console.log(userName)
-    
-  
-    console.log(movies)
-=======
   onLoggedOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -86,13 +72,12 @@ class MainView extends React.Component {
   }
 
   render() {
-    let {movies} = this.props;
-    let {user} = this.state;
->>>>>>> parent of ccfe81b (trials)
+    const { movies, user } = this.state;
 
     return (
       <Router>
         <Navbar user={user} />
+
         <Row className="main-view justify-content-md-center">
           <Route
             exact
@@ -107,7 +92,11 @@ class MainView extends React.Component {
 
               if (movies.length === 0) return <div className="main-view" />;
 
-              return <MoviesList movies={movies}/>;
+              return movies.map((m) => (
+                <Col md={3} key={m._id}>
+                  <MovieCard movie={m} />
+                </Col>
+              ));
             }}
           />
 
@@ -239,11 +228,7 @@ class MainView extends React.Component {
                   <ProfileView
                     history={history}
                     movies={movies}
-<<<<<<< HEAD
-                    userData={userName}
-=======
                     user={user}
->>>>>>> parent of ccfe81b (trials)
                     onBackClick={() => history.goBack()}
                   />
                 </Col>
