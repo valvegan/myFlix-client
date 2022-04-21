@@ -93,9 +93,11 @@ export function LoginView(props) {
             </Button>
             <br></br>
             <br></br>
-            <p>
-              Don't have an account?
-              <span>
+            <Container >
+              <Row className="d-flex justify-content-center">
+              <p className="m-2">
+              Don't have an account?</p>
+              
                 <Link to={"/register"}>
                   <Button
                     variant="primary"
@@ -105,8 +107,10 @@ export function LoginView(props) {
                     Sign up
                   </Button>
                 </Link>
-              </span>
-            </p>
+            
+            
+            </Row>
+            </Container>
             <br></br>
           </Form>
         </Col>

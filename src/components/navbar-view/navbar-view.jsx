@@ -26,10 +26,10 @@ export function Navbar() {
       <Navbar.Brand as={Link} to={"/"}>
         My-Flix
       </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Toggle aria-controls="basic-navbar-nav" className="navbar-dark"/>
 
       {isAuth() && (
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse id="basic-navbar-nav navbar-dark">
           <Nav className="me-auto">
             <Nav.Link to={`/`}>Hi, {user}</Nav.Link>
             <Nav.Link

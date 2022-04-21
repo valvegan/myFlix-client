@@ -74,10 +74,10 @@ export function RegistrationView(props) {
         <Col med={4}>
           <Card>
             <Card.Body>
-              <Card.Title>Sign up here</Card.Title>
+              <Card.Title className="titles custom-card-title text-center">Sign up here</Card.Title>
               <Form className="register-form">
                 <Form.Group className="mb-3" controlId="formBasicUsername">
-                  <Form.Label className="titles">Username: </Form.Label>
+                  <Form.Label className="titles h3">Username: </Form.Label>
                   <Form.Control
                     type="text"
                     placeholder="Your Username should be at least 4 characters long"
@@ -85,10 +85,13 @@ export function RegistrationView(props) {
                     onChange={(e) => setUsername(e.target.value)}
                   />
                   {usernameErr && <p>{values.usernameErr}</p>}
+                  <Form.Text className="text-muted">
+                    Your username should be at least 4 characters long
+                  </Form.Text>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label className="titles">Password</Form.Label>
+                  <Form.Label className="titles h3">Password</Form.Label>
                   <Form.Control
                     type="password"
                     placeholder="Your password should be at least 8 characters"
@@ -96,10 +99,13 @@ export function RegistrationView(props) {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   {passwordErr && <p>{values.passwordErr}</p>}
+                  <Form.Text className="text-muted">
+                    Your password should be at least 6 characters long
+                  </Form.Text>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label className="titles">Email address</Form.Label>
+                  <Form.Label className="titles h2">Email address</Form.Label>
                   <Form.Control
                     type="email"
                     placeholder="Enter email"
@@ -113,7 +119,7 @@ export function RegistrationView(props) {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicBirthdate">
-                  <Form.Label className="titles">Birth date: </Form.Label>
+                  <Form.Label className="titles h3">Birth date: </Form.Label>
                   <Form.Control
                     type="date"
                     placeholder="yyyy/mm/dd"
@@ -130,7 +136,7 @@ export function RegistrationView(props) {
                 >
                   Sign me up!
                 </Button>
-
+<br></br><br></br>
                 <p> Already have an account?</p>
                 <Link to={`/`}>
                   <Button

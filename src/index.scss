@@ -1,5 +1,6 @@
 //color variables
 $buttons-primary: #75ca60;
+$buttons-hover: #58aa43;
 $buttons-delete: #972d2d;
 $backgrounds: #202020;
 $card-bg: #110307;
@@ -61,6 +62,11 @@ p,
   border-color: $buttons-primary !important;
   color: $buttons-primary-text !important;
 }
+.custom-btn:hover {
+  background-color: $buttons-hover !important;
+}
+
+
 .custom-btn-delete {
   background-color: $buttons-delete !important;
   border-color: $buttons-delete !important;
