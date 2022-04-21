@@ -157,9 +157,9 @@ export class ProfileView extends React.Component {
   }
 
   render() {
-    const { movies, onBackClick } = this.props;
+    const { movies, onBackClick, userData } = this.props;
     const { favoriteMovies, username, password, email, birthday } = this.state;
-   
+   console.log(userData)
 
 
     if (!username) {

@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../index.scss";
 export class MovieView extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       username: null,
       password: null,

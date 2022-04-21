@@ -35171,18 +35171,13 @@ class MainView extends _reactDefault.default.Component {
         });
         window.open("/", "_self");
     }
-    // When token is present (user is logged in), get list of movies
     componentDidMount() {
         let accessToken = localStorage.getItem("token");
-        let user = localStorage.getItem("user");
-        if (accessToken !== null) {
-            this.getUser(user);
-            this.getMovies(accessToken);
-        }
+        if (accessToken !== null) this.getMovies(accessToken);
     }
     /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/ onLoggedIn(authData) {
         this.getUser({
-            user
+            user: authData.user.username
         });
         localStorage.setItem("token", authData.token);
         localStorage.setItem("user", authData.user.username);
@@ -35193,14 +35188,14 @@ class MainView extends _reactDefault.default.Component {
         //let {user} = this.state;
         let userName1 = localStorage.getItem("user");
         console.log(userName1);
-        console.log(this.props);
+        console.log(movies);
         return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.BrowserRouter, {
             children: [
                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_navbarView.Navbar, {
                     user: userName1
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 102,
+                    lineNumber: 98,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Row, {
@@ -35224,7 +35219,7 @@ class MainView extends _reactDefault.default.Component {
                             }
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 104,
+                            lineNumber: 100,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
@@ -35242,7 +35237,7 @@ class MainView extends _reactDefault.default.Component {
                             }
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 121,
+                            lineNumber: 117,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
@@ -35267,7 +35262,7 @@ class MainView extends _reactDefault.default.Component {
                             }
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 133,
+                            lineNumber: 129,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
@@ -35294,7 +35289,7 @@ class MainView extends _reactDefault.default.Component {
                             }
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 155,
+                            lineNumber: 151,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
@@ -35321,7 +35316,7 @@ class MainView extends _reactDefault.default.Component {
                             }
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 182,
+                            lineNumber: 178,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
@@ -35348,7 +35343,7 @@ class MainView extends _reactDefault.default.Component {
                             }
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 209,
+                            lineNumber: 205,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
@@ -35365,26 +35360,26 @@ class MainView extends _reactDefault.default.Component {
                                     children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_profileView.ProfileView, {
                                         history: history,
                                         movies: movies,
-                                        user: userName1,
+                                        userData: userName1,
                                         onBackClick: ()=>history.goBack()
                                     }, void 0, false, void 0, void 0)
                                 }, void 0, false, void 0, void 0));
                             }
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 236,
+                            lineNumber: 232,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 103,
+                    lineNumber: 99,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 101,
+            lineNumber: 97,
             columnNumber: 7
         }, this));
     }
@@ -39799,8 +39794,8 @@ var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _indexScss = require("../../index.scss");
 class MovieView extends _reactDefault.default.Component {
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.state = {
             username: null,
             password: null,
@@ -40632,8 +40627,9 @@ class ProfileView extends _reactDefault.default.Component {
         );
     }
     render() {
-        const { movies , onBackClick  } = this.props;
+        const { movies , onBackClick , userData  } = this.props;
         const { favoriteMovies , username , password , email , birthday  } = this.state;
+        console.log(userData);
         if (!username) return null;
         return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
             children: [

@@ -66,27 +66,23 @@ class MainView extends React.Component {
     window.open("/", "_self");
   }
 
-    // When token is present (user is logged in), get list of movies
-    componentDidMount() {
-      let accessToken = localStorage.getItem("token");
-      let user = localStorage.getItem("user")
-      if (accessToken !== null) {
-        this.getUser(user);
-        this.getMovies(accessToken);
-      }
+  componentDidMount() {
+    let accessToken = localStorage.getItem("token");
+    if (accessToken !== null) {
+      this.getMovies(accessToken);
     }
+  }
 
   /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
   onLoggedIn(authData) {
     this.getUser({
-      user
+      user: authData.user.username,
     });
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.username);
     this.getMovies(authData.token);
   }
  
-
 
   render() {
     let {movies, userData} = this.props;
@@ -95,7 +91,7 @@ class MainView extends React.Component {
     console.log(userName)
     
   
-    console.log(this.props)
+    console.log(movies)
 
     return (
       <Router>
@@ -246,7 +242,7 @@ class MainView extends React.Component {
                   <ProfileView
                     history={history}
                     movies={movies}
-                    user={userName}
+                    userData={userName}
                     onBackClick={() => history.goBack()}
                   />
                 </Col>
