@@ -3,7 +3,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { Form, Button, Card, Container, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import "../../index.scss";
 export function RegistrationView(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -64,6 +64,7 @@ export function RegistrationView(props) {
         .catch((response) => {
           console.error(response);
           alert("error registering the user");
+
         });
     }else if (!isReq){
       alert("Please fill in your details in order to register!");

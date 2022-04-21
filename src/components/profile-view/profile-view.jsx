@@ -13,7 +13,7 @@ import {
   Button,
 } from "react-bootstrap";
 
-
+import "../../index.scss";
 export class ProfileView extends React.Component {
   constructor() {
     super();
@@ -24,8 +24,16 @@ export class ProfileView extends React.Component {
       birthday: null,
       favoriteMovies: [],
     };
+
     this.removeFav = this.removeFav.bind(this);
   }
+ 
+
+  //need to validate data before updating,
+  //show an error message if the new data isn't valid or empty
+  // 
+  // the labels on the left need to remain unchanged,
+  //
 
   getUser(token) {
     let user = localStorage.getItem("user");
@@ -150,6 +158,7 @@ export class ProfileView extends React.Component {
   render() {
     const { movies, onBackClick } = this.props;
     const { favoriteMovies, username, password, email, birthday } = this.state;
+    let prevState = JSON.stringify(this.state.username);
 
     if (!username) {
       return null;
@@ -160,6 +169,7 @@ export class ProfileView extends React.Component {
         <Row>
           <Col>
             <Card>
+              {console.log(prevState)}
               <Card.Body>
                 <div className="titles h1 text-center">Hi, {username}</div>
                 <Card.Title className="titles text-center custom-card-title">
@@ -185,7 +195,7 @@ export class ProfileView extends React.Component {
                         style={{ width: "40%" }}
                         type="text"
                         name="username"
-                        placeholder={username}
+                        placeholder={prevState}
                         disabled
                       ></FormControl>
 

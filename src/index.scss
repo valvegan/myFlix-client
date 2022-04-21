@@ -2,6 +2,7 @@
 $buttons-primary: #75ca60;
 $buttons-hover: #58aa43;
 $buttons-delete: #972d2d;
+$buttons-delete-hover: #742d2d;
 $backgrounds: #202020;
 $card-bg: #110307;
 $text-main: #eeeeee;
@@ -70,6 +71,9 @@ p,
 .custom-btn-delete {
   background-color: $buttons-delete !important;
   border-color: $buttons-delete !important;
+}
+.custom-btn-delete:hover {
+  background-color: $buttons-delete-hover !important;
 }
 .card {
   border: 2px solid $borders !important;

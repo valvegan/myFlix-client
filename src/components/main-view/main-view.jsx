@@ -13,6 +13,7 @@ import { ProfileView } from "../profile-view/profile-view";
 import { Navbar } from "../navbar-view/navbar-view";
 import { ActorView } from "../actor-view/actor-view";
 import { RegistrationView } from "../registration-view/registration-view";
+import "../../index.scss";
 
 class MainView extends React.Component {
   constructor() {

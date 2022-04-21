@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Card, Container, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import "../../index.scss";
 export class ActorView extends React.Component {
   render() {
     const { actor, movie, onBackClick } = this.props;

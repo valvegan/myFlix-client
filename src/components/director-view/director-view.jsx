@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, Card, Container, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import "../../index.scss";
 export class DirectorView extends React.Component {
   render() {
     const { director, movie, onBackClick } = this.props;
