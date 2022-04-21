@@ -17,15 +17,9 @@ import "../../index.scss";
 export class ProfileView extends React.Component {
   constructor() {
     super();
-    this.state = {
-      username: null,
-      password: null,
-      email: null,
-      birthday: null,
-      favoriteMovies: [],
-    };
+    
 
-    this.removeFav = this.removeFav.bind(this);
+   // this.removeFav = this.removeFav.bind(this);
   }
  
 
@@ -35,39 +29,8 @@ export class ProfileView extends React.Component {
   // the labels on the left need to remain unchanged,
   //
 
-  getUser(token) {
-    let user = localStorage.getItem("user");
-    axios
-      .get(`https://my-flix-api-2022.herokuapp.com/users/${user}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        //assign the result to the state
-        this.setState({
-          username: response.data.username,
-          password: response.data.password,
-          email: response.data.email,
-          birthday: response.data.birthday,
-          favoriteMovies: response.data.favoriteMovies,
-        });
-      })
-      .catch((e) => console.log(e));
-  }
-  componentDidMount() {
-    const accessToken = localStorage.getItem("token");
-    this.getUser(accessToken);
-  }
-
-  onLoggedOut() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    this.setState({
-      user: null,
-    });
-    window.open("/", "_self");
-  }
-
-  editProfile = (e) => {
+  
+  /*editProfile = (e) => {
     e.preventDefault();
     const user = localStorage.getItem("user");
     const token = localStorage.getItem("token");
@@ -115,7 +78,7 @@ export class ProfileView extends React.Component {
       .catch((e) => console.log(e));
   }
 
-
+*/
   setUsername(value) {
     this.setState({
       password: value,

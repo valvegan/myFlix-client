@@ -19,8 +19,7 @@ class MainView extends React.Component {
   constructor() {
     super();
     //initial state is set to null
-    this.state = {
-      }
+
   }
 
   getMovies(token) {
@@ -70,6 +69,8 @@ class MainView extends React.Component {
     let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
       this.getMovies(accessToken);
+      //this line makes the user data pop up in the console?!! when opening movie view
+      this.getUser(accessToken)
     }
   }
 
