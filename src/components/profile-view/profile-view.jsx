@@ -115,10 +115,11 @@ export class ProfileView extends React.Component {
       .catch((e) => console.log(e));
   }
 
+
   setUsername(value) {
     this.setState({
-      username: value,
-    });
+      password: value,
+    })
   }
   setPassword(value) {
     this.setState({
@@ -158,7 +159,8 @@ export class ProfileView extends React.Component {
   render() {
     const { movies, onBackClick } = this.props;
     const { favoriteMovies, username, password, email, birthday } = this.state;
-    let prevState = JSON.stringify(this.state.username);
+   
+
 
     if (!username) {
       return null;
@@ -169,9 +171,9 @@ export class ProfileView extends React.Component {
         <Row>
           <Col>
             <Card>
-              {console.log(prevState)}
+              
               <Card.Body>
-                <div className="titles h1 text-center">Hi, {username}</div>
+                <div className="titles h1 text-center">Hi, {this.props.user}</div>
                 <Card.Title className="titles text-center custom-card-title">
                   View and update your details
                 </Card.Title>
@@ -195,7 +197,7 @@ export class ProfileView extends React.Component {
                         style={{ width: "40%" }}
                         type="text"
                         name="username"
-                        placeholder={prevState}
+                        placeholder={username}
                         disabled
                       ></FormControl>
 
