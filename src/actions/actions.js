@@ -5,11 +5,11 @@ export const SET_FILTER = "SET_FILTER";
 export const GET_USERDATA = "GET_USERDATA";
 
 //set favs is for getting user favorite movies
-export const GET_FAVS = "SET_FAVS";
+//export const GET_FAVS = "SET_FAVS";
 //add favs is to add a favorite movie
-export const ADD_FAVS = "ADD_FAVS";
+//export const ADD_FAVS = "ADD_FAVS";
 //vice versa for remove favs
-export const REMOVE_FAVS = "REMOVE_FAVS";
+//export const REMOVE_FAVS = "REMOVE_FAVS";
 
 export function setMovies(value) {
   return { type: SET_MOVIES, value };
@@ -19,7 +19,7 @@ export function setFilter(value) {
 }
 
 export function getUserData(value) {
-  return { type: SET_USERDATA, value };
+  return { type: GET_USERDATA, value };
 }
 
 

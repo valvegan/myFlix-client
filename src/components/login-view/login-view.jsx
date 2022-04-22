@@ -45,7 +45,8 @@ export function LoginView(props) {
         })
         .then((response) => {
           const data = response.data;
-          props.onLoggedIn(data);
+         props.onLoggedIn(data);
+
         })
         .catch((e) => {
           alert("you're not already registered or you have deleted your profile! Please register");
