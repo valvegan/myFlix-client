@@ -35186,39 +35186,11 @@ function changeUserData(state = [], action) {
             return state;
     }
 }
-//favorite movies
-function favs(state = [], action) {
-    switch(action.type){
-        case _actions.GET_FAVS:
-            return action.value;
-        default:
-            return state;
-    }
-}
-function addFavs(state = [], action) {
-    switch(action.type){
-        case _actions.ADD_FAVS:
-            return action.value;
-        default:
-            return state;
-    }
-}
-function removeFavs(state = [], action) {
-    switch(action.type){
-        case _actions.REMOVE_FAVS:
-            return action.value;
-        default:
-            return state;
-    }
-}
 const moviesApp = _redux.combineReducers({
     visibilityFilter,
     movies,
     userData,
-    changeUserData,
-    favs,
-    addFavs,
-    removeFavs
+    changeUserData
 });
 exports.default = moviesApp;
 
@@ -35246,12 +35218,6 @@ parcelHelpers.export(exports, "setFilter", ()=>setFilter
 parcelHelpers.export(exports, "getUserData", ()=>getUserData
 );
 parcelHelpers.export(exports, "setUserData", ()=>setUserData
-);
-parcelHelpers.export(exports, "getFavs", ()=>getFavs
-);
-parcelHelpers.export(exports, "addFavs", ()=>addFavs
-);
-parcelHelpers.export(exports, "deleteFavs", ()=>deleteFavs
 );
 const SET_MOVIES = "SET_MOVIES";
 const SET_FILTER = "SET_FILTER";
@@ -35281,24 +35247,6 @@ function getUserData(value) {
 function setUserData(value) {
     return {
         type: SET_USERDATA,
-        value
-    };
-}
-function getFavs(value) {
-    return {
-        type: GET_FAVS,
-        value
-    };
-}
-function addFavs(value) {
-    return {
-        type: ADD_FAVS,
-        value
-    };
-}
-function deleteFavs(value) {
-    return {
-        type: REMOVE_FAVS,
         value
     };
 }

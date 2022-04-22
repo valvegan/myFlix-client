@@ -27,14 +27,3 @@ export function setUserData(value) {
   return { type: SET_USERDATA, value };
 }
 
-export function getFavs(value) {
-  return { type: GET_FAVS, value };
-}
-
-export function addFavs(value) {
-  return { type: ADD_FAVS, value };
-}
-export function deleteFavs(value) {
-  return { type: REMOVE_FAVS, value };
-}
-

@@ -4,9 +4,6 @@ import {
   SET_MOVIES,
   GET_USERDATA,
   SET_USERDATA,
-  GET_FAVS,
-  ADD_FAVS,
-  REMOVE_FAVS,
 } from "../actions/actions";
 
 function visibilityFilter(state = "", action) {
@@ -46,41 +43,13 @@ function changeUserData(state = [], action) {
   }
 }
 
-//favorite movies
-function favs(state = [], action) {
-  switch (action.type) {
-    case GET_FAVS:
-      return action.value;
-    default:
-      return state;
-  }
-}
-
-function addFavs(state = [], action) {
-  switch (action.type) {
-    case ADD_FAVS:
-      return action.value;
-    default:
-      return state;
-  }
-}
-function removeFavs(state = [], action) {
-  switch (action.type) {
-    case REMOVE_FAVS:
-      return action.value;
-    default:
-      return state;
-  }
-}
 
 const moviesApp = combineReducers({
   visibilityFilter,
   movies,
   userData,
   changeUserData,
-  favs,
-  addFavs,
-  removeFavs,
+
 });
 
 export default moviesApp;
