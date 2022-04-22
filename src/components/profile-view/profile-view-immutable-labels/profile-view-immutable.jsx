@@ -88,4 +88,4 @@ let mapStateToProps = (state) => {
   return { userData: state.userData };
 };
 export  default
-connect( { getUserData })(ProfileViewImmutable);
+connect(mapStateToProps, { getUserData })(ProfileViewImmutable);

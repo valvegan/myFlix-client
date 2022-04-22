@@ -40790,7 +40790,7 @@ class ProfileView extends _reactDefault.default.Component {
         );
     }
     render() {
-        const { movies , onBackClick  } = this.props;
+        const { movies  } = this.props;
         const { favoriteMovies , username  } = this.state;
         if (!username) return null;
         return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
@@ -41254,7 +41254,7 @@ let mapStateToProps = (state)=>{
         userData: state.userData
     };
 };
-exports.default = _reactRedux.connect({
+exports.default = _reactRedux.connect(mapStateToProps, {
     getUserData: _actions.getUserData
 })(ProfileViewImmutable);
 

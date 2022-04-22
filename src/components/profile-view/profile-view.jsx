@@ -150,7 +150,7 @@ export class ProfileView extends React.Component {
   }
 
   render() {
-    const { movies, onBackClick } = this.props;
+    const { movies } = this.props;
     const { favoriteMovies, username } = this.state;
 
     if (!username) {
