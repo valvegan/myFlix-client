@@ -13,6 +13,6 @@ export function setFilter(value) {
   return { type: SET_FILTER, value };
 }
 
-export function setUserData(value){
+export function getUserData(value){
     return{type: SET_USERDATA, value}
 }

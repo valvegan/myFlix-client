@@ -3,7 +3,7 @@ import axios from "axios";
 import { Form, FormGroup, Container, FormControl, Card, Col } from "react-bootstrap";
 
 ///here im retaining the user's old details
-export class ProfileViewTrial extends React.Component {
+export class ProfileViewImmutable extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -77,7 +77,7 @@ export class ProfileViewTrial extends React.Component {
         <Card.Title className="titles text-center custom-card-title">
           View and update your details
         </Card.Title>
-        <Container className="d-flex justify-content-right" style={{ width: "70%" }}>
+        <Container className="d-flex justify-content-right" style={{ width: "50%" }}>
           <Col className="d-inline">
           <FormGroup>
             <Form.Label className="titles h3">Username</Form.Label>

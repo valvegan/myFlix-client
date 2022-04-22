@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
+import { setMovies } from "../../actions/actions";
 import { Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { setMovies } from "../../actions/actions";
@@ -35,14 +36,12 @@ export class MainView extends React.Component {
       }
     }
 
-
   getMovies(token) {
     axios
       .get("https://my-flix-api-2022.herokuapp.com/movies", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        //assign the result to the state
         this.props.setMovies(response.data);
       })
       .catch((error) => {
@@ -57,7 +56,6 @@ export class MainView extends React.Component {
     this.setState({
       user: authData.user.username,
     });
-
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.username);
     this.getMovies(authData.token);

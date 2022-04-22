@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 import axios from "axios";
 import {
   Card,
@@ -12,11 +11,11 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
-import { ProfileViewTrial } from "./profile-view-immutable-labels/profile-view-immutable";
+import {ProfileViewImmutable} from "./profile-view-immutable-labels/profile-view-immutable";
 
 export class ProfileView extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       username: null,
       password: null,
@@ -150,6 +149,7 @@ export class ProfileView extends React.Component {
     const { movies, onBackClick } = this.props;
     const { favoriteMovies, username, password, email, birthday } = this.state;
 
+
     if (!username) {
       return null;
     }
@@ -175,7 +175,7 @@ export class ProfileView extends React.Component {
                   }
                 >
                   <Container>
-                  <ProfileViewTrial style={{ width: "45%" }} user={this.state} />
+                  <ProfileViewImmutable style={{ width: "45%" }} user={this.state} />
                   <Container className="flex-item pt-5" style={{ width: "50%" }}>
                     <div className="p-0 d-flex-column" >
                       {" "}
