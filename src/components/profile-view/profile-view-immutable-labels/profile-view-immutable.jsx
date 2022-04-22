@@ -1,19 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import axios from "axios";
 import { Form, FormGroup, Container, FormControl, Card, Col } from "react-bootstrap";
+import { connect } from "react-redux";
+import { getUserData } from "../../../actions/actions";
 
 ///here im retaining the user's old details
-export class ProfileViewImmutable extends React.Component {
+class ProfileViewImmutable extends React.Component {
   constructor() {
     super();
-    this.state = {
-      username: null,
-      password: null,
-      email: null,
-      birthday: null,
-    };
-
-    this.setUsername = this.setUsername.bind(this);
   }
 
   getUser(token) {
@@ -23,14 +17,9 @@ export class ProfileViewImmutable extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        //assign the result to the state
-        this.setState({
-          username: response.data.username,
-          password: response.data.password,
-          email: response.data.email,
-          birthday: response.data.birthday,
-          favoriteMovies: response.data.favoriteMovies,
-        });
+        this.props.getUserData(
+          response.data
+        )
       })
       .catch((e) => console.log(e));
   }
@@ -39,41 +28,13 @@ export class ProfileViewImmutable extends React.Component {
     this.getUser(accessToken);
   }
 
-  onLoggedOut() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    this.setState({
-      user: null,
-    });
-    window.open("/", "_self");
-  }
-
-  setUsername(e) {
-    this.setState({
-      username: e.target.value,
-    });
-  }
-  setPassword(value) {
-    this.setState({
-      password: value,
-    });
-  }
-  setEmail(value) {
-    this.setState({
-      email: value,
-    });
-  }
-  setBirthday(value) {
-    this.setState({
-      birthday: value,
-    });
-  }
+  
 
   render() {
-    const { username, password, email, birthday } = this.state;
+    let {userData} = this.props;
     return (
       <Container>
-        <div className="titles h1 text-center">Hi, {username}</div>
+        <div className="titles h1 text-center">Hi, {userData.username}</div>
         <Card.Title className="titles text-center custom-card-title">
           View and update your details
         </Card.Title>
@@ -86,7 +47,7 @@ export class ProfileViewImmutable extends React.Component {
                 className="mb-3 custom-form-label"
                 type="text"
                 name="username"
-                placeholder={username}
+                placeholder={userData.username}
                 disabled
               ></FormControl>
             </Container>
@@ -99,7 +60,7 @@ export class ProfileViewImmutable extends React.Component {
                 className="mb-3 custom-form-label"
                 type="text"
                 name="password"
-                placeholder={password}
+                placeholder={userData.password}
                 disabled
               ></FormControl>
             </Container>
@@ -112,7 +73,7 @@ export class ProfileViewImmutable extends React.Component {
                 className="mb-3 custom-form-label"
                 type="email"
                 name="email"
-                placeholder={email}
+                placeholder={userData.email}
                 disabled
               ></FormControl>
             </Container>
@@ -125,7 +86,7 @@ export class ProfileViewImmutable extends React.Component {
                 className="mb-3 custom-form-label"
                 type="text"
                 name="birthday "
-                placeholder={birthday}
+                placeholder={userData.birthday}
                 disabled
               ></FormControl>
             </Container>
@@ -136,3 +97,7 @@ export class ProfileViewImmutable extends React.Component {
     );
   }
 }
+let mapStateToProps = (state) => {
+  return { userData: state.userData };
+};
+export default connect(mapStateToProps, { getUserData })(ProfileViewImmutable);

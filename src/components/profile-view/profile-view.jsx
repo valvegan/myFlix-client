@@ -11,7 +11,7 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
-import {ProfileViewImmutable} from "./profile-view-immutable-labels/profile-view-immutable";
+import ProfileViewImmutable from "./profile-view-immutable-labels/profile-view-immutable";
 
 export class ProfileView extends React.Component {
   constructor() {
