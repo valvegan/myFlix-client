@@ -35,6 +35,7 @@ class ProfileViewImmutable extends React.Component {
 
   render() {
     let { userData } = this.props;
+    console.log(userData)
 
     return (
       <Container className="update-profile-form">
