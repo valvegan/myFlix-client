@@ -34904,7 +34904,7 @@ class MainView extends _reactDefault.default.Component {
         let { user: user1  } = this.state;
         return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.BrowserRouter, {
             children: [
-                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_navbarView.Navbar, {
+                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_navbarView.NavBar, {
                     user: user1
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
@@ -40595,14 +40595,14 @@ $parcel$ReactRefreshHelpers$8284.prelude(module);
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Navbar", ()=>Navbar
+parcelHelpers.export(exports, "NavBar", ()=>NavBar
 );
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
-function Navbar() {
+function NavBar() {
     let user = localStorage.getItem("user");
     const onLoggedOut = ()=>{
         localStorage.clear();
@@ -40717,9 +40717,9 @@ function Navbar() {
         columnNumber: 5
     }, this);
 }
-_c = _reactBootstrap.Navbar;
+_c = NavBar;
 var _c;
-$RefreshReg$(_c, "Navbar");
+$RefreshReg$(_c, "NavBar");
 
   $parcel$ReactRefreshHelpers$8284.postlude(module);
 } finally {
