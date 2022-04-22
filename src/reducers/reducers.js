@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { SET_FILTER, SET_MOVIES, SET_USERDATA } from "../actions/actions";
+import { SET_FILTER, SET_MOVIES, SET_USERDATA, SET_FAVS } from "../actions/actions";
 
 function visibilityFilter(state = "", action) {
   switch (action.type) {
@@ -21,18 +21,30 @@ function movies(state = [], action) {
 
 //data of the logged in user
 function userData(state=[], action){
-    switch (action.type){
-        case SET_USERDATA: 
-        return action.value;
-        default: 
-        return state;
-    }
+  switch (action.type){
+      case SET_USERDATA: 
+      return action.value;
+      default: 
+      return state;
+  }
 }
+
+//favorite movies
+function favs(state=[], action){
+  switch (action.type){
+      case SET_FAVS: 
+      return action.value;
+      default: 
+      return state;
+  }
+}
+
 
 const moviesApp = combineReducers({
     visibilityFilter,
     movies,
-    userData
+    userData,
+    favs,
   });
   
 export default moviesApp;
