@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Form, FormGroup, Container, FormControl, Card } from "react-bootstrap";
+import { Form, FormGroup, Container, FormControl, Card, Col } from "react-bootstrap";
 
 ///here im retaining the user's old details
 export class ProfileViewTrial extends React.Component {
@@ -77,10 +77,11 @@ export class ProfileViewTrial extends React.Component {
         <Card.Title className="titles text-center custom-card-title">
           View and update your details
         </Card.Title>
-        <Container>
+        <Container className="d-flex justify-content-right" style={{ width: "50%" }}>
+          <Col className="d-inline">
           <FormGroup>
             <Form.Label className="titles h3">Username</Form.Label>
-            <Container className="d-flex flex-column flex-sm-row justify-content-between p-1">
+            <Container className="p-1">
               <FormControl
                 className="mb-3 custom-form-label"
                 type="text"
@@ -129,6 +130,7 @@ export class ProfileViewTrial extends React.Component {
               ></FormControl>
             </Container>
           </FormGroup>
+          </Col>
         </Container>
       </Container>
     );

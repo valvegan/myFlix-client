@@ -43723,10 +43723,8 @@ class ProfileView extends _reactDefault.default.Component {
                                         ,
                                         children: [
                                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
-                                                className: "d-flex justify-content-center",
                                                 children: [
                                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_profileViewTrial.ProfileViewTrial, {
-                                                        className: "flex-item",
                                                         style: {
                                                             width: "45%"
                                                         },
@@ -44158,145 +44156,156 @@ class ProfileViewTrial extends _reactDefault.default.Component {
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
-                    children: [
-                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.FormGroup, {
-                            children: [
-                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Form.Label, {
-                                    className: "titles h3",
-                                    children: "Username"
-                                }, void 0, false, {
-                                    fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
-                                    lineNumber: 82,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
-                                    className: "d-flex flex-column flex-sm-row justify-content-between p-1",
-                                    children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.FormControl, {
-                                        className: "mb-3 custom-form-label",
-                                        type: "text",
-                                        name: "username",
-                                        placeholder: username,
-                                        disabled: true
+                    className: "d-flex justify-content-right",
+                    style: {
+                        width: "50%"
+                    },
+                    children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
+                        className: "d-inline",
+                        children: [
+                            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.FormGroup, {
+                                children: [
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Form.Label, {
+                                        className: "titles h3",
+                                        children: "Username"
+                                    }, void 0, false, {
+                                        fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
+                                        lineNumber: 83,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
+                                        className: "p-1",
+                                        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.FormControl, {
+                                            className: "mb-3 custom-form-label",
+                                            type: "text",
+                                            name: "username",
+                                            placeholder: username,
+                                            disabled: true
+                                        }, void 0, false, {
+                                            fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
+                                            lineNumber: 85,
+                                            columnNumber: 15
+                                        }, this)
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
                                         lineNumber: 84,
-                                        columnNumber: 15
+                                        columnNumber: 13
                                     }, this)
-                                }, void 0, false, {
-                                    fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
-                                    lineNumber: 83,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
-                            lineNumber: 81,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.FormGroup, {
-                            children: [
-                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Form.Label, {
-                                    className: "titles h3",
-                                    children: "Password"
-                                }, void 0, false, {
-                                    fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
-                                    lineNumber: 95,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
-                                    className: "d-flex flex-column flex-sm-row justify-content-between p-1",
-                                    children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.FormControl, {
-                                        className: "mb-3 custom-form-label",
-                                        type: "text",
-                                        name: "password",
-                                        placeholder: password,
-                                        disabled: true
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
+                                lineNumber: 82,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.FormGroup, {
+                                children: [
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Form.Label, {
+                                        className: "titles h3",
+                                        children: "Password"
+                                    }, void 0, false, {
+                                        fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
+                                        lineNumber: 96,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
+                                        className: "d-flex flex-column flex-sm-row justify-content-between p-1",
+                                        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.FormControl, {
+                                            className: "mb-3 custom-form-label",
+                                            type: "text",
+                                            name: "password",
+                                            placeholder: password,
+                                            disabled: true
+                                        }, void 0, false, {
+                                            fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
+                                            lineNumber: 98,
+                                            columnNumber: 15
+                                        }, this)
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
                                         lineNumber: 97,
-                                        columnNumber: 15
+                                        columnNumber: 13
                                     }, this)
-                                }, void 0, false, {
-                                    fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
-                                    lineNumber: 96,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
-                            lineNumber: 94,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.FormGroup, {
-                            children: [
-                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Form.Label, {
-                                    className: "titles h3",
-                                    children: "Email"
-                                }, void 0, false, {
-                                    fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
-                                    lineNumber: 108,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
-                                    className: "d-flex flex-column flex-sm-row justify-content-between p-1",
-                                    children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.FormControl, {
-                                        className: "mb-3 custom-form-label",
-                                        type: "email",
-                                        name: "email",
-                                        placeholder: email,
-                                        disabled: true
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
+                                lineNumber: 95,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.FormGroup, {
+                                children: [
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Form.Label, {
+                                        className: "titles h3",
+                                        children: "Email"
+                                    }, void 0, false, {
+                                        fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
+                                        lineNumber: 109,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
+                                        className: "d-flex flex-column flex-sm-row justify-content-between p-1",
+                                        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.FormControl, {
+                                            className: "mb-3 custom-form-label",
+                                            type: "email",
+                                            name: "email",
+                                            placeholder: email,
+                                            disabled: true
+                                        }, void 0, false, {
+                                            fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
+                                            lineNumber: 111,
+                                            columnNumber: 15
+                                        }, this)
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
                                         lineNumber: 110,
-                                        columnNumber: 15
+                                        columnNumber: 13
                                     }, this)
-                                }, void 0, false, {
-                                    fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
-                                    lineNumber: 109,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
-                            lineNumber: 107,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.FormGroup, {
-                            children: [
-                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Form.Label, {
-                                    className: "titles h3",
-                                    children: "Birth date"
-                                }, void 0, false, {
-                                    fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
-                                    lineNumber: 121,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
-                                    className: "d-flex flex-column flex-sm-row justify-content-between p-1",
-                                    children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.FormControl, {
-                                        className: "mb-3 custom-form-label",
-                                        type: "text",
-                                        name: "birthday ",
-                                        placeholder: birthday,
-                                        disabled: true
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
+                                lineNumber: 108,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.FormGroup, {
+                                children: [
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Form.Label, {
+                                        className: "titles h3",
+                                        children: "Birth date"
+                                    }, void 0, false, {
+                                        fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
+                                        lineNumber: 122,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
+                                        className: "d-flex flex-column flex-sm-row justify-content-between p-1",
+                                        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.FormControl, {
+                                            className: "mb-3 custom-form-label",
+                                            type: "text",
+                                            name: "birthday ",
+                                            placeholder: birthday,
+                                            disabled: true
+                                        }, void 0, false, {
+                                            fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
+                                            lineNumber: 124,
+                                            columnNumber: 15
+                                        }, this)
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
                                         lineNumber: 123,
-                                        columnNumber: 15
+                                        columnNumber: 13
                                     }, this)
-                                }, void 0, false, {
-                                    fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
-                                    lineNumber: 122,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
-                            lineNumber: 120,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
+                                lineNumber: 121,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
+                        lineNumber: 81,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
                     fileName: "src/components/profile-view/profile-view-new/profile-view-trial.jsx",
                     lineNumber: 80,
                     columnNumber: 9

@@ -174,8 +174,8 @@ export class ProfileView extends React.Component {
                     )
                   }
                 >
-                  <Container className="d-flex justify-content-center">
-                  <ProfileViewTrial className="flex-item" style={{ width: "45%" }} user={this.state} />
+                  <Container>
+                  <ProfileViewTrial style={{ width: "45%" }} user={this.state} />
                   <Container className="flex-item pt-5" style={{ width: "50%" }}>
                     <div className="p-0 d-flex-column" >
                       {" "}
