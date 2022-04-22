@@ -28,8 +28,6 @@ class ProfileViewImmutable extends React.Component {
     this.getUser(accessToken);
   }
 
-  
-
   render() {
     let {userData} = this.props;
     return (
