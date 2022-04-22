@@ -70,7 +70,9 @@ export class MovieView extends React.Component {
       } else if (isFav) {
         alert(
           `${this.props.movie.Title} is already in your list of favorite movies!`
-        );
+        )
+        window.open(`/movies/${id}`, "_self");
+
       }
     }
   }

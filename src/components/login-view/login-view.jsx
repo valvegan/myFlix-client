@@ -51,6 +51,7 @@ export function LoginView(props) {
         .catch((e) => {
           alert("you're not already registered or you have deleted your profile! Please register");
           window.open("/register", "_self");
+          console.log(e)
         });
     }
   };
