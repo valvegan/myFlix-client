@@ -148,7 +148,6 @@ export class ProfileView extends React.Component {
     const { movies } = this.props;
     const { favoriteMovies, username } = this.state;
 
-
     if (!username) {
       return null;
     }
@@ -159,8 +158,6 @@ export class ProfileView extends React.Component {
           <Col>
             <Card>
               <Card.Body>
-                
-
                 <Form
                   className="update-form"
                   onSubmit={(e) =>
@@ -174,60 +171,66 @@ export class ProfileView extends React.Component {
                   }
                 >
                   <Container>
-                  <ProfileViewImmutable style={{ width: "45%" }} user={this.state} />
-                  <Container className="flex-item pt-5" style={{ width: "50%" }}>
-                    <div className="p-0 d-flex-column" >
-                      {" "}
-                      <FormControl
-                        type="text"
-                        name="username"
-                        placeholder="insert your new username here"
-                        onChange={this.setUsername}
-                        required
-                      />
-                      <Form.Text className="text-muted">
-                        Your username should be at least 4 characters long
-                      </Form.Text>
-                    </div>
+                    <ProfileViewImmutable
+                      style={{ width: "45%" }}
+                      user={this.state}
+                    />
+                    <Container
+                      className="flex-item pt-5"
+                      style={{ width: "50%" }}
+                    >
+                      <div className="p-0 d-flex-column">
+                        {" "}
+                        <FormControl
+                          type="text"
+                          name="username"
+                          placeholder="insert your new username here"
+                          onChange={this.setUsername}
+                          required
+                        />
+                        <Form.Text className="text-muted">
+                          Your username should be at least 4 characters long
+                        </Form.Text>
+                      </div>
 
-                    <div className="p-0 d-flex-column" >
-                      {" "}
-                      <FormControl
-                        type="text"
-                        name="password"
-                        placeholder="insert your new password here"
-                        onChange={(e) => this.setPassword(e.target.value)}
-                        required
-                      />
-                      <Form.Text className="text-muted">
-                        Your password should be at least 8 characters long
-                      </Form.Text>
-                    </div>
+                      <div className="p-0 d-flex-column">
+                        {" "}
+                        <FormControl
+                          type="text"
+                          name="password"
+                          placeholder="insert your new password here"
+                          onChange={(e) => this.setPassword(e.target.value)}
+                          required
+                        />
+                        <Form.Text className="text-muted">
+                          Your password should be at least 8 characters long
+                        </Form.Text>
+                      </div>
 
-                    <div className="p-0 d-flex-column">
-                      {" "}
-                      <FormControl
-                        type="email"
-                        name="email"
-                        placeholder="insert your new email here"
-                        onChange={(e) => this.setEmail(e.target.value)}
-                        required
-                      />
-                    </div>
+                      <div className="p-0 d-flex-column mb-2">
+                        {" "}
+                        <FormControl
+                          type="email"
+                          name="email"
+                          placeholder="insert your new email here"
+                          onChange={(e) => this.setEmail(e.target.value)}
+                          required
+                        />
+                      </div>
 
-                    <div className="p-0 d-flex-column" >
-                      {" "}
-                      <FormControl
-                        type="date"
-                        name="birthday"
-                        placeholder="insert your new email here"
-                        onChange={(e) => this.setBirthday(e.target.value)}
-                        required
-                      />
-                    </div>
+                      <div className="p-0 d-flex-column">
+                        {" "}
+                        <FormControl
+                          type="date"
+                          name="birthday"
+                          placeholder="insert your new email here"
+                          onChange={(e) => this.setBirthday(e.target.value)}
+                          required
+                        />
+                      </div>
+                    </Container>
                   </Container>
-                  </Container>
-                  <Container>
+                  <Container className="mt-2 text-center">
                     <Button
                       variant="primary custom-btn"
                       type="submit"

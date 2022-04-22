@@ -36,13 +36,13 @@ class ProfileViewImmutable extends React.Component {
         <Card.Title className="titles text-center custom-card-title">
           View and update your details
         </Card.Title>
-        <Container className="d-flex justify-content-right" style={{ width: "50%" }}>
+        <Container className="d-flex justify-content-right text-center" style={{ width: "50%" }}>
           <Col className="d-inline">
           <FormGroup>
             <Form.Label className="titles h3">Username</Form.Label>
             <Container className="p-1">
               <FormControl
-                className="mb-3 custom-form-label"
+                className=" custom-form-label"
                 type="text"
                 name="username"
                 placeholder={userData.username}
@@ -55,7 +55,7 @@ class ProfileViewImmutable extends React.Component {
             <Form.Label className="titles h3">Password</Form.Label>
             <Container className="d-flex flex-column flex-sm-row justify-content-between p-1">
               <FormControl
-                className="mb-3 custom-form-label"
+                className="custom-form-label"
                 type="text"
                 name="password"
                 placeholder={userData.password}
@@ -68,7 +68,7 @@ class ProfileViewImmutable extends React.Component {
             <Form.Label className="titles h3">Email</Form.Label>
             <Container className="d-flex flex-column flex-sm-row justify-content-between p-1">
               <FormControl
-                className="mb-3 custom-form-label"
+                className="custom-form-label"
                 type="email"
                 name="email"
                 placeholder={userData.email}
@@ -81,7 +81,7 @@ class ProfileViewImmutable extends React.Component {
             <Form.Label className="titles h3">Birth date</Form.Label>
             <Container className="d-flex flex-column flex-sm-row justify-content-between p-1">
               <FormControl
-                className="mb-3 custom-form-label"
+                className="custom-form-label"
                 type="text"
                 name="birthday "
                 placeholder={userData.birthday}
