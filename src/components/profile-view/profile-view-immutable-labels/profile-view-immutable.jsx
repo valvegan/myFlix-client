@@ -12,7 +12,7 @@ import { getUserData } from "../../../actions/actions";
 
 ///here im retaining the user's old details
 //called "immutable" just because I don't want the data to be updated when the user types in the form control
-export class ProfileViewImmutable extends React.Component {
+class ProfileViewImmutable extends React.Component {
   constructor() {
     super();
   }
@@ -87,4 +87,5 @@ export class ProfileViewImmutable extends React.Component {
 let mapStateToProps = (state) => {
   return { userData: state.userData };
 };
-connect(null, { getUserData })(ProfileViewImmutable);
+export  default
+connect( { getUserData })(ProfileViewImmutable);

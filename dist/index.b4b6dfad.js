@@ -40667,6 +40667,7 @@ var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _reactBootstrap = require("react-bootstrap");
 var _profileViewImmutable = require("./profile-view-immutable-labels/profile-view-immutable");
+var _profileViewImmutableDefault = parcelHelpers.interopDefault(_profileViewImmutable);
 class ProfileView extends _reactDefault.default.Component {
     constructor(){
         super();
@@ -40805,7 +40806,7 @@ class ProfileView extends _reactDefault.default.Component {
                                     children: [
                                         /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
                                             children: [
-                                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_profileViewImmutable.ProfileViewImmutable, {
+                                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_profileViewImmutableDefault.default, {
                                                     user: this.state
                                                 }, void 0, false, {
                                                     fileName: "src/components/profile-view/profile-view.jsx",
@@ -41130,10 +41131,6 @@ $parcel$ReactRefreshHelpers$891c.prelude(module);
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-///here im retaining the user's old details
-//called "immutable" just because I don't want the data to be updated when the user types in the form control
-parcelHelpers.export(exports, "ProfileViewImmutable", ()=>ProfileViewImmutable
-);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
@@ -41142,6 +41139,8 @@ var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _reactBootstrap = require("react-bootstrap");
 var _reactRedux = require("react-redux");
 var _actions = require("../../../actions/actions");
+///here im retaining the user's old details
+//called "immutable" just because I don't want the data to be updated when the user types in the form control
 class ProfileViewImmutable extends _reactDefault.default.Component {
     constructor(){
         super();
@@ -41255,7 +41254,7 @@ let mapStateToProps = (state)=>{
         userData: state.userData
     };
 };
-_reactRedux.connect(null, {
+exports.default = _reactRedux.connect({
     getUserData: _actions.getUserData
 })(ProfileViewImmutable);
 
