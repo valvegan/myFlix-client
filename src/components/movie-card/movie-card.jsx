@@ -8,7 +8,7 @@ export class MovieCard extends React.Component {
     const { movie } = this.props;
 
     return (
-      <Card className="m-1">
+      <Card className="m-1 fade-in-down">
         <Link to={`/movies/${movie._id}`}>
           <Card.Img
             variant="top"

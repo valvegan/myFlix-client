@@ -35172,6 +35172,14 @@ function movies(state = [], action) {
 //data of the logged in user
 function userData(state = [], action) {
     switch(action.type){
+        case _actions.GET_USERDATA:
+            return action.value;
+        default:
+            return state;
+    }
+}
+function changeUserData(state = [], action) {
+    switch(action.type){
         case _actions.SET_USERDATA:
             return action.value;
         default:
@@ -35181,7 +35189,23 @@ function userData(state = [], action) {
 //favorite movies
 function favs(state = [], action) {
     switch(action.type){
-        case _actions.SET_FAVS:
+        case _actions.GET_FAVS:
+            return action.value;
+        default:
+            return state;
+    }
+}
+function addFavs(state = [], action) {
+    switch(action.type){
+        case _actions.ADD_FAVS:
+            return action.value;
+        default:
+            return state;
+    }
+}
+function removeFavs(state = [], action) {
+    switch(action.type){
+        case _actions.REMOVE_FAVS:
             return action.value;
         default:
             return state;
@@ -35191,7 +35215,10 @@ const moviesApp = _redux.combineReducers({
     visibilityFilter,
     movies,
     userData,
-    favs
+    changeUserData,
+    favs,
+    addFavs,
+    removeFavs
 });
 exports.default = moviesApp;
 
@@ -35202,9 +35229,15 @@ parcelHelpers.export(exports, "SET_MOVIES", ()=>SET_MOVIES
 );
 parcelHelpers.export(exports, "SET_FILTER", ()=>SET_FILTER
 );
+parcelHelpers.export(exports, "GET_USERDATA", ()=>GET_USERDATA
+);
 parcelHelpers.export(exports, "SET_USERDATA", ()=>SET_USERDATA
 );
-parcelHelpers.export(exports, "SET_FAVS", ()=>SET_FAVS
+parcelHelpers.export(exports, "GET_FAVS", ()=>GET_FAVS
+);
+parcelHelpers.export(exports, "ADD_FAVS", ()=>ADD_FAVS
+);
+parcelHelpers.export(exports, "REMOVE_FAVS", ()=>REMOVE_FAVS
 );
 parcelHelpers.export(exports, "setMovies", ()=>setMovies
 );
@@ -35212,12 +35245,21 @@ parcelHelpers.export(exports, "setFilter", ()=>setFilter
 );
 parcelHelpers.export(exports, "getUserData", ()=>getUserData
 );
+parcelHelpers.export(exports, "setUserData", ()=>setUserData
+);
 parcelHelpers.export(exports, "getFavs", ()=>getFavs
 );
-const SET_MOVIES = 'SET_MOVIES';
-const SET_FILTER = 'SET_FILTER';
-const SET_USERDATA = 'SET_USERDATA';
-const SET_FAVS = 'SET_FAVS';
+parcelHelpers.export(exports, "addFavs", ()=>addFavs
+);
+parcelHelpers.export(exports, "deleteFavs", ()=>deleteFavs
+);
+const SET_MOVIES = "SET_MOVIES";
+const SET_FILTER = "SET_FILTER";
+const GET_USERDATA = "GET_USERDATA";
+const SET_USERDATA = "SET_USERDATA";
+const GET_FAVS = "SET_FAVS";
+const ADD_FAVS = "ADD_FAVS";
+const REMOVE_FAVS = "REMOVE_FAVS";
 function setMovies(value) {
     return {
         type: SET_MOVIES,
@@ -35232,13 +35274,31 @@ function setFilter(value) {
 }
 function getUserData(value) {
     return {
+        type: GET_USERDATA,
+        value
+    };
+}
+function setUserData(value) {
+    return {
         type: SET_USERDATA,
         value
     };
 }
 function getFavs(value) {
     return {
-        type: SET_FAVS,
+        type: GET_FAVS,
+        value
+    };
+}
+function addFavs(value) {
+    return {
+        type: ADD_FAVS,
+        value
+    };
+}
+function deleteFavs(value) {
+    return {
+        type: REMOVE_FAVS,
         value
     };
 }
@@ -39396,7 +39456,7 @@ class MovieCard extends _reactDefault.default.Component {
     render() {
         const { movie  } = this.props;
         return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card, {
-            className: "m-1",
+            className: "m-1 fade-in-down",
             children: [
                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Link, {
                     to: `/movies/${movie._id}`,
