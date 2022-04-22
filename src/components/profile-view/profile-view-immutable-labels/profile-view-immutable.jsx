@@ -1,13 +1,11 @@
 import React from "react";
 import axios from "axios";
 import {
-  Form,
-  FormGroup,
+
   Container,
   FormControl,
   Card,
-  Col,
-  Row,
+
 } from "react-bootstrap";
 import { connect } from "react-redux";
 import { getUserData } from "../../../actions/actions";
@@ -54,7 +52,7 @@ class ProfileViewImmutable extends React.Component {
             type="text"
             name="username"
             placeholder={userData.username}
-            disabled
+           disabled
           ></FormControl>
 
           <FormControl

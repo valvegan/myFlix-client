@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export class ActorView extends React.Component {
   render() {
-    const { actor, movie, onBackClick } = this.props;
+    const { actor, onBackClick } = this.props;
 
     return (
       <Card>

@@ -36,7 +36,7 @@ export class ProfileView extends React.Component {
       .then((response) => {
         //assign the result to the state
         this.setState({
-          username: response.data.username,
+          user: response.data.username,
           password: response.data.password,
           email: response.data.email,
           birthday: response.data.birthday,
@@ -105,6 +105,7 @@ export class ProfileView extends React.Component {
         alert("profile deleted");
         localStorage.removeItem("user");
         localStorage.removeItem("token");
+        window.open(`/users/${newUsername}`, "_self");
       })
       .catch((e) => console.log(e));
   }
