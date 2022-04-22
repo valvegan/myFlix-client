@@ -12,7 +12,7 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
-import { ProfileViewTrial } from "./profile-view-new/profile-view-trial";
+import { ProfileViewTrial } from "./profile-view-immutable-labels/profile-view-immutable";
 
 export class ProfileView extends React.Component {
   constructor(props) {

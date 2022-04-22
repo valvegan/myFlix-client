@@ -20,7 +20,7 @@ function movies(state = [], action) {
 }
 
 //data of the logged in user
-function users(state=[], action){
+function userData(state=[], action){
     switch (action.type){
         case SET_USERDATA: 
         return action.value;
@@ -32,7 +32,7 @@ function users(state=[], action){
 const moviesApp = combineReducers({
     visibilityFilter,
     movies,
-    users
+    userData
   });
   
 export default moviesApp;

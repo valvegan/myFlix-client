@@ -77,7 +77,7 @@ export class ProfileViewTrial extends React.Component {
         <Card.Title className="titles text-center custom-card-title">
           View and update your details
         </Card.Title>
-        <Container className="d-flex justify-content-right" style={{ width: "50%" }}>
+        <Container className="d-flex justify-content-right" style={{ width: "70%" }}>
           <Col className="d-inline">
           <FormGroup>
             <Form.Label className="titles h3">Username</Form.Label>

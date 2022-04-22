@@ -100,7 +100,6 @@ export class MovieView extends React.Component {
   }
   render() {
     const { movie, onBackClick } = this.props;
-    const { favoriteMovies, username, password, email, birthday } = this.state;
     let movieId = this.props.movie._id;
     let userFav = this.state.favoriteMovies;
     let isFav = userFav.includes(movieId);
