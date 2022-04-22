@@ -87,5 +87,4 @@ class ProfileViewImmutable extends React.Component {
 let mapStateToProps = (state) => {
   return { userData: state.userData };
 };
-export  default
-connect(mapStateToProps, { getUserData })(ProfileViewImmutable);
+export default connect(mapStateToProps, { getUserData })(ProfileViewImmutable);
