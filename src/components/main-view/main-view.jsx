@@ -15,7 +15,7 @@ import { ActorView } from "../actor-view/actor-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import "../../index.scss";
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
   constructor() {
     super();
     //initial state is set to null
