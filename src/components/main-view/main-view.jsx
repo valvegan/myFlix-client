@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
+import { setMovies } from "../../actions/actions";
 import { Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { setMovies } from "../../actions/actions";
@@ -15,7 +16,7 @@ import { ActorView } from "../actor-view/actor-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import "../../index.scss";
 
-class MainView extends React.Component {
+export class MainView extends React.Component {
   constructor() {
     super();
     //initial state is set to null

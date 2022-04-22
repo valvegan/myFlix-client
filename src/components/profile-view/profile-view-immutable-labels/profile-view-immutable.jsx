@@ -1,17 +1,10 @@
 import React from "react";
 import axios from "axios";
-import {
-
-  Container,
-  FormControl,
-  Card,
-
-} from "react-bootstrap";
+import { Form, FormGroup, Container, FormControl, Card, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 import { getUserData } from "../../../actions/actions";
 
 ///here im retaining the user's old details
-//called "immutable" just because I don't want the data to be updated when the user types in the form control
 class ProfileViewImmutable extends React.Component {
   constructor() {
     super();
@@ -24,7 +17,9 @@ class ProfileViewImmutable extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        this.props.getUserData(response.data);
+        this.props.getUserData(
+          response.data
+        )
       })
       .catch((e) => console.log(e));
   }
@@ -34,51 +29,67 @@ class ProfileViewImmutable extends React.Component {
   }
 
   render() {
-    let { userData } = this.props;
-    console.log(userData)
-
+    let {userData} = this.props;
     return (
-      <Container className="update-profile-form">
+      <Container>
         <div className="titles h1 text-center">Hi, {userData.username}</div>
         <Card.Title className="titles text-center custom-card-title">
           View and update your details
         </Card.Title>
+        <Container className="d-flex justify-content-right" style={{ width: "50%" }}>
+          <Col className="d-inline">
+          <FormGroup>
+            <Form.Label className="titles h3">Username</Form.Label>
+            <Container className="p-1">
+              <FormControl
+                className="mb-3 custom-form-label"
+                type="text"
+                name="username"
+                placeholder={userData.username}
+                disabled
+              ></FormControl>
+            </Container>
+          </FormGroup>
 
-        <Container
-          className="d-flex-columns justify-content-center"
-          style={{ width: "70%" }}
-        >
-          <FormControl
-            className="mb-3 custom-form-label"
-            type="text"
-            name="username"
-            placeholder={userData.username}
-           disabled
-          ></FormControl>
+          <FormGroup>
+            <Form.Label className="titles h3">Password</Form.Label>
+            <Container className="d-flex flex-column flex-sm-row justify-content-between p-1">
+              <FormControl
+                className="mb-3 custom-form-label"
+                type="text"
+                name="password"
+                placeholder={userData.password}
+                disabled
+              ></FormControl>
+            </Container>
+          </FormGroup>
 
-          <FormControl
-            className="mb-3 custom-form-label"
-            type="text"
-            name="password"
-            placeholder={userData.password}
-            disabled
-          ></FormControl>
+          <FormGroup>
+            <Form.Label className="titles h3">Email</Form.Label>
+            <Container className="d-flex flex-column flex-sm-row justify-content-between p-1">
+              <FormControl
+                className="mb-3 custom-form-label"
+                type="email"
+                name="email"
+                placeholder={userData.email}
+                disabled
+              ></FormControl>
+            </Container>
+          </FormGroup>
 
-          <FormControl
-            className="mb-3 custom-form-label"
-            type="email"
-            name="email"
-            placeholder={userData.email}
-            disabled
-          ></FormControl>
-
-          <FormControl
-            className="mb-3 custom-form-label"
-            type="text"
-            name="birthday "
-            placeholder={userData.birthday}
-            disabled
-          ></FormControl>
+          <FormGroup>
+            <Form.Label className="titles h3">Birth date</Form.Label>
+            <Container className="d-flex flex-column flex-sm-row justify-content-between p-1">
+              <FormControl
+                className="mb-3 custom-form-label"
+                type="text"
+                name="birthday "
+                placeholder={userData.birthday}
+                disabled
+              ></FormControl>
+            </Container>
+          </FormGroup>
+          </Col>
         </Container>
       </Container>
     );

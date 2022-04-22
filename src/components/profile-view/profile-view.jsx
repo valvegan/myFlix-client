@@ -10,7 +10,7 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
-import {ProfileViewImmutable} from "./profile-view-immutable-labels/profile-view-immutable";
+import ProfileViewImmutable from "./profile-view-immutable-labels/profile-view-immutable";
 
 export class ProfileView extends React.Component {
   constructor() {
@@ -35,7 +35,7 @@ export class ProfileView extends React.Component {
       .then((response) => {
         //assign the result to the state
         this.setState({
-          user: response.data.username,
+          username: response.data.username,
           password: response.data.password,
           email: response.data.email,
           birthday: response.data.birthday,
@@ -62,8 +62,6 @@ export class ProfileView extends React.Component {
     e.preventDefault();
     const user = localStorage.getItem("user");
     const token = localStorage.getItem("token");
-    let newUsername = this.state.username;
-
     axios
       .put(
         `https://my-flix-api-2022.herokuapp.com/users/${user}`,
@@ -83,10 +81,8 @@ export class ProfileView extends React.Component {
           birthday: response.data.birthday,
         });
         localStorage.setItem("user", this.state.username);
-
         alert("profile updated successfully!");
-        //redirect to new username profile page
-        window.open(`/users/${newUsername}`, "_self");
+        window.open("/profile", "_self");
       });
   };
 
@@ -104,7 +100,6 @@ export class ProfileView extends React.Component {
         alert("profile deleted");
         localStorage.removeItem("user");
         localStorage.removeItem("token");
-        window.open(`/users/${newUsername}`, "_self");
       })
       .catch((e) => console.log(e));
   }
@@ -153,103 +148,112 @@ export class ProfileView extends React.Component {
     const { movies } = this.props;
     const { favoriteMovies, username } = this.state;
 
+
     if (!username) {
       return null;
     }
 
     return (
       <Container>
-        <Col>
-          <Card>
-            <Card.Body>
-              <Form
-                className="update-form"
-                onSubmit={(e) =>
-                  this.editProfile(
-                    e,
-                    this.username,
-                    this.password,
-                    this.email,
-                    this.birthday
-                  )
-                }
-              >
-                <Container>
-                  <ProfileViewImmutable user={this.state} />
-                  <Container
-                    className="d-flex-columns justify-content-center p-4"
-                    style={{ width: "70%" }}
-                  >
-                    <Form.Label className="titles h3">Username</Form.Label>
-                    <FormControl
-                      type="text"
-                      name="username"
-                      placeholder="insert your new username here"
-                      onChange={this.setUsername}
-                      required
-                    />
-                    <Form.Text className="text-muted mb-2">
-                      Your username should be at least 4 characters long
-                    </Form.Text>
+        <Row>
+          <Col>
+            <Card>
+              <Card.Body>
+                
 
-                    <Form.Label className="titles h3">Password</Form.Label>
-                    <FormControl
-                      type="text"
-                      name="password"
-                      placeholder="insert your new password here"
-                      onChange={(e) => this.setPassword(e.target.value)}
-                      required
-                    />
-                    <Form.Text className="text-muted mb-2">
-                      Your password should be at least 8 characters long
-                    </Form.Text>
+                <Form
+                  className="update-form"
+                  onSubmit={(e) =>
+                    this.editProfile(
+                      e,
+                      this.username,
+                      this.password,
+                      this.email,
+                      this.birthday
+                    )
+                  }
+                >
+                  <Container>
+                  <ProfileViewImmutable style={{ width: "45%" }} user={this.state} />
+                  <Container className="flex-item pt-5" style={{ width: "50%" }}>
+                    <div className="p-0 d-flex-column" >
+                      {" "}
+                      <FormControl
+                        type="text"
+                        name="username"
+                        placeholder="insert your new username here"
+                        onChange={this.setUsername}
+                        required
+                      />
+                      <Form.Text className="text-muted">
+                        Your username should be at least 4 characters long
+                      </Form.Text>
+                    </div>
 
-                    <Form.Label className="titles h3">Email</Form.Label>
-                    <FormControl
-                      type="email"
-                      name="email"
-                      className="mb-4"
-                      placeholder="insert your new email here"
-                      onChange={(e) => this.setEmail(e.target.value)}
-                      required
-                    />
+                    <div className="p-0 d-flex-column" >
+                      {" "}
+                      <FormControl
+                        type="text"
+                        name="password"
+                        placeholder="insert your new password here"
+                        onChange={(e) => this.setPassword(e.target.value)}
+                        required
+                      />
+                      <Form.Text className="text-muted">
+                        Your password should be at least 8 characters long
+                      </Form.Text>
+                    </div>
 
-                    <Form.Label className="titles h3">Birth date</Form.Label>
-                    <FormControl
-                      type="date"
-                      name="birthday"
-                      placeholder="insert your new email here"
-                      onChange={(e) => this.setBirthday(e.target.value)}
-                      required
-                    />
+                    <div className="p-0 d-flex-column">
+                      {" "}
+                      <FormControl
+                        type="email"
+                        name="email"
+                        placeholder="insert your new email here"
+                        onChange={(e) => this.setEmail(e.target.value)}
+                        required
+                      />
+                    </div>
+
+                    <div className="p-0 d-flex-column" >
+                      {" "}
+                      <FormControl
+                        type="date"
+                        name="birthday"
+                        placeholder="insert your new email here"
+                        onChange={(e) => this.setBirthday(e.target.value)}
+                        required
+                      />
+                    </div>
                   </Container>
-                </Container>
-                <Container className="text-center">
-                  <Button
-                    variant="primary custom-btn"
-                    type="submit"
-                    onClick={this.editProfile}
-                  >
-                    Update profile info
-                  </Button>
-                </Container>
-              </Form>
-            </Card.Body>
-          </Card>
-          <Card className="mt-2 mb-2">
-            <Container className="p-1 text-center card-custom">
-              <Button
-                style={{ width: "80%" }}
-                className="custom-btn-delete m-1"
-                variant="primary"
-                type="submit"
-                onClick={this.deleteProfile}
-              >
-                Delete your entire profile
-              </Button>{" "}
-            </Container>
-          </Card>
-        </Col>
+                  </Container>
+                  <Container>
+                    <Button
+                      variant="primary custom-btn"
+                      type="submit"
+                      onClick={this.editProfile}
+                    >
+                      Update profile info
+                    </Button>
+                  </Container>
+                </Form>
+              </Card.Body>
+            </Card>
+            <Card className="mt-2 mb-2">
+              <Container className="p-1 text-center card-custom">
+                <Button
+                  style={{ width: "80%" }}
+                  className="custom-btn-delete m-1"
+                  variant="primary"
+                  type="submit"
+                  onClick={this.deleteProfile}
+                >
+                  Delete your entire profile
+                </Button>{" "}
+              </Container>
+            </Card>
+          </Col>
+        </Row>
 
         <Card>
           <Card.Body>
@@ -277,8 +281,8 @@ export class ProfileView extends React.Component {
                     return (
                       <Card className="favorite-movie m-2" key={movie._id}>
                         <Card.Img src={movie.ImagePath} />
-                        <Card.Body className="text-center">
-                          <Card.Title className="titles custom-card-title">
+                        <Card.Body>
+                          <Card.Title className="h1 titles">
                             {movie.Title}
                           </Card.Title>
                           <Button
