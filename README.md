@@ -18,10 +18,13 @@ The server-side development for myFlix can be accessed [here](https://github.com
 ### Single movie view
 - [x] Returns data (description, genre, director, image) about a single movie to the user
 - [x] Allows users to add a movie to their list of favorites
+- [x] Allow users to view more information about different movies, such as the release date and
+the movie rating
 
 ### Login view
 - [x] Allows users to log in with a username and password
-- [x] Registration view
+
+### Registration view
 - [x] Allows new users to register (username, password, email, birthday)
 
 ### Genre view
@@ -38,10 +41,8 @@ The server-side development for myFlix can be accessed [here](https://github.com
 - [x] Displays favorite movies
 - [x] Allows users to remove a movie from their list of favorites
 
-### Optional Views and Features:
-- [] Allow users to see which actors star in which movies
-- [] Allow users to view more information about different movies, such as the release date and
-the movie rating
+### Actor view
+- [x] Allow users to see which actors star in which movies
 
 ### Actors view
 - [x] Allows users to view information about different actors
