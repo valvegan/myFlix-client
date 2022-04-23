@@ -44,7 +44,7 @@ class ProfileViewImmutable extends React.Component {
         </Card.Title>
         <Container
           className="d-flex justify-content-right text-center"
-          style={{ width: "50%" }}
+         
         >
           <Col className="d-inline">
             <FormGroup>

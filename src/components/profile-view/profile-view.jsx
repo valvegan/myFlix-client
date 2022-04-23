@@ -176,7 +176,6 @@ export class ProfileView extends React.Component {
                     <ProfileViewImmutable />
                     <Container
                       className="flex-item pt-5"
-                      style={{ width: "50%" }}
                     >
                       <div className="p-0 d-flex-column">
                         <FormControl
