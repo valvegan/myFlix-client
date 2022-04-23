@@ -6,6 +6,7 @@ $backgrounds: #202020;
 $card-bg: #110307;
 $text-main: #eeeeee;
 $titles: #cf6628;
+$titles-hover: #92461a;
 $buttons-primary-text: #141414;
 $borders: #dffd71;
 
@@ -29,12 +30,16 @@ $titles-font: "Lobster", cursive;
 .navbar-brand,
 h1,
 .nav-link,
-.titles {
+.titles, .titles-expand {
   color: $titles !important;
   font-family: $titles-font !important;
   .custom-icon {
     color: $borders !important;
   }
+}
+
+.titles-expand:hover{
+  color: $titles-hover !important;
 }
 .custom-form-label{
   color: #000000 !important;

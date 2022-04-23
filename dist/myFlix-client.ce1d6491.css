@@ -8,13 +8,17 @@
   background-color: #202020 !important;
 }
 
-.navbar-brand, h1, .nav-link, .titles {
+.navbar-brand, h1, .nav-link, .titles, .titles-expand {
   color: #cf6628 !important;
   font-family: Lobster, cursive !important;
 }
 
-.navbar-brand .custom-icon, h1 .custom-icon, .nav-link .custom-icon, .titles .custom-icon {
+.navbar-brand .custom-icon, h1 .custom-icon, .nav-link .custom-icon, .titles .custom-icon, .titles-expand .custom-icon {
   color: #dffd71 !important;
+}
+
+.titles-expand:hover {
+  color: #92461a !important;
 }
 
 .custom-form-label {

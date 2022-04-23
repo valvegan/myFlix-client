@@ -111,46 +111,47 @@ export class MovieView extends React.Component {
         </Container>
         <Container className="text-center p-3 card-custom">
           <Card.Img
-            className="movie-poster"
+            className="movie-poster img-responsive"
             variant="top"
+            style={{width:"40%"}}
             src={movie.ImagePath}
           />
         </Container>
 
         <Card.Body>
-          <Col className="d-sm-flex justify-content-between justify-content-xl-start">
-            <Card.Text className="label titles h3">Title: </Card.Text>
+          <Col className="d-sm-flex justify-content-between justify-content-xl-center">
+            <Card.Text className="label titles h3 align-self-center">Title: </Card.Text>
             <span className="movie-title titles ml-3 h1">{movie.Title}</span>
           </Col>
 
-          <Col className="d-sm-flex justify-content-between justify-content-xl-start">
-            <Card.Text className="label titles h3">Description: </Card.Text>
+          <Col className="d-sm-flex justify-content-between justify-content-xl-center">
+            <Card.Text className="label titles h3 align-self-center">Description: </Card.Text>
             <span className="movie-description card-text ml-3 ">
               {movie.Description}
             </span>
           </Col>
 
-          <Col className="d-sm-flex justify-content-between justify-content-xl-start">
-            <Card.Text className="label titles h3">Genre: </Card.Text>
+          <Col className="d-sm-flex justify-content-between justify-content-xl-center">
+            <Card.Text className="label titles h3 align-self-center">Genre: </Card.Text>
             <Link
-              className="titles movie-genre ml-3 h1"
+              className="titles-expand movie-genre ml-3 h1"
               to={`/genres/${movie.Genre.Name}`}
             >
               {movie.Genre.Name}
             </Link>
           </Col>
 
-          <Col className="d-sm-flex justify-content-between justify-content-xl-start">
-            <Card.Text className="label titles h3">Release Year: </Card.Text>
+          <Col className="d-sm-flex justify-content-between justify-content-xl-center">
+            <Card.Text className="label titles h3 align-self-center">Release Year: </Card.Text>
             <span className="movie-release titles ml-3 h1 ">
               {movie.releaseYear}
             </span>
           </Col>
 
-          <Col className="d-sm-flex justify-content-between justify-content-xl-start">
-            <Card.Text className="label titles h3">Director: </Card.Text>
+          <Col className="d-sm-flex justify-content-between justify-content-xl-center">
+            <Card.Text className="label titles h3 align-self-center">Director: </Card.Text>
             <Link
-              className="movie-director titles ml-3 h1"
+              className="movie-director titles-expand ml-3 h1"
               to={`/directors/${movie.Director.Name}`}
             >
               {movie.Director.Name}
@@ -158,10 +159,10 @@ export class MovieView extends React.Component {
           </Col>
 
           {movie.Actors[0].Name && (
-            <Col className="d-sm-flex justify-content-between justify-content-xl-start">
-              <Card.Text className="label titles h3">Main Actor: </Card.Text>
+            <Col className="d-sm-flex justify-content-between justify-content-xl-center">
+              <Card.Text className="label titles h3 align-self-center">Main Actor: </Card.Text>
               <Link
-                className="titles movie-actor ml-3 h1"
+                className="titles-expand movie-actor ml-3 h1"
                 to={`/actors/${movie.Actors[0].Name}`}
               >
                 {movie.Actors[0].Name}
