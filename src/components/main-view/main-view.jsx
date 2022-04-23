@@ -140,6 +140,7 @@ export class MainView extends React.Component {
                       movies.find((m) => m.Genre.Name === match.params.name)
                         .Genre
                     }
+                    movies={movies}
                     onBackClick={() => history.goBack()}
                   />
                 </Col>
@@ -167,6 +168,9 @@ export class MainView extends React.Component {
                       movies.find((m) => m.Director.Name === match.params.name)
                         .Director
                     }
+                    movies={movies}
+                   
+                   // movie={movies.find((m)=>m.movie)}
                     onBackClick={() => history.goBack()}
                   />
                 </Col>
