@@ -19,22 +19,22 @@ import "../../index.scss";
 export class MainView extends React.Component {
   constructor() {
     super();
-    //initial state is set to null
+
     this.state = {
       user: null,
     };
   }
 
-    // When token is present (user is logged in), get list of movies
-    componentDidMount() {
-      let accessToken = localStorage.getItem("token");
-      if (accessToken !== null) {
-        this.setState({
-          user: localStorage.getItem("user"),
-        });
-        this.getMovies(accessToken);
-      }
+  // When token is present (user is logged in), get list of movies
+  componentDidMount() {
+    let accessToken = localStorage.getItem("token");
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem("user"),
+      });
+      this.getMovies(accessToken);
     }
+  }
 
   getMovies(token) {
     axios
@@ -48,8 +48,6 @@ export class MainView extends React.Component {
         console.log(error);
       });
   }
-
-
 
   /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
   onLoggedIn(authData) {
@@ -82,9 +80,9 @@ export class MainView extends React.Component {
 
               if (movies.length === 0) return <div className="main-view" />;
 
-              return <MoviesList movies={movies}/>;
-          }} />
-
+              return <MoviesList movies={movies} />;
+            }}
+          />
 
           <Route
             path="/register"
@@ -203,7 +201,7 @@ export class MainView extends React.Component {
 
           <Route
             path={`/users/${user}`}
-            render={({ match, history }) => {
+            render={({ history }) => {
               if (!user)
                 return (
                   <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />

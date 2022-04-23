@@ -62,6 +62,8 @@ export class ProfileView extends React.Component {
     e.preventDefault();
     const user = localStorage.getItem("user");
     const token = localStorage.getItem("token");
+    let newUser = this.state.username;
+    console.log(newUser);
     axios
       .put(
         `https://my-flix-api-2022.herokuapp.com/users/${user}`,
@@ -82,7 +84,7 @@ export class ProfileView extends React.Component {
         });
         localStorage.setItem("user", this.state.username);
         alert("profile updated successfully!");
-        window.open("/profile", "_self");
+        window.open(`/users/${newUser}`, "_self");
       });
   };
 
@@ -171,16 +173,12 @@ export class ProfileView extends React.Component {
                   }
                 >
                   <Container>
-                    <ProfileViewImmutable
-                      style={{ width: "45%" }}
-                      user={this.state}
-                    />
+                    <ProfileViewImmutable />
                     <Container
                       className="flex-item pt-5"
                       style={{ width: "50%" }}
                     >
                       <div className="p-0 d-flex-column">
-                        {" "}
                         <FormControl
                           type="text"
                           name="username"
@@ -194,7 +192,6 @@ export class ProfileView extends React.Component {
                       </div>
 
                       <div className="p-0 d-flex-column">
-                        {" "}
                         <FormControl
                           type="text"
                           name="password"
@@ -208,7 +205,6 @@ export class ProfileView extends React.Component {
                       </div>
 
                       <div className="p-0 d-flex-column mb-2">
-                        {" "}
                         <FormControl
                           type="email"
                           name="email"
@@ -219,7 +215,6 @@ export class ProfileView extends React.Component {
                       </div>
 
                       <div className="p-0 d-flex-column">
-                        {" "}
                         <FormControl
                           type="date"
                           name="birthday"
@@ -283,7 +278,14 @@ export class ProfileView extends React.Component {
                   ) {
                     return (
                       <Card className="favorite-movie m-2" key={movie._id}>
-                        <Card.Img src={movie.ImagePath} />
+                        <Link to={`/movies/${movie._id}`}>
+                          <Card.Img
+                            variant="top"
+                            src={movie.ImagePath}
+                            className="img-responsive"
+                          />
+                        </Link>
+
                         <Card.Body>
                           <Card.Title className="h1 titles">
                             {movie.Title}

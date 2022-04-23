@@ -8,13 +8,8 @@ export class MovieView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: null,
-      password: null,
-      email: null,
-      birthday: null,
       favoriteMovies: [],
     };
-
     this.addFav = this.addFav.bind(this);
     this.removeFav = this.removeFav.bind(this);
   }
@@ -28,10 +23,6 @@ export class MovieView extends React.Component {
       .then((response) => {
         //assign the result to the state
         this.setState({
-          username: response.data.username,
-          password: response.data.password,
-          email: response.data.email,
-          birthday: response.data.birthday,
           favoriteMovies: response.data.favoriteMovies,
         });
       })
