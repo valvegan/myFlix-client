@@ -34806,6 +34806,15 @@ function userData(state = [], action) {
             return state;
     }
 }
+//set user data(update)
+function userChange(state = [], action) {
+    switch(action.type){
+        case _actions.SET_USERPROFILE:
+            return action.value;
+        default:
+            return state;
+    }
+}
 const moviesApp = _redux.combineReducers({
     visibilityFilter,
     movies,
