@@ -36,6 +36,7 @@ class ProfileViewImmutable extends React.Component {
 
   render() {
     let { userData } = this.props;
+    console.log(userData)
     return (
       <Container>
         <div className="titles h1 text-center">Hi, {userData.username}</div>
@@ -111,11 +112,14 @@ export default connect(mapStateToProps, { getUserData })(ProfileViewImmutable);
 
 ProfileViewImmutable.propTypes = {
   getUserData: PropTypes.func.isRequired,
-  userData: PropTypes.shape({
+  userData: PropTypes.shape(
+    {
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
-    emai: PropTypes.string.isRequired,
-    birthday: PropTypes.instanceOf(Date).isRequired,
+    email: PropTypes.string.isRequired,
+    birthday: PropTypes.string.isRequired,
     favoriteMovies: PropTypes.arrayOf(string),
   }).isRequired,
-};
+  };
+
+  
