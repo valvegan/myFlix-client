@@ -12,14 +12,14 @@ export class GenreView extends React.Component {
         <Card.Body>
           <Container className="genre-view">
             <Col className="d-sm-flex justify-content-between justify-content-xl-start">
-              <Card.Text className="label titles h3">Title: </Card.Text>
+              <Card.Text className="label titles h3 align-self-center">Title: </Card.Text>
               <span className="movie-director-bio titles ml-3 h1">
                 {genre.Name}
               </span>
             </Col>
 
             <Col className="d-sm-flex justify-content-between justify-content-xl-start">
-              <Card.Text className="label titles h3">Description: </Card.Text>
+              <Card.Text className="label titles h3 align-self-center">Description: </Card.Text>
               <span className="movie-director-bio card-text  ml-3 ">
                 {genre.Description}
               </span>

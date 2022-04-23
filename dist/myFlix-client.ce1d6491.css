@@ -59,6 +59,10 @@ p, .card-text {
   border-color: #972d2d !important;
 }
 
+.custom-btn-delete:hover {
+  background-color: #641212 !important;
+}
+
 .card {
   border: 2px solid #dffd71 !important;
 }

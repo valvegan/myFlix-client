@@ -39738,7 +39738,7 @@ class DirectorView extends _reactDefault.default.Component {
                                 className: "d-sm-flex justify-content-between justify-content-xl-start",
                                 children: [
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
-                                        className: "label titles h3",
+                                        className: "align-self-center label titles h3",
                                         children: "Name: "
                                     }, void 0, false, {
                                         fileName: "src/components/director-view/director-view.jsx",
@@ -39763,7 +39763,7 @@ class DirectorView extends _reactDefault.default.Component {
                                 className: "d-sm-flex justify-content-between justify-content-xl-start",
                                 children: [
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
-                                        className: "label titles h3",
+                                        className: "align-self-center label titles h3",
                                         children: "Bio: "
                                     }, void 0, false, {
                                         fileName: "src/components/director-view/director-view.jsx",
@@ -39788,7 +39788,7 @@ class DirectorView extends _reactDefault.default.Component {
                                 className: "d-sm-flex justify-content-between justify-content-xl-start",
                                 children: [
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
-                                        className: "label titles h3",
+                                        className: "align-self-center label titles h3",
                                         children: "Born: "
                                     }, void 0, false, {
                                         fileName: "src/components/director-view/director-view.jsx",
@@ -39813,7 +39813,7 @@ class DirectorView extends _reactDefault.default.Component {
                                 className: "d-sm-flex justify-content-between justify-content-xl-start",
                                 children: [
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
-                                        className: "label titles h3",
+                                        className: "align-self-center label titles h3",
                                         children: "Death: "
                                     }, void 0, false, {
                                         fileName: "src/components/director-view/director-view.jsx",
@@ -39935,7 +39935,7 @@ class GenreView extends _reactDefault.default.Component {
                                 className: "d-sm-flex justify-content-between justify-content-xl-start",
                                 children: [
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
-                                        className: "label titles h3",
+                                        className: "label titles h3 align-self-center",
                                         children: "Title: "
                                     }, void 0, false, {
                                         fileName: "src/components/genre-view/genre-view.jsx",
@@ -39960,7 +39960,7 @@ class GenreView extends _reactDefault.default.Component {
                                 className: "d-sm-flex justify-content-between justify-content-xl-start",
                                 children: [
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
-                                        className: "label titles h3",
+                                        className: "label titles h3 align-self-center",
                                         children: "Description: "
                                     }, void 0, false, {
                                         fileName: "src/components/genre-view/genre-view.jsx",
@@ -40954,7 +40954,7 @@ class ActorView extends _reactDefault.default.Component {
                             className: "d-sm-flex justify-content-between justify-content-lg-start",
                             children: [
                                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
-                                    className: "label titles h3",
+                                    className: "align-self-center label titles h3",
                                     children: "Name: "
                                 }, void 0, false, {
                                     fileName: "src/components/actor-view/actor-view.jsx",
@@ -40979,7 +40979,7 @@ class ActorView extends _reactDefault.default.Component {
                             className: "d-sm-flex justify-content-between justify-content-lg-start",
                             children: [
                                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
-                                    className: "label titles h3",
+                                    className: " align-self-center label titles h3",
                                     children: "Bio: "
                                 }, void 0, false, {
                                     fileName: "src/components/actor-view/actor-view.jsx",
@@ -41004,7 +41004,7 @@ class ActorView extends _reactDefault.default.Component {
                             className: "d-sm-flex justify-content-between justify-content-lg-start",
                             children: [
                                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
-                                    className: "label titles h3",
+                                    className: "align-self-center label titles h3",
                                     children: "Born: "
                                 }, void 0, false, {
                                     fileName: "src/components/actor-view/actor-view.jsx",
@@ -41029,7 +41029,7 @@ class ActorView extends _reactDefault.default.Component {
                             className: "d-sm-flex justify-content-between justify-content-lg-start",
                             children: [
                                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
-                                    className: "label titles",
+                                    className: "align-self-center label titles",
                                     children: "Died: "
                                 }, void 0, false, {
                                     fileName: "src/components/actor-view/actor-view.jsx",
@@ -41054,7 +41054,7 @@ class ActorView extends _reactDefault.default.Component {
                             className: "d-sm-flex justify-content-between justify-content-lg-start",
                             children: [
                                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
-                                    className: "label titles h3",
+                                    className: "align-self-center label titles h3",
                                     children: "Featured in: "
                                 }, void 0, false, {
                                     fileName: "src/components/actor-view/actor-view.jsx",
