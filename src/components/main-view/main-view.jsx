@@ -15,6 +15,7 @@ import { NavBar } from "../navbar-view/navbar-view";
 import { ActorView } from "../actor-view/actor-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import "../../index.scss";
+import PropTypes from "prop-types";
 
 export class MainView extends React.Component {
   constructor() {
@@ -229,3 +230,14 @@ let mapStateToProps = (state) => {
   return { movies: state.movies };
 };
 export default connect(mapStateToProps, { setMovies })(MainView);
+
+MainView.propTypes = {
+  setMovies: PropTypes.func.isRequired,
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      Title: PropTypes.string.isRequired,
+      ImagePath: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};

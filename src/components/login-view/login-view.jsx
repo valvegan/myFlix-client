@@ -28,8 +28,7 @@ export function LoginView(props) {
     } else if (password.length < 6) {
       setPassword("Password must be 6 characters long!");
       isReq = false;
-    }else if (username)
-    return isReq;
+    } else if (username) return isReq;
   };
 
   //send user data to the database to check if the user exists
@@ -45,13 +44,14 @@ export function LoginView(props) {
         })
         .then((response) => {
           const data = response.data;
-         props.onLoggedIn(data);
-
+          props.onLoggedIn(data);
         })
         .catch((e) => {
-          alert("you're not already registered or you have deleted your profile! Please register");
+          alert(
+            "you're not already registered or you have deleted your profile! Please register"
+          );
           window.open("/register", "_self");
-          console.log(e)
+          console.log(e);
         });
     }
   };
@@ -96,11 +96,10 @@ export function LoginView(props) {
             </Button>
             <br></br>
             <br></br>
-            <Container >
+            <Container>
               <Row className="d-flex justify-content-center">
-              <p className="m-2">
-              Don't have an account?</p>
-              
+                <p className="m-2">Don't have an account?</p>
+
                 <Link to={"/register"}>
                   <Button
                     variant="primary"
@@ -110,9 +109,7 @@ export function LoginView(props) {
                     Sign up
                   </Button>
                 </Link>
-            
-            
-            </Row>
+              </Row>
             </Container>
             <br></br>
           </Form>
@@ -123,6 +120,5 @@ export function LoginView(props) {
 }
 
 LoginView.propTypes = {
-  
   onLoggedIn: PropTypes.func.isRequired,
 };

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export class DirectorView extends React.Component {
   render() {
-    const { director, movie, onBackClick } = this.props;
+    const { director, onBackClick } = this.props;
 
     return (
       <Card>
@@ -62,3 +62,14 @@ export class DirectorView extends React.Component {
     );
   }
 }
+
+DirectorView.propTypes = {
+  director: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Bio: PropTypes.string.isRequired,
+      Birth: PropTypes.string.isRequired
+  }).isRequired,
+
+  onBackClick: PropTypes.func.isRequired
+
+};

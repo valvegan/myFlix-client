@@ -26,7 +26,7 @@ export function NavBar() {
       <Navbar.Brand as={Link} to={"/"}>
         My-Flix
       </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" className="navbar-dark"/>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" className="navbar-dark" />
 
       {isAuth() && (
         <Navbar.Collapse id="basic-navbar-nav navbar-dark">
