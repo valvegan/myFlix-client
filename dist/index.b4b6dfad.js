@@ -34831,20 +34831,15 @@ parcelHelpers.export(exports, "SET_FILTER", ()=>SET_FILTER
 );
 parcelHelpers.export(exports, "GET_USERDATA", ()=>GET_USERDATA
 );
-parcelHelpers.export(exports, "SET_USERPROFILE", ()=>SET_USERPROFILE
-);
 parcelHelpers.export(exports, "setMovies", ()=>setMovies
 );
 parcelHelpers.export(exports, "setFilter", ()=>setFilter
 );
 parcelHelpers.export(exports, "getUserData", ()=>getUserData
 );
-parcelHelpers.export(exports, "setUser", ()=>setUser
-);
 const SET_MOVIES = 'SET_MOVIES';
 const SET_FILTER = 'SET_FILTER';
 const GET_USERDATA = 'GET_USERDATA';
-const SET_USERPROFILE = 'SET_USERPROFILE';
 function setMovies(value) {
     return {
         type: SET_MOVIES,
@@ -34860,12 +34855,6 @@ function setFilter(value) {
 function getUserData(value) {
     return {
         type: GET_USERDATA,
-        value
-    };
-}
-function setUser(value) {
-    return {
-        type: SET_USERPROFILE,
         value
     };
 }
