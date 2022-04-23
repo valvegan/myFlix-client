@@ -2,6 +2,7 @@
 MyFlix is a small app that showcases various informations from a small database (REST API) of movies. Users can register, update/add information about themselves (securely via password hashing) and add/remove movie titles to a list of their favourites. 
 
 The client-side for myFlix is developed using REACT, HTML5, and SCSS
+
 The server-side development for myFlix can be accessed [here](https://github.com/valvegan/movie_api)
 
 ## Build tools: Parcel
@@ -10,7 +11,7 @@ The server-side development for myFlix can be accessed [here](https://github.com
 ### Essential Views and Features:
 
 ### Main view
-- [x] eturns a list of ALL movies to the user (each listed item with an image, title, and description)
+- [x] Returns a list of ALL movies to the user (each listed item with an image, title, and description)
 - [x] Sorting and filtering
 - [x] Ability to select a movie for more details
 
