@@ -6,6 +6,7 @@ The client-side for myFlix is developed using REACT, HTML5, and SCSS
 The server-side development for myFlix can be accessed [here](https://github.com/valvegan/movie_api)
 
 ## A live preview of the app can be accessed [here](https://valentina-my-flix-client.netlify.app/)
+![1](images/1.png)
 
 ## Build tools: Parcel
 
