@@ -34752,7 +34752,16 @@ function movies(state = [], action) {
 //data of the logged in user
 function userData(state = [], action) {
     switch(action.type){
-        case _actions.SET_USERDATA:
+        case _actions.GET_USERDATA:
+            return action.value;
+        default:
+            return state;
+    }
+}
+//set user data(update)
+function userChange(state = [], action) {
+    switch(action.type){
+        case _actions.SET_USERPROFILE:
             return action.value;
         default:
             return state;
@@ -34761,7 +34770,8 @@ function userData(state = [], action) {
 const moviesApp = _redux.combineReducers({
     visibilityFilter,
     movies,
-    userData
+    userData,
+    userChange
 });
 exports.default = moviesApp;
 
@@ -34772,9 +34782,10 @@ parcelHelpers.export(exports, "SET_MOVIES", ()=>SET_MOVIES
 );
 parcelHelpers.export(exports, "SET_FILTER", ()=>SET_FILTER
 );
-parcelHelpers.export(exports, "SET_USERDATA", ()=>SET_USERDATA
+parcelHelpers.export(exports, "GET_USERDATA", ()=>GET_USERDATA
 );
-//set users is for getting all users 
+parcelHelpers.export(exports, "SET_USERPROFILE", ()=>SET_USERPROFILE
+);
 //set d
 parcelHelpers.export(exports, "setMovies", ()=>setMovies
 );
@@ -34782,9 +34793,12 @@ parcelHelpers.export(exports, "setFilter", ()=>setFilter
 );
 parcelHelpers.export(exports, "getUserData", ()=>getUserData
 );
+parcelHelpers.export(exports, "setUser", ()=>setUser
+);
 const SET_MOVIES = 'SET_MOVIES';
 const SET_FILTER = 'SET_FILTER';
-const SET_USERDATA = 'SET_USERDATA';
+const GET_USERDATA = 'GET_USERDATA';
+const SET_USERPROFILE = 'SET_USERPROFILE';
 function setMovies(value) {
     return {
         type: SET_MOVIES,
@@ -34799,7 +34813,13 @@ function setFilter(value) {
 }
 function getUserData(value) {
     return {
-        type: SET_USERDATA,
+        type: GET_USERDATA,
+        value
+    };
+}
+function setUser(value) {
+    return {
+        type: SET_USERPROFILE,
         value
     };
 }
