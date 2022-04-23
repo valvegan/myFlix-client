@@ -13,6 +13,7 @@ import {
 } from "react-bootstrap";
 import ProfileViewImmutable from "./profile-view-immutable-labels/profile-view-immutable";
 
+
 export class ProfileView extends React.Component {
   constructor() {
     super();
