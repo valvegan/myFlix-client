@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { SET_FILTER, SET_MOVIES, GET_USERDATA, SET_USERPROFILE, SET_MOVIEDETAILS } from "../actions/actions";
+import { SET_FILTER, SET_MOVIES, GET_USERDATA } from "../actions/actions";
 
 function visibilityFilter(state = "", action) {
   switch (action.type) {
@@ -29,15 +29,6 @@ function userData(state=[], action){
     }
 }
 
-//set user data(update)
-function userChange(state=[], action){
-  switch (action.type){
-      case SET_USERPROFILE: 
-      return action.value;
-      default: 
-      return state;
-  }
-}
 
 const moviesApp = combineReducers({
     visibilityFilter,
