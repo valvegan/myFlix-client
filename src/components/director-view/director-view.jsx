@@ -6,15 +6,7 @@ import { Link } from "react-router-dom";
 export class DirectorView extends React.Component {
   render() {
     const { director, onBackClick, movies } = this.props;
-    let movie1 = movies.filter((m) => m.Director.Name === director.Name);
-    const obj = { firstName: "Jean-Luc", lastName: "Picard", age: 59 };
-    let images2 = movie1.forEach((m) => console.log(m.ImagePath));
-    // { firstName: 'Jean-Luc', lastName: 'Picard' }
-    let obj2 = Object.keys(obj)
-      .filter((key) => key.includes("Name"))
-      .reduce((cur, key) => {
-        return Object.assign(cur, { [key]: obj[key] });
-      }, {});
+    let movieFilter = movies.filter((m) => m.Director.Name === director.Name);
 
     return (
       <Card>
@@ -62,7 +54,7 @@ export class DirectorView extends React.Component {
               <Card.Text className="align-self-center label titles h3">
                 Movies:
               </Card.Text>
-              {movie1.map((m) => (
+              {movieFilter.map((m) => (
                 <Card.Img
                   className="movie-poster img-responsive m-2"
                   variant="top"

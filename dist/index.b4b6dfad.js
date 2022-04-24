@@ -35229,6 +35229,8 @@ class MainView extends _reactDefault.default.Component {
                                         actor: movies.find((m)=>m.Actors[0].Name === match.params.name
                                         ).Actors,
                                         onBackClick: ()=>history.goBack()
+                                        ,
+                                        movies: movies
                                     }, void 0, false, void 0, void 0)
                                 }, void 0, false, void 0, void 0);
                             }
@@ -35258,7 +35260,7 @@ class MainView extends _reactDefault.default.Component {
                             }
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 208,
+                            lineNumber: 209,
                             columnNumber: 11
                         }, this)
                     ]
@@ -40750,188 +40752,191 @@ var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 class ActorView extends _reactDefault.default.Component {
     render() {
-        const { actor , onBackClick  } = this.props;
+        const { actor , onBackClick , movies  } = this.props;
         return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card, {
-            children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Body, {
-                children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
-                    className: "extra-info",
-                    children: [
-                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
-                            className: "d-sm-flex justify-content-between justify-content-lg-start",
-                            children: [
-                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
-                                    className: "align-self-center label titles h3",
-                                    children: "Name: "
-                                }, void 0, false, {
-                                    fileName: "src/components/actor-view/actor-view.jsx",
-                                    lineNumber: 14,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
-                                    className: "card-text ml-3 titles h1",
-                                    children: actor[0].Name
-                                }, void 0, false, {
-                                    fileName: "src/components/actor-view/actor-view.jsx",
-                                    lineNumber: 15,
-                                    columnNumber: 15
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/actor-view/actor-view.jsx",
-                            lineNumber: 13,
-                            columnNumber: 13
-                        }, this),
-                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
-                            className: "d-sm-flex justify-content-between justify-content-lg-start",
-                            children: [
-                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
-                                    className: " align-self-center label titles h3",
-                                    children: "Bio: "
-                                }, void 0, false, {
-                                    fileName: "src/components/actor-view/actor-view.jsx",
-                                    lineNumber: 19,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
-                                    className: "card-text ml-3",
-                                    children: actor[0].Bio
-                                }, void 0, false, {
-                                    fileName: "src/components/actor-view/actor-view.jsx",
-                                    lineNumber: 20,
-                                    columnNumber: 15
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/actor-view/actor-view.jsx",
-                            lineNumber: 18,
-                            columnNumber: 13
-                        }, this),
-                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
-                            className: "d-sm-flex justify-content-between justify-content-lg-start",
-                            children: [
-                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
-                                    className: "align-self-center label titles h3",
-                                    children: "Born: "
-                                }, void 0, false, {
-                                    fileName: "src/components/actor-view/actor-view.jsx",
-                                    lineNumber: 24,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
-                                    className: "titles ml-3 h1",
-                                    children: actor[0].Birth
-                                }, void 0, false, {
-                                    fileName: "src/components/actor-view/actor-view.jsx",
-                                    lineNumber: 25,
-                                    columnNumber: 15
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/actor-view/actor-view.jsx",
-                            lineNumber: 23,
-                            columnNumber: 13
-                        }, this),
-                        actor.Death && /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
-                            className: "d-sm-flex justify-content-between justify-content-lg-start",
-                            children: [
-                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
-                                    className: "align-self-center label titles",
-                                    children: "Died: "
-                                }, void 0, false, {
-                                    fileName: "src/components/actor-view/actor-view.jsx",
-                                    lineNumber: 30,
-                                    columnNumber: 17
-                                }, this),
-                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
-                                    className: "titles ml-3 h5 ",
-                                    children: actor[0].Death
-                                }, void 0, false, {
-                                    fileName: "src/components/actor-view/actor-view.jsx",
-                                    lineNumber: 31,
-                                    columnNumber: 17
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/actor-view/actor-view.jsx",
-                            lineNumber: 29,
-                            columnNumber: 15
-                        }, this),
-                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
-                            className: "d-sm-flex justify-content-between justify-content-lg-start",
-                            children: [
-                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
-                                    className: "align-self-center label titles h3",
-                                    children: "Featured in: "
-                                }, void 0, false, {
-                                    fileName: "src/components/actor-view/actor-view.jsx",
-                                    lineNumber: 36,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
-                                    className: "titles ml-3 h1",
-                                    children: actor[0].Movies
-                                }, void 0, false, {
-                                    fileName: "src/components/actor-view/actor-view.jsx",
-                                    lineNumber: 37,
-                                    columnNumber: 15
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/actor-view/actor-view.jsx",
-                            lineNumber: 35,
-                            columnNumber: 13
-                        }, this),
-                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
-                            className: "d-flex justify-content-between",
-                            children: [
-                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Button, {
-                                    className: "custom-btn",
-                                    type: "submit",
-                                    onClick: ()=>{
-                                        onBackClick();
-                                    },
-                                    children: "Go back"
-                                }, void 0, false, {
-                                    fileName: "src/components/actor-view/actor-view.jsx",
-                                    lineNumber: 40,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Link, {
-                                    to: `/`,
-                                    children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Button, {
-                                        className: "custom-btn",
-                                        type: "submit",
-                                        children: "Back to List"
+            children: [
+                console.log(movies),
+                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Body, {
+                    children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
+                        className: "extra-info",
+                        children: [
+                            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
+                                className: "d-sm-flex justify-content-between justify-content-lg-start",
+                                children: [
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
+                                        className: "align-self-center label titles h3",
+                                        children: "Name: "
                                     }, void 0, false, {
                                         fileName: "src/components/actor-view/actor-view.jsx",
-                                        lineNumber: 50,
+                                        lineNumber: 18,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
+                                        className: "card-text ml-3 titles h1",
+                                        children: actor[0].Name
+                                    }, void 0, false, {
+                                        fileName: "src/components/actor-view/actor-view.jsx",
+                                        lineNumber: 19,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/actor-view/actor-view.jsx",
+                                lineNumber: 17,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
+                                className: "d-sm-flex justify-content-between justify-content-lg-start",
+                                children: [
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
+                                        className: " align-self-center label titles h3",
+                                        children: "Bio: "
+                                    }, void 0, false, {
+                                        fileName: "src/components/actor-view/actor-view.jsx",
+                                        lineNumber: 23,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
+                                        className: "card-text ml-3",
+                                        children: actor[0].Bio
+                                    }, void 0, false, {
+                                        fileName: "src/components/actor-view/actor-view.jsx",
+                                        lineNumber: 24,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/actor-view/actor-view.jsx",
+                                lineNumber: 22,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
+                                className: "d-sm-flex justify-content-between justify-content-lg-start",
+                                children: [
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
+                                        className: "align-self-center label titles h3",
+                                        children: "Born: "
+                                    }, void 0, false, {
+                                        fileName: "src/components/actor-view/actor-view.jsx",
+                                        lineNumber: 28,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
+                                        className: "titles ml-3 h1",
+                                        children: actor[0].Birth
+                                    }, void 0, false, {
+                                        fileName: "src/components/actor-view/actor-view.jsx",
+                                        lineNumber: 29,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/actor-view/actor-view.jsx",
+                                lineNumber: 27,
+                                columnNumber: 13
+                            }, this),
+                            actor.Death && /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
+                                className: "d-sm-flex justify-content-between justify-content-lg-start",
+                                children: [
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
+                                        className: "align-self-center label titles",
+                                        children: "Died: "
+                                    }, void 0, false, {
+                                        fileName: "src/components/actor-view/actor-view.jsx",
+                                        lineNumber: 35,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
+                                        className: "titles ml-3 h5 ",
+                                        children: actor[0].Death
+                                    }, void 0, false, {
+                                        fileName: "src/components/actor-view/actor-view.jsx",
+                                        lineNumber: 36,
                                         columnNumber: 17
                                     }, this)
-                                }, void 0, false, {
-                                    fileName: "src/components/actor-view/actor-view.jsx",
-                                    lineNumber: 49,
-                                    columnNumber: 15
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/actor-view/actor-view.jsx",
-                            lineNumber: 39,
-                            columnNumber: 13
-                        }, this)
-                    ]
-                }, void 0, true, {
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/actor-view/actor-view.jsx",
+                                lineNumber: 34,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
+                                className: "d-sm-flex justify-content-between justify-content-lg-start",
+                                children: [
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
+                                        className: "align-self-center label titles h3",
+                                        children: "Featured in: "
+                                    }, void 0, false, {
+                                        fileName: "src/components/actor-view/actor-view.jsx",
+                                        lineNumber: 41,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
+                                        className: "titles ml-3 h1",
+                                        children: actor[0].Movies
+                                    }, void 0, false, {
+                                        fileName: "src/components/actor-view/actor-view.jsx",
+                                        lineNumber: 42,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/actor-view/actor-view.jsx",
+                                lineNumber: 40,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
+                                className: "d-flex justify-content-between",
+                                children: [
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Button, {
+                                        className: "custom-btn",
+                                        type: "submit",
+                                        onClick: ()=>{
+                                            onBackClick();
+                                        },
+                                        children: "Go back"
+                                    }, void 0, false, {
+                                        fileName: "src/components/actor-view/actor-view.jsx",
+                                        lineNumber: 45,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Link, {
+                                        to: `/`,
+                                        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Button, {
+                                            className: "custom-btn",
+                                            type: "submit",
+                                            children: "Back to List"
+                                        }, void 0, false, {
+                                            fileName: "src/components/actor-view/actor-view.jsx",
+                                            lineNumber: 55,
+                                            columnNumber: 17
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "src/components/actor-view/actor-view.jsx",
+                                        lineNumber: 54,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/actor-view/actor-view.jsx",
+                                lineNumber: 44,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/actor-view/actor-view.jsx",
+                        lineNumber: 16,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
                     fileName: "src/components/actor-view/actor-view.jsx",
-                    lineNumber: 12,
-                    columnNumber: 11
+                    lineNumber: 15,
+                    columnNumber: 9
                 }, this)
-            }, void 0, false, {
-                fileName: "src/components/actor-view/actor-view.jsx",
-                lineNumber: 11,
-                columnNumber: 9
-            }, this)
-        }, void 0, false, {
+            ]
+        }, void 0, true, {
             fileName: "src/components/actor-view/actor-view.jsx",
-            lineNumber: 10,
+            lineNumber: 12,
             columnNumber: 7
         }, this);
     }
@@ -41304,22 +41309,8 @@ var _reactRouterDom = require("react-router-dom");
 class DirectorView extends _reactDefault.default.Component {
     render() {
         const { director , onBackClick , movies  } = this.props;
-        let movie1 = movies.filter((m)=>m.Director.Name === director.Name
+        let movieFilter = movies.filter((m)=>m.Director.Name === director.Name
         );
-        const obj = {
-            firstName: "Jean-Luc",
-            lastName: "Picard",
-            age: 59
-        };
-        let images2 = movie1.forEach((m)=>console.log(m.ImagePath)
-        );
-        // { firstName: 'Jean-Luc', lastName: 'Picard' }
-        let obj2 = Object.keys(obj).filter((key)=>key.includes("Name")
-        ).reduce((cur, key)=>{
-            return Object.assign(cur, {
-                [key]: obj[key]
-            });
-        }, {});
         return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card, {
             children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Body, {
                 children: [
@@ -41334,7 +41325,7 @@ class DirectorView extends _reactDefault.default.Component {
                                         children: "Name:"
                                     }, void 0, false, {
                                         fileName: "src/components/director-view/director-view.jsx",
-                                        lineNumber: 24,
+                                        lineNumber: 16,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
@@ -41342,13 +41333,13 @@ class DirectorView extends _reactDefault.default.Component {
                                         children: director.Name
                                     }, void 0, false, {
                                         fileName: "src/components/director-view/director-view.jsx",
-                                        lineNumber: 27,
+                                        lineNumber: 19,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/director-view/director-view.jsx",
-                                lineNumber: 23,
+                                lineNumber: 15,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
@@ -41359,7 +41350,7 @@ class DirectorView extends _reactDefault.default.Component {
                                         children: "Bio:"
                                     }, void 0, false, {
                                         fileName: "src/components/director-view/director-view.jsx",
-                                        lineNumber: 33,
+                                        lineNumber: 25,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
@@ -41367,13 +41358,13 @@ class DirectorView extends _reactDefault.default.Component {
                                         children: director.Bio
                                     }, void 0, false, {
                                         fileName: "src/components/director-view/director-view.jsx",
-                                        lineNumber: 36,
+                                        lineNumber: 28,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/director-view/director-view.jsx",
-                                lineNumber: 32,
+                                lineNumber: 24,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
@@ -41384,7 +41375,7 @@ class DirectorView extends _reactDefault.default.Component {
                                         children: "Born:"
                                     }, void 0, false, {
                                         fileName: "src/components/director-view/director-view.jsx",
-                                        lineNumber: 42,
+                                        lineNumber: 34,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
@@ -41392,13 +41383,13 @@ class DirectorView extends _reactDefault.default.Component {
                                         children: director.Birth
                                     }, void 0, false, {
                                         fileName: "src/components/director-view/director-view.jsx",
-                                        lineNumber: 45,
+                                        lineNumber: 37,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/director-view/director-view.jsx",
-                                lineNumber: 41,
+                                lineNumber: 33,
                                 columnNumber: 13
                             }, this),
                             director.Death && /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
@@ -41412,7 +41403,7 @@ class DirectorView extends _reactDefault.default.Component {
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/director-view/director-view.jsx",
-                                        lineNumber: 52,
+                                        lineNumber: 44,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV("span", {
@@ -41420,13 +41411,13 @@ class DirectorView extends _reactDefault.default.Component {
                                         children: director.Death
                                     }, void 0, false, {
                                         fileName: "src/components/director-view/director-view.jsx",
-                                        lineNumber: 55,
+                                        lineNumber: 47,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/director-view/director-view.jsx",
-                                lineNumber: 51,
+                                lineNumber: 43,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
@@ -41437,10 +41428,10 @@ class DirectorView extends _reactDefault.default.Component {
                                         children: "Movies:"
                                     }, void 0, false, {
                                         fileName: "src/components/director-view/director-view.jsx",
-                                        lineNumber: 62,
+                                        lineNumber: 54,
                                         columnNumber: 15
                                     }, this),
-                                    movie1.map((m)=>/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Img, {
+                                    movieFilter.map((m)=>/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Img, {
                                             className: "movie-poster img-responsive m-2",
                                             variant: "top",
                                             style: {
@@ -41449,20 +41440,20 @@ class DirectorView extends _reactDefault.default.Component {
                                             src: m.ImagePath
                                         }, m, false, {
                                             fileName: "src/components/director-view/director-view.jsx",
-                                            lineNumber: 66,
+                                            lineNumber: 58,
                                             columnNumber: 17
                                         }, this)
                                     )
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/director-view/director-view.jsx",
-                                lineNumber: 61,
+                                lineNumber: 53,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/director-view/director-view.jsx",
-                        lineNumber: 22,
+                        lineNumber: 14,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
@@ -41477,7 +41468,7 @@ class DirectorView extends _reactDefault.default.Component {
                                 children: "Go back"
                             }, void 0, false, {
                                 fileName: "src/components/director-view/director-view.jsx",
-                                lineNumber: 77,
+                                lineNumber: 69,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Link, {
@@ -41488,29 +41479,29 @@ class DirectorView extends _reactDefault.default.Component {
                                     children: "Back to List"
                                 }, void 0, false, {
                                     fileName: "src/components/director-view/director-view.jsx",
-                                    lineNumber: 87,
+                                    lineNumber: 79,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/components/director-view/director-view.jsx",
-                                lineNumber: 86,
+                                lineNumber: 78,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/director-view/director-view.jsx",
-                        lineNumber: 76,
+                        lineNumber: 68,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/director-view/director-view.jsx",
-                lineNumber: 21,
+                lineNumber: 13,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "src/components/director-view/director-view.jsx",
-            lineNumber: 20,
+            lineNumber: 12,
             columnNumber: 7
         }, this);
     }

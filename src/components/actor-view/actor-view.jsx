@@ -4,10 +4,14 @@ import { Link } from "react-router-dom";
 
 export class ActorView extends React.Component {
   render() {
-    const { actor, onBackClick } = this.props;
+    const { actor, onBackClick, movies } = this.props;
+    
+    
 
     return (
       <Card>
+        {console.log(movies)}
+     
         <Card.Body>
           <Container className="extra-info">
             <Col className="d-sm-flex justify-content-between justify-content-lg-start">
@@ -24,6 +28,7 @@ export class ActorView extends React.Component {
               <Card.Text className="align-self-center label titles h3">Born: </Card.Text>
               <span className="titles ml-3 h1">{actor[0].Birth}</span>
             </Col>
+
 
             {actor.Death && (
               <Col className="d-sm-flex justify-content-between justify-content-lg-start">

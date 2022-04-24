@@ -199,6 +199,7 @@ export class MainView extends React.Component {
                         .Actors
                     }
                     onBackClick={() => history.goBack()}
+                    movies={movies}
                   />
                 </Col>
               );
