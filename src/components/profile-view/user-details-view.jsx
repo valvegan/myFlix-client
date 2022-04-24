@@ -9,11 +9,11 @@ import {
   Col,
 } from "react-bootstrap";
 import { connect } from "react-redux";
-import { getUserData } from "../../../actions/actions";
+import { setUserData } from "../../actions/actions";
 import PropTypes, { string } from "prop-types";
 
 ///here im retaining the user's old details
-class ProfileViewImmutable extends React.Component {
+class UserDetailsView extends React.Component {
   constructor() {
     super();
   }
@@ -25,7 +25,7 @@ class ProfileViewImmutable extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        this.props.getUserData(response.data);
+        this.props.setUserData(response.data);
       })
       .catch((e) => console.log(e));
   }
@@ -36,17 +36,14 @@ class ProfileViewImmutable extends React.Component {
 
   render() {
     let { userData } = this.props;
-    console.log(userData)
+    console.log(userData);
     return (
       <Container>
         <div className="titles h1 text-center">Hi, {userData.username}</div>
         <Card.Title className="titles text-center custom-card-title">
           View and update your details
         </Card.Title>
-        <Container
-          className="d-flex justify-content-right text-center"
-         
-        >
+        <Container className="d-flex justify-content-right text-center">
           <Col className="d-inline">
             <FormGroup>
               <Form.Label className="titles h3">Username</Form.Label>
@@ -108,18 +105,15 @@ class ProfileViewImmutable extends React.Component {
 let mapStateToProps = (state) => {
   return { userData: state.userData };
 };
-export default connect(mapStateToProps, { getUserData })(ProfileViewImmutable);
+export default connect(mapStateToProps, { setUserData })(UserDetailsView);
 
-ProfileViewImmutable.propTypes = {
-  getUserData: PropTypes.func.isRequired,
-  userData: PropTypes.shape(
-    {
+UserDetailsView.propTypes = {
+  setUserData: PropTypes.func.isRequired,
+  userData: PropTypes.shape({
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     birthday: PropTypes.string.isRequired,
     favoriteMovies: PropTypes.arrayOf(string),
   }).isRequired,
-  };
-
-  
+};

@@ -11,8 +11,7 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
-import ProfileViewImmutable from "./profile-view-immutable-labels/profile-view-immutable";
-
+import UserDetailsView from "./user-details-view";
 
 export class ProfileView extends React.Component {
   constructor() {
@@ -174,10 +173,8 @@ export class ProfileView extends React.Component {
                   }
                 >
                   <Container>
-                    <ProfileViewImmutable />
-                    <Container
-                      className="flex-item pt-5"
-                    >
+                    <UserDetailsView />
+                    <Container className="flex-item pt-5">
                       <div className="p-0 d-flex-column">
                         <FormControl
                           type="text"
