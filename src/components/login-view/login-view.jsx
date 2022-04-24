@@ -58,12 +58,13 @@ export function LoginView(props) {
 
   return (
     <Container>
+      {console.log(username)}
       <Row className="justify-content-md-center">
         <Col md={6}>
           <h1>Sign in to your account</h1>
           <Form className="register-form">
             <Form.Group className="mb-3" controlId="formEmail">
-              <Form.Label>Username: </Form.Label>
+              <Form.Label className="titles h2">Username: </Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter a username"
@@ -75,7 +76,7 @@ export function LoginView(props) {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formPassword">
-              <Form.Label>Password: </Form.Label>
+              <Form.Label className="titles h2">Password: </Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Your password"

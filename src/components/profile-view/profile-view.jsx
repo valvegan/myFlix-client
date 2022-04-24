@@ -11,7 +11,7 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
-import UserDetailsView from "./user-details-view";
+
 
 export class ProfileView extends React.Component {
   constructor() {

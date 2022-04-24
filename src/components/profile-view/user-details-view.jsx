@@ -9,7 +9,7 @@ import {
   Col,
 } from "react-bootstrap";
 import { connect } from "react-redux";
-import { setUserData } from "../../actions/actions";
+//import { setUserData } from "../../actions/actions";
 import PropTypes, { string } from "prop-types";
 
 ///here im retaining the user's old details

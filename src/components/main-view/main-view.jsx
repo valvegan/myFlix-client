@@ -1,10 +1,9 @@
 import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { setMovies } from "../../actions/actions";
+import { setMovies, setUserData } from "../../actions/actions";
 import { Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import { setMovies } from "../../actions/actions";
 import MoviesList from "../movies-list/movies-list";
 import { LoginView } from "../login-view/login-view";
 import { MovieView } from "../movie-view/movie-view";
@@ -20,21 +19,34 @@ import PropTypes from "prop-types";
 export class MainView extends React.Component {
   constructor() {
     super();
-
-    this.state = {
-      user: null,
-    };
+    ///no state set, accessing redux global state as props
   }
 
   // When token is present (user is logged in), get list of movies
   componentDidMount() {
     let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
-      this.setState({
+      //only setting the username ad data for the user (redux)
+      this.props.setUserData({
         user: localStorage.getItem("user"),
       });
       this.getMovies(accessToken);
     }
+  }
+
+  /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
+  onLoggedIn(authData) {
+    this.props.setUserData({
+      user: authData.user.username
+    });
+    localStorage.setItem("token", authData.token);
+    localStorage.setItem("user", authData.user.username);
+    this.getMovies(authData.token);
+  }
+
+  onLoggedOut() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
   }
 
   getMovies(token) {
@@ -50,23 +62,30 @@ export class MainView extends React.Component {
       });
   }
 
-  /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
-  onLoggedIn(authData) {
-    this.setState({
-      user: authData.user.username,
-    });
-    localStorage.setItem("token", authData.token);
-    localStorage.setItem("user", authData.user.username);
-    this.getMovies(authData.token);
+  getUser(token) {
+    let user = localStorage.getItem("user");
+    axios
+      .get(`https://my-flix-api-2022.herokuapp.com/users/${user}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        this.props.setUserData(response.data);
+      })
+      .catch((e) => console.log(e));
+  }
+  componentDidMount() {
+    const accessToken = localStorage.getItem("token");
+    this.getUser(accessToken);
   }
 
+
   render() {
-    let { movies } = this.props;
-    let { user } = this.state;
+    let { movies, user } = this.props;
+
     return (
       <Router>
-        <NavBar user={user} />
 
+        <NavBar user={user} />
         <Row className="main-view justify-content-md-center">
           <Route
             exact
@@ -169,8 +188,6 @@ export class MainView extends React.Component {
                         .Director
                     }
                     movies={movies}
-                   
-                   // movie={movies.find((m)=>m.movie)}
                     onBackClick={() => history.goBack()}
                   />
                 </Col>
@@ -233,9 +250,9 @@ export class MainView extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-  return { movies: state.movies };
+  return { movies: state.movies, user: state.user };
 };
-export default connect(mapStateToProps, { setMovies })(MainView);
+export default connect(mapStateToProps, { setMovies, setUserData })(MainView);
 
 MainView.propTypes = {
   setMovies: PropTypes.func.isRequired,
