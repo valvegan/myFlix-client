@@ -44,13 +44,14 @@ export function LoginView(props) {
         })
         .then((response) => {
           const data = response.data;
+          console.log(data)
           props.onLoggedIn(data);
         })
         .catch((e) => {
-          alert(
-            "you're not already registered or you have deleted your profile! Please register"
-          );
-          window.open("/register", "_self");
+          //alert(
+       //     "you're not already registered or you have deleted your profile! Please register"
+       //   );
+       //   window.open("/register", "_self");
           console.log(e);
         });
     }

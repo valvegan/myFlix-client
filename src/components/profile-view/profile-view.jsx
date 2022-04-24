@@ -11,55 +11,19 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
-import UserDetailsView from "./user-details-view";
 
 export class ProfileView extends React.Component {
   constructor() {
     super();
-    this.state = {
-      username: null,
-      password: null,
-      email: null,
-      birthday: null,
-      favoriteMovies: [],
-    };
-    this.removeFav = this.removeFav.bind(this);
-    this.setUsername = this.setUsername.bind(this);
-  }
-
-  getUser(token) {
-    let user = localStorage.getItem("user");
-    axios
-      .get(`https://my-flix-api-2022.herokuapp.com/users/${user}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        //assign the result to the state
-        this.setState({
-          username: response.data.username,
-          password: response.data.password,
-          email: response.data.email,
-          birthday: response.data.birthday,
-          favoriteMovies: response.data.favoriteMovies,
-        });
-      })
-      .catch((e) => console.log(e));
-  }
-  componentDidMount() {
-    const accessToken = localStorage.getItem("token");
-    this.getUser(accessToken);
   }
 
   onLoggedOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    this.setState({
-      user: null,
-    });
     window.open("/", "_self");
   }
 
-  editProfile = (e) => {
+  /*editProfile = (e) => {
     e.preventDefault();
     const user = localStorage.getItem("user");
     const token = localStorage.getItem("token");
@@ -146,13 +110,11 @@ export class ProfileView extends React.Component {
       })
       .catch((err) => console.log(err));
   }
+  */
 
   render() {
-    const { movies } = this.props;
-    const { favoriteMovies, username } = this.state;
-    if (!username) {
-      return null;
-    }
+    const { movies, userData } = this.props;
+    console.log(userData);
 
     return (
       <Container>
@@ -173,7 +135,6 @@ export class ProfileView extends React.Component {
                   }
                 >
                   <Container>
-                    <UserDetailsView />
                     <Container className="flex-item pt-5">
                       <div className="p-0 d-flex-column">
                         <FormControl
@@ -252,6 +213,7 @@ export class ProfileView extends React.Component {
 
         <Card>
           <Card.Body>
+            {/** 
             {favoriteMovies.length === 0 && (
               <div className="titles h1 text-center">
                 <h1>There's no movies in your list of favorites!</h1>
@@ -282,6 +244,7 @@ export class ProfileView extends React.Component {
                             className="img-responsive"
                           />
                         </Link>
+                       
 
                         <Card.Body>
                           <Card.Title className="h1 titles">
@@ -299,18 +262,10 @@ export class ProfileView extends React.Component {
                   }
                 })}
             </Row>
+             */}
           </Card.Body>
         </Card>
       </Container>
     );
   }
 }
-
-ProfileView.propTypes = {
-  movies: PropTypes.arrayOf(
-    PropTypes.shape({
-      Title: PropTypes.string.isRequired,
-      ImagePath: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};

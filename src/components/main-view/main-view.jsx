@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { setMovies } from "../../actions/actions";
 import { Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import { setMovies } from "../../actions/actions";
+import { setMovies, setUserData, setUserName } from "../../actions/actions";
 import MoviesList from "../movies-list/movies-list";
 import { LoginView } from "../login-view/login-view";
 import { MovieView } from "../movie-view/movie-view";
@@ -14,27 +14,34 @@ import { ProfileView } from "../profile-view/profile-view";
 import { NavBar } from "../navbar-view/navbar-view";
 import { ActorView } from "../actor-view/actor-view";
 import { RegistrationView } from "../registration-view/registration-view";
+import {UserDetailsView} from "../profile-view/user-details-view";
 import "../../index.scss";
 import PropTypes from "prop-types";
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
   constructor() {
     super();
-
-    this.state = {
-      user: null,
-    };
   }
 
-  // When token is present (user is logged in), get list of movies
+  //componentdidmount keeps the user logged in, had to create a new action/reducer to set only the username vs the full user details
   componentDidMount() {
-    let accessToken = localStorage.getItem("token");
-    if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem("user"),
-      });
-      this.getMovies(accessToken);
+    let token = localStorage.getItem("token");
+    let user = localStorage.getItem("user");
+    if (token !== null) {
+      this.getMovies(token);
+      this.getUser(token);
+      //sets username from local storage
+      this.props.setUserName(user);
     }
+  }
+
+  onLoggedIn(data) {
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("user", data.user.username);
+    //sets user data from the api response upon loggin in (no need to send a request to the api to receive the users details)
+    this.props.setUserData(data.user);
+    //get movies
+    this.getMovies(data.token);
   }
 
   getMovies(token) {
@@ -50,19 +57,23 @@ export class MainView extends React.Component {
       });
   }
 
-  /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
-  onLoggedIn(authData) {
-    this.setState({
-      user: authData.user.username,
-    });
-    localStorage.setItem("token", authData.token);
-    localStorage.setItem("user", authData.user.username);
-    this.getMovies(authData.token);
+  //api call to get user data again otherwise it's lost after page refresh
+  getUser(token) {
+    let user = localStorage.getItem("user");
+    axios
+      .get(`https://my-flix-api-2022.herokuapp.com/users/${user}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        this.props.setUserData(response.data);
+      })
+      .catch((e) => console.log(e));
   }
 
   render() {
-    let { movies } = this.props;
-    let { user } = this.state;
+    let { movies, userData, userName } = this.props;
+    let user = userName;
+console.log(userData)
     return (
       <Router>
         <NavBar user={user} />
@@ -80,8 +91,9 @@ export class MainView extends React.Component {
                 );
 
               if (movies.length === 0) return <div className="main-view" />;
-
-              return <MoviesList movies={movies} />;
+              if (user) {
+                return <MoviesList movies={movies} />;
+              }
             }}
           />
 
@@ -169,8 +181,6 @@ export class MainView extends React.Component {
                         .Director
                     }
                     movies={movies}
-                   
-                   // movie={movies.find((m)=>m.movie)}
                     onBackClick={() => history.goBack()}
                   />
                 </Col>
@@ -216,10 +226,11 @@ export class MainView extends React.Component {
               if (movies.length === 0) return <div className="main-view" />;
               return (
                 <Col md={8}>
-                  <ProfileView
+                  
+                  <UserDetailsView
                     history={history}
                     movies={movies}
-                    user={user}
+                    userData={userData}
                     onBackClick={() => history.goBack()}
                   />
                 </Col>
@@ -233,9 +244,17 @@ export class MainView extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-  return { movies: state.movies };
+  return {
+    movies: state.movies,
+    userData: state.userData,
+    userName: state.userName,
+  };
 };
-export default connect(mapStateToProps, { setMovies })(MainView);
+export default connect(mapStateToProps, {
+  setMovies,
+  setUserData,
+  setUserName,
+})(MainView);
 
 MainView.propTypes = {
   setMovies: PropTypes.func.isRequired,
