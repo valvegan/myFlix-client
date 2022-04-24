@@ -2,26 +2,23 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, Card, Container, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { match } from "assert";
 
 export class DirectorView extends React.Component {
   render() {
     const { director, onBackClick, movies } = this.props;
-    let movie1 = movies.filter((m)=>m.Director.Name === director.Name)
-    const obj = { firstName: 'Jean-Luc', lastName: 'Picard', age: 59 };
-    let images2 = movie1.forEach(m=>console.log(m.ImagePath))
+    let movie1 = movies.filter((m) => m.Director.Name === director.Name);
+    const obj = { firstName: "Jean-Luc", lastName: "Picard", age: 59 };
+    let images2 = movie1.forEach((m) => console.log(m.ImagePath));
     // { firstName: 'Jean-Luc', lastName: 'Picard' }
-    let obj2 = Object.keys(obj).
-      filter((key) => key.includes('Name')).
-      reduce((cur, key) => { return Object.assign(cur, { [key]: obj[key] })}, {});
-
+    let obj2 = Object.keys(obj)
+      .filter((key) => key.includes("Name"))
+      .reduce((cur, key) => {
+        return Object.assign(cur, { [key]: obj[key] });
+      }, {});
 
     return (
       <Card>
         <Card.Body>
-
-         
-          
           <Container className="director-view">
             <Col className="d-sm-flex justify-content-between justify-content-xl-start">
               <Card.Text className="align-self-center label titles h3">
@@ -47,7 +44,6 @@ export class DirectorView extends React.Component {
               </Card.Text>
               <span className="movie-director-birth titles ml-3 h1">
                 {director.Birth}
-           
               </span>
             </Col>
 
@@ -58,7 +54,6 @@ export class DirectorView extends React.Component {
                 </Card.Text>
                 <span className="movie-director-death titles ml-3 h1">
                   {director.Death}
-                
                 </span>
               </Col>
             )}
@@ -67,19 +62,15 @@ export class DirectorView extends React.Component {
               <Card.Text className="align-self-center label titles h3">
                 Movies:
               </Card.Text>
-         {movie1.map((m)=>(
-          <Card.Img
-            className="movie-poster img-responsive m-2"
-            variant="top"
-            key={m}
-            style={{width:"40%"}}
-            
-       src={m.ImagePath}/>
-         ))}
-              
-    
-          
-             
+              {movie1.map((m) => (
+                <Card.Img
+                  className="movie-poster img-responsive m-2"
+                  variant="top"
+                  key={m}
+                  style={{ width: "40%" }}
+                  src={m.ImagePath}
+                />
+              ))}
             </Col>
           </Container>
           <Container className="d-flex justify-content-between">
