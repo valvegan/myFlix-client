@@ -4,7 +4,7 @@ import { Form, Container, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-export function LoginView() {
+export function LoginView(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -53,10 +53,6 @@ export function LoginView() {
           window.open("/register", "_self");
           console.log(e);
         });
-    } else if (!isReq) {
-      alert(
-        "you're not already registered or you have deleted your profile! Please register"
-      );
     }
   };
 
@@ -67,7 +63,7 @@ export function LoginView() {
           <h1>Sign in to your account</h1>
           <Form className="register-form">
             <Form.Group className="mb-3" controlId="formEmail">
-              <Form.Label className="titles h2">Username: </Form.Label>
+              <Form.Label>Username: </Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter a username"
@@ -79,7 +75,7 @@ export function LoginView() {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formPassword">
-              <Form.Label className="titles h2">Password: </Form.Label>
+              <Form.Label>Password: </Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Your password"
