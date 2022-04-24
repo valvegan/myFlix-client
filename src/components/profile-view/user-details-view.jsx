@@ -8,30 +8,12 @@ import {
   Card,
   Col,
 } from "react-bootstrap";
-import { connect } from "react-redux";
-//import { setUserData } from "../../actions/actions";
 import PropTypes, { string } from "prop-types";
 
 ///here im retaining the user's old details
 class UserDetailsView extends React.Component {
   constructor() {
     super();
-  }
-
-  getUser(token) {
-    let user = localStorage.getItem("user");
-    axios
-      .get(`https://my-flix-api-2022.herokuapp.com/users/${user}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        this.props.setUserData(response.data);
-      })
-      .catch((e) => console.log(e));
-  }
-  componentDidMount() {
-    const accessToken = localStorage.getItem("token");
-    this.getUser(accessToken);
   }
 
   render() {
@@ -102,10 +84,6 @@ class UserDetailsView extends React.Component {
     );
   }
 }
-let mapStateToProps = (state) => {
-  return { userData: state.userData };
-};
-export default connect(mapStateToProps, { setUserData })(UserDetailsView);
 
 UserDetailsView.propTypes = {
   setUserData: PropTypes.func.isRequired,

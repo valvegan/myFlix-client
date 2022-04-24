@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 export class MovieCard extends React.Component {
   render() {
     const { movie } = this.props;
-    
-
     return (
       
       <Card className="m-1 fade-in-down">

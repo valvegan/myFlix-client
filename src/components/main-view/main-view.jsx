@@ -22,26 +22,28 @@ export class MainView extends React.Component {
     ///no state set, accessing redux global state as props
   }
 
+  /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
+  onLoggedIn(authData) {
+    console.log(authData);
+    this.props.setUserData({
+      username: authData.user.username,
+      password: authData.user.password,
+      email: authData.user.email,
+      birthday: authData.user.birthday,
+      favoriteMovies: auth
+    });
+    localStorage.setItem("token", authData.token);
+    localStorage.setItem("user", authData.user.username);
+    this.getMovies(authData.token);
+  }
+
   // When token is present (user is logged in), get list of movies
   componentDidMount() {
     let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
       //only setting the username ad data for the user (redux)
-      this.props.setUserData({
-        user: localStorage.getItem("user"),
-      });
       this.getMovies(accessToken);
     }
-  }
-
-  /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
-  onLoggedIn(authData) {
-    this.props.setUserData({
-      user: authData.user.username
-    });
-    localStorage.setItem("token", authData.token);
-    localStorage.setItem("user", authData.user.username);
-    this.getMovies(authData.token);
   }
 
   onLoggedOut() {
@@ -62,8 +64,9 @@ export class MainView extends React.Component {
       });
   }
 
-  getUser(token) {
+  getUser() {
     let user = localStorage.getItem("user");
+    let token = localStorage.getItem("token");
     axios
       .get(`https://my-flix-api-2022.herokuapp.com/users/${user}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -78,13 +81,12 @@ export class MainView extends React.Component {
     this.getUser(accessToken);
   }
 
-
   render() {
     let { movies, user } = this.props;
 
     return (
       <Router>
-
+        {console.log(user)}
         <NavBar user={user} />
         <Row className="main-view justify-content-md-center">
           <Route

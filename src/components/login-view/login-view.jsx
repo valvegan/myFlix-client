@@ -4,7 +4,7 @@ import { Form, Container, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-export function LoginView(props) {
+export function LoginView() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -53,12 +53,15 @@ export function LoginView(props) {
           window.open("/register", "_self");
           console.log(e);
         });
+    } else if (!isReq) {
+      alert(
+        "you're not already registered or you have deleted your profile! Please register"
+      );
     }
   };
 
   return (
     <Container>
-      {console.log(username)}
       <Row className="justify-content-md-center">
         <Col md={6}>
           <h1>Sign in to your account</h1>
