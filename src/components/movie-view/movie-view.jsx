@@ -17,6 +17,7 @@ export class MovieView extends React.Component {
       const user = this.props.userData.username;
       const token = this.props.token;
       const id = this.props.movie._id;
+      //prevent adding duplicate movies
       axios
         .post(
           `https://my-flix-api-2022.herokuapp.com/users/${user}/favoriteMovies/${id}`,
@@ -60,6 +61,8 @@ export class MovieView extends React.Component {
     return (
       <Card>
         <Container className="text-left p-4 card-custom">
+          {console.log(this.props)}
+          {console.log(isFav)}
           <Button
             variant="primary"
             className="custom-btn"
