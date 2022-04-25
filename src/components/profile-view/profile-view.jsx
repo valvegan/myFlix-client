@@ -11,10 +11,13 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
+import { deleteProfile } from "../../actions/actions";
+import { connect } from "react-redux";
 
-export class ProfileView extends React.Component {
-  constructor() {
-    super();
+class ProfileView extends React.Component {
+  constructor(props) {
+    super(props);
+  //  this.state = this.props.userData;
   }
 
   onLoggedOut() {
@@ -23,20 +26,27 @@ export class ProfileView extends React.Component {
     window.open("/", "_self");
   }
 
-  /*editProfile = (e) => {
+  changeUsername(value) {
+    console.log({
+      value,
+    });
+  }
+
+  /* editProfile = (e) => {
     e.preventDefault();
     const user = localStorage.getItem("user");
     const token = localStorage.getItem("token");
-    let newUser = this.state.username;
-    console.log(newUser);
+    let newUserName = 
+    //let newUser = this.state.username;
+   // console.log(newUser);
     axios
       .put(
         `https://my-flix-api-2022.herokuapp.com/users/${user}`,
         {
-          username: this.state.username,
-          password: this.state.password,
-          email: this.state.email,
-          birthday: this.state.birthday,
+          username: this.props.username,
+          password: this.props.password,
+          email: this.props.email,
+          birthday: this.props.birthday,
         },
         { headers: { Authorization: `Bearer ${token}` } }
       )
@@ -47,11 +57,13 @@ export class ProfileView extends React.Component {
           email: response.data.email,
           birthday: response.data.birthday,
         });
-        localStorage.setItem("user", this.state.username);
+        localStorage.setItem("user", this.props.username);
         alert("profile updated successfully!");
-        window.open(`/users/${newUser}`, "_self");
+     //   window.open(`/users/${newUser}`, "_self");
       });
   };
+
+  /*
 
   deleteProfile() {
     const username = localStorage.getItem("user");
@@ -71,11 +83,7 @@ export class ProfileView extends React.Component {
       .catch((e) => console.log(e));
   }
 
-  setUsername(e) {
-    this.setState({
-      username: e.target.value,
-    });
-  }
+  
   setPassword(value) {
     this.setState({
       password: value,
@@ -113,11 +121,11 @@ export class ProfileView extends React.Component {
   */
 
   render() {
-    const { movies, userData } = this.props;
-    console.log(userData);
+    const { movies } = this.props;
 
     return (
       <Container>
+        {console.log(this.props)}
         <Row>
           <Col>
             <Card>
@@ -141,7 +149,8 @@ export class ProfileView extends React.Component {
                           type="text"
                           name="username"
                           placeholder="insert your new username here"
-                          onChange={this.setUsername}
+                          onChange={(e) => this.changeUsername(e.target.value)}
+                          defaultValue={this.props.value}
                           required
                         />
                         <Form.Text className="text-muted">
@@ -269,3 +278,15 @@ export class ProfileView extends React.Component {
     );
   }
 }
+
+let mapDispatchToProps = (dispatch) => {
+  return {
+    deleteProfile: (id) => {
+      dispatch({ type: "DELETE_PROFILE", id: id });
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps, {
+  deleteProfile,
+})(ProfileView);
