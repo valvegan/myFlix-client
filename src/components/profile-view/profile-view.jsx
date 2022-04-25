@@ -17,7 +17,7 @@ import { connect } from "react-redux";
 export class ProfileView extends React.Component {
   constructor(props) {
     super(props);
-     this.state = this.props.userData;
+    this.state = this.props.userData;
   }
 
   onLoggedOut() {
@@ -76,6 +76,7 @@ export class ProfileView extends React.Component {
         alert("profile deleted");
         localStorage.removeItem("user");
         localStorage.removeItem("token");
+        window.open(`/`, "_self");
       })
       .catch((e) => console.log(e));
   }
@@ -158,7 +159,6 @@ export class ProfileView extends React.Component {
                           type="text"
                           name="password"
                           placeholder="insert your new password here"
-                          
                           onChange={(e) => this.setPassword(e.target.value)}
                           required
                         />

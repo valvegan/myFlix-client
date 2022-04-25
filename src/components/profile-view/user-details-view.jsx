@@ -9,14 +9,12 @@ import {
   Col,
 } from "react-bootstrap";
 import PropTypes, { string } from "prop-types";
-import {ProfileView} from "./profile-view";
+import { ProfileView } from "./profile-view";
 ///here im retaining the user's old details
 export class UserDetailsView extends React.Component {
   constructor(props) {
     super(props);
   }
-
-
 
   render() {
     let { userData, movies, token } = this.props;
@@ -79,9 +77,7 @@ export class UserDetailsView extends React.Component {
                   disabled
                 ></FormControl>
               </Container>
-              <ProfileView userData={userData} 
-              movies={movies}
-              token={token}/>
+              <ProfileView userData={userData} movies={movies} token={token} />
             </FormGroup>
           </Col>
         </Container>
