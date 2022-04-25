@@ -7,6 +7,7 @@ export const SET_USERNAME = "SET_USERNAME";
 export const DELETE_PROFILE = "DELETE_PROFILE";
 export const EDIT_PROFILE = "EDIT_PROFILE";
 export const DELETE_FAV = "DELETE_FAV";
+export const SET_TOKEN = "SET_TOKEN"
 
 export const UPDATE_REQUEST = "UPDATE_REQUEST";
 export const UPDATE_SUCCESS = "UPDATE_SUCCESS";
@@ -26,7 +27,9 @@ export function updateUser(value) {
 export function setUserData(value) {
   return { type: SET_USERDATA, value };
 }
-
+export function setToken(value){
+  return {type: SET_TOKEN, value}
+}
 export function setUserName(value) {
   return { type: SET_USERNAME, value };
 }

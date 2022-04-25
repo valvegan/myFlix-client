@@ -3,7 +3,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import { setMovies, setUserData, setUserName } from "../../actions/actions";
+import { setMovies, setUserData, setUserName, setToken } from "../../actions/actions";
 import MoviesList from "../movies-list/movies-list";
 import { LoginView } from "../login-view/login-view";
 import { MovieView } from "../movie-view/movie-view";
@@ -31,6 +31,7 @@ class MainView extends React.Component {
       this.getUser(token);
       //sets username from local storage
       this.props.setUserName(user);
+      this.props.setToken(token)
     }
   }
 
@@ -70,7 +71,7 @@ class MainView extends React.Component {
   }
 
   render() {
-    let { movies, userData, userName } = this.props;
+    let { movies, userData, userName, token } = this.props;
     let user = userName;
     return (
       <Router>
@@ -124,6 +125,8 @@ class MainView extends React.Component {
                   <MovieView
                     movie={movies.find((m) => m._id === match.params.movieId)}
                     onBackClick={() => history.goBack()}
+                    userData = {userData}
+                    token = {token}
                   />
                 </Col>
               );
@@ -246,12 +249,14 @@ let mapStateToProps = (state) => {
     movies: state.movies,
     userData: state.userData,
     userName: state.userName,
+    token: state.token,
   };
 };
 export default connect(mapStateToProps, {
   setMovies,
   setUserData,
   setUserName,
+setToken
 })(MainView);
 
 MainView.propTypes = {

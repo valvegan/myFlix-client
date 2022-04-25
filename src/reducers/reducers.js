@@ -6,6 +6,7 @@ import {
   DELETE_FAV,
   SET_USERNAME,
   DELETE_PROFILE,
+  SET_TOKEN,
   EDIT_PROFILE,
 } from "../actions/actions";
 
@@ -47,6 +48,16 @@ function userName(state = "", action) {
   }
 }
 
+function token(state = "", action) {
+  switch (action.type) {
+    case SET_TOKEN:
+      return action.value;
+    default:
+      return state;
+  }
+}
+
+
 function deleteProfile(state = userData, action) {
   switch (action.type) {
     case DELETE_PROFILE:
@@ -55,6 +66,7 @@ function deleteProfile(state = userData, action) {
       return state;
   }
 }
+
 /*
 const updateProfile = (state = userData, action) => {
   switch (action.type) {
@@ -75,6 +87,7 @@ const moviesApp = combineReducers({
   userData,
   userName,
   deleteProfile, 
+  token
  // updateProfile,
 //deleteFav,
 });

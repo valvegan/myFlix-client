@@ -7,51 +7,27 @@ import axios from "axios";
 export class MovieView extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      favoriteMovies: [],
-    };
     this.addFav = this.addFav.bind(this);
     this.removeFav = this.removeFav.bind(this);
-  }
-
-  getUser(token) {
-    let user = localStorage.getItem("user");
-    axios
-      .get(`https://my-flix-api-2022.herokuapp.com/users/${user}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        //assign the result to the state
-        this.setState({
-          favoriteMovies: response.data.favoriteMovies,
-        });
-      })
-      .catch((e) => console.log(e));
-  }
-  componentDidMount() {
-    const accessToken = localStorage.getItem("token");
-    this.getUser(accessToken);
   }
 
   //add favorite
   addFav() {
     {
-      const user = localStorage.getItem("user");
-      const token = localStorage.getItem("token");
+      const user = this.props.userData.username
+      const token = this.props.token
       const id = this.props.movie._id;
+      let userFavorites = this.props.userData.favoriteMovies
       //prevent adding duplicate movies
-      let userFavorites = this.state.favoriteMovies;
       let isFav = userFavorites.includes(id);
       if (!isFav) {
         axios
           .post(
             `https://my-flix-api-2022.herokuapp.com/users/${user}/favoriteMovies/${id}`,
             {},
-
             { headers: { Authorization: `Bearer ${token}` } }
           )
           .then((response) => {
-            console.log(response);
             alert(
               `${this.props.movie.Title} has been added to your list of favorites`
             );
@@ -69,19 +45,15 @@ export class MovieView extends React.Component {
   //remove favorite
   removeFav() {
     {
-      const user = localStorage.getItem("user");
-      const token = localStorage.getItem("token");
       const id = this.props.movie._id;
-
       axios
         .delete(
-          `https://my-flix-api-2022.herokuapp.com/users/${user}/favoriteMovies/${id}`,
+          `https://my-flix-api-2022.herokuapp.com/users/${this.props.userData.username}/favoriteMovies/${id}`,
 
-          { headers: { Authorization: `Bearer ${token}` } },
+          { headers: { Authorization: `Bearer ${this.props.token}` } },
           {}
         )
         .then((response) => {
-          console.log(response);
           alert(
             `${this.props.movie.Title} has been deleted from your list of favorites`
           );
@@ -91,14 +63,13 @@ export class MovieView extends React.Component {
     }
   }
   render() {
-    const { movie, onBackClick } = this.props;
-    let movieId = this.props.movie._id;
-    let userFav = this.state.favoriteMovies;
-    let isFav = userFav.includes(movieId);
-
+    const { movie, onBackClick, userData, token } = this.props;
+    let movieId = movie._id;
+    let isFav = userData.favoriteMovies.includes(movieId);
     return (
       <Card>
         <Container className="text-left p-4 card-custom">
+          {console.log(isFav)}
           <Button
             variant="primary"
             className="custom-btn"
@@ -113,26 +84,32 @@ export class MovieView extends React.Component {
           <Card.Img
             className="movie-poster img-responsive"
             variant="top"
-            style={{width:"40%"}}
+            style={{ width: "40%" }}
             src={movie.ImagePath}
           />
         </Container>
 
         <Card.Body>
           <Col className="d-sm-flex justify-content-between justify-content-xl-center">
-            <Card.Text className="label titles h3 align-self-center">Title: </Card.Text>
+            <Card.Text className="label titles h3 align-self-center">
+              Title:{" "}
+            </Card.Text>
             <span className="movie-title titles ml-3 h1">{movie.Title}</span>
           </Col>
 
           <Col className="d-sm-flex justify-content-between justify-content-xl-center">
-            <Card.Text className="label titles h3 align-self-center">Description: </Card.Text>
+            <Card.Text className="label titles h3 align-self-center">
+              Description:{" "}
+            </Card.Text>
             <span className="movie-description card-text ml-3 ">
               {movie.Description}
             </span>
           </Col>
 
           <Col className="d-sm-flex justify-content-between justify-content-xl-center">
-            <Card.Text className="label titles h3 align-self-center">Genre: </Card.Text>
+            <Card.Text className="label titles h3 align-self-center">
+              Genre:{" "}
+            </Card.Text>
             <Link
               className="titles-expand movie-genre ml-3 h1"
               to={`/genres/${movie.Genre.Name}`}
@@ -142,14 +119,18 @@ export class MovieView extends React.Component {
           </Col>
 
           <Col className="d-sm-flex justify-content-between justify-content-xl-center">
-            <Card.Text className="label titles h3 align-self-center">Release Year: </Card.Text>
+            <Card.Text className="label titles h3 align-self-center">
+              Release Year:{" "}
+            </Card.Text>
             <span className="movie-release titles ml-3 h1 ">
               {movie.releaseYear}
             </span>
           </Col>
 
           <Col className="d-sm-flex justify-content-between justify-content-xl-center">
-            <Card.Text className="label titles h3 align-self-center">Director: </Card.Text>
+            <Card.Text className="label titles h3 align-self-center">
+              Director:{" "}
+            </Card.Text>
             <Link
               className="movie-director titles-expand ml-3 h1"
               to={`/directors/${movie.Director.Name}`}
@@ -160,7 +141,9 @@ export class MovieView extends React.Component {
 
           {movie.Actors[0].Name && (
             <Col className="d-sm-flex justify-content-between justify-content-xl-center">
-              <Card.Text className="label titles h3 align-self-center">Main Actor: </Card.Text>
+              <Card.Text className="label titles h3 align-self-center">
+                Main Actor:{" "}
+              </Card.Text>
               <Link
                 className="titles-expand movie-actor ml-3 h1"
                 to={`/actors/${movie.Actors[0].Name}`}
