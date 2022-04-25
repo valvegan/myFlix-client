@@ -14,34 +14,25 @@ export class MovieView extends React.Component {
   //add favorite
   addFav() {
     {
-      const user = this.props.userData.username
-      const token = this.props.token
+      const user = this.props.userData.username;
+      const token = this.props.token;
       const id = this.props.movie._id;
-      let userFavorites = this.props.userData.favoriteMovies
-      //prevent adding duplicate movies
-      let isFav = userFavorites.includes(id);
-      if (!isFav) {
-        axios
-          .post(
-            `https://my-flix-api-2022.herokuapp.com/users/${user}/favoriteMovies/${id}`,
-            {},
-            { headers: { Authorization: `Bearer ${token}` } }
-          )
-          .then((response) => {
-            alert(
-              `${this.props.movie.Title} has been added to your list of favorites`
-            );
-            window.open(`/movies/${id}`, "_self");
-          })
-          .catch((e) => console.log(e));
-      } else if (isFav) {
-        alert(
-          `${this.props.movie.Title} is already in your list of favorite movies!`
-        );
-        window.open(`/movies/${id}`, "_self");
-      }
+      axios
+        .post(
+          `https://my-flix-api-2022.herokuapp.com/users/${user}/favoriteMovies/${id}`,
+          {},
+          { headers: { Authorization: `Bearer ${token}` } }
+        )
+        .then((response) => {
+          alert(
+            `${this.props.movie.Title} has been added to your list of favorites`
+          );
+          window.open(`/movies/${id}`, "_self");
+        })
+        .catch((e) => console.log(e));
     }
   }
+
   //remove favorite
   removeFav() {
     {
@@ -69,7 +60,6 @@ export class MovieView extends React.Component {
     return (
       <Card>
         <Container className="text-left p-4 card-custom">
-          {console.log(isFav)}
           <Button
             variant="primary"
             className="custom-btn"

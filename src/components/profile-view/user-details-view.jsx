@@ -9,7 +9,7 @@ import {
   Col,
 } from "react-bootstrap";
 import PropTypes, { string } from "prop-types";
-import ProfileView from "./profile-view";
+import {ProfileView} from "./profile-view";
 ///here im retaining the user's old details
 export class UserDetailsView extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ export class UserDetailsView extends React.Component {
   }
 
   render() {
-    let { userData, movies } = this.props;
+    let { userData, movies, token } = this.props;
     return (
       <Container>
         <div className="titles h1 text-center">Hi, {userData.username}</div>
@@ -76,7 +76,9 @@ export class UserDetailsView extends React.Component {
                   disabled
                 ></FormControl>
               </Container>
-              <ProfileView userData={userData} />
+              <ProfileView userData={userData} 
+              movies={movies}
+              token={token}/>
             </FormGroup>
           </Col>
         </Container>
@@ -92,7 +94,7 @@ UserDetailsView.propTypes = {
     email: PropTypes.string.isRequired,
     birthday: PropTypes.string.isRequired,
     favoriteMovies: PropTypes.arrayOf(string),
-  }).isRequired,
+  }),
   movies: PropTypes.arrayOf(
     PropTypes.shape({
       Title: PropTypes.string.isRequired,

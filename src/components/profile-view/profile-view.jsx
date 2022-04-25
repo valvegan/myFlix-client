@@ -14,10 +14,10 @@ import {
 import { deleteProfile } from "../../actions/actions";
 import { connect } from "react-redux";
 
-class ProfileView extends React.Component {
+export class ProfileView extends React.Component {
   constructor(props) {
     super(props);
-  //  this.state = this.props.userData;
+    //  this.state = this.props.userData;
   }
 
   onLoggedOut() {
@@ -32,13 +32,12 @@ class ProfileView extends React.Component {
     });
   }
 
-  /* editProfile = (e) => {
+  editProfile = (e) => {
     e.preventDefault();
     const user = localStorage.getItem("user");
     const token = localStorage.getItem("token");
-    let newUserName = 
-    //let newUser = this.state.username;
-   // console.log(newUser);
+    let newUser = this.state.username;
+    // console.log(newUser);
     axios
       .put(
         `https://my-flix-api-2022.herokuapp.com/users/${user}`,
@@ -59,11 +58,9 @@ class ProfileView extends React.Component {
         });
         localStorage.setItem("user", this.props.username);
         alert("profile updated successfully!");
-     //   window.open(`/users/${newUser}`, "_self");
+        window.open(`/users/${newUser}`, "_self");
       });
   };
-
-  /*
 
   deleteProfile() {
     const username = localStorage.getItem("user");
@@ -83,7 +80,6 @@ class ProfileView extends React.Component {
       .catch((e) => console.log(e));
   }
 
-  
   setPassword(value) {
     this.setState({
       password: value,
@@ -99,33 +95,32 @@ class ProfileView extends React.Component {
       birthday: value,
     });
   }
-  removeFav() {
-    const user = localStorage.getItem("user");
-    const token = localStorage.getItem("token");
-    const id = this.state.favoriteMovies;
 
-    axios
-      .delete(
-        `https://my-flix-api-2022.herokuapp.com/users/${user}/favoriteMovies/${id}`,
-
-        { headers: { Authorization: `Bearer ${token}` } },
-        {}
-      )
-      .then((response) => {
-        console.log(response);
-        alert("Movie deleted from favorites!");
-        window.open(`/movies/${id}`, "_self");
-      })
-      .catch((err) => console.log(err));
+  //remove favorite
+  removeFav(m) {
+    {
+      const username = this.props.userData.username;
+      const token = this.props.token;
+      axios
+        .delete(
+          `https://my-flix-api-2022.herokuapp.com/users/${username}/favoriteMovies/${m}`,
+          { headers: { Authorization: `Bearer ${token}` } },
+          {}
+        )
+        .then((response) => {
+          alert(`Movie deleted from your list of favorites`);
+          window.open(`/users/${username}`, "_self");
+        })
+        .catch((e) => console.log(e));
+    }
   }
-  */
 
   render() {
-    const { movies } = this.props;
+    const { movies, userData, token } = this.props;
+    let favoriteMovies = userData.favoriteMovies;
 
     return (
       <Container>
-        {console.log(this.props)}
         <Row>
           <Col>
             <Card>
@@ -222,8 +217,7 @@ class ProfileView extends React.Component {
 
         <Card>
           <Card.Body>
-            {/** 
-            {favoriteMovies.length === 0 && (
+            {!favoriteMovies.length && (
               <div className="titles h1 text-center">
                 <h1>There's no movies in your list of favorites!</h1>
                 <p className="h5">
@@ -253,15 +247,15 @@ class ProfileView extends React.Component {
                             className="img-responsive"
                           />
                         </Link>
-                       
 
                         <Card.Body>
                           <Card.Title className="h1 titles">
                             {movie.Title}
                           </Card.Title>
                           <Button
+                            value={movie._id}
                             className="custom-btn"
-                            onClick={this.removeFav}
+                            onClick={() => this.removeFav(movie._id)}
                           >
                             Remove from List
                           </Button>
@@ -271,22 +265,9 @@ class ProfileView extends React.Component {
                   }
                 })}
             </Row>
-             */}
           </Card.Body>
         </Card>
       </Container>
     );
   }
 }
-
-let mapDispatchToProps = (dispatch) => {
-  return {
-    deleteProfile: (id) => {
-      dispatch({ type: "DELETE_PROFILE", id: id });
-    },
-  };
-};
-
-export default connect(null, mapDispatchToProps, {
-  deleteProfile,
-})(ProfileView);

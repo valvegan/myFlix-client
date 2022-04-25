@@ -76,7 +76,6 @@ class MainView extends React.Component {
     return (
       <Router>
         <NavBar user={user} />
-
         <Row className="main-view justify-content-md-center">
           <Route
             exact
@@ -232,6 +231,7 @@ class MainView extends React.Component {
                     history={history}
                     movies={movies}
                     userData={userData}
+                    token = {token}
                     onBackClick={() => history.goBack()}
                   />
                 </Col>
