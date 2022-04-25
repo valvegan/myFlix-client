@@ -16,8 +16,11 @@ export class UserDetailsView extends React.Component {
     super(props);
   }
 
+
+
   render() {
     let { userData, movies, token } = this.props;
+
     return (
       <Container>
         <div className="titles h1 text-center">Hi, {userData.username}</div>

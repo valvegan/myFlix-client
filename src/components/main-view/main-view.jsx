@@ -3,7 +3,12 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import { setMovies, setUserData, setUserName, setToken } from "../../actions/actions";
+import {
+  setMovies,
+  setUserData,
+  setUserName,
+  setToken,
+} from "../../actions/actions";
 import MoviesList from "../movies-list/movies-list";
 import { LoginView } from "../login-view/login-view";
 import { MovieView } from "../movie-view/movie-view";
@@ -13,7 +18,7 @@ import { ProfileView } from "../profile-view/profile-view";
 import { NavBar } from "../navbar-view/navbar-view";
 import { ActorView } from "../actor-view/actor-view";
 import { RegistrationView } from "../registration-view/registration-view";
-import {UserDetailsView} from "../profile-view/user-details-view";
+import { UserDetailsView } from "../profile-view/user-details-view";
 import "../../index.scss";
 import PropTypes from "prop-types";
 
@@ -31,7 +36,7 @@ class MainView extends React.Component {
       this.getUser(token);
       //sets username from local storage
       this.props.setUserName(user);
-      this.props.setToken(token)
+      this.props.setToken(token);
     }
   }
 
@@ -40,6 +45,7 @@ class MainView extends React.Component {
     localStorage.setItem("user", data.user.username);
     //sets user data from the api response upon loggin in (no need to send a request to the api to receive the users details)
     this.props.setUserData(data.user);
+
     //get movies
     this.getMovies(data.token);
   }
@@ -124,8 +130,8 @@ class MainView extends React.Component {
                   <MovieView
                     movie={movies.find((m) => m._id === match.params.movieId)}
                     onBackClick={() => history.goBack()}
-                    userData = {userData}
-                    token = {token}
+                    userData={userData}
+                    token={token}
                   />
                 </Col>
               );
@@ -226,12 +232,11 @@ class MainView extends React.Component {
               if (movies.length === 0) return <div className="main-view" />;
               return (
                 <Col md={8}>
-                  
                   <UserDetailsView
                     history={history}
                     movies={movies}
                     userData={userData}
-                    token = {token}
+                    token={token}
                     onBackClick={() => history.goBack()}
                   />
                 </Col>
@@ -256,7 +261,7 @@ export default connect(mapStateToProps, {
   setMovies,
   setUserData,
   setUserName,
-setToken
+  setToken,
 })(MainView);
 
 MainView.propTypes = {

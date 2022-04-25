@@ -17,7 +17,7 @@ import { connect } from "react-redux";
 export class ProfileView extends React.Component {
   constructor(props) {
     super(props);
-    //  this.state = this.props.userData;
+     this.state = this.props.userData;
   }
 
   onLoggedOut() {
@@ -145,7 +145,7 @@ export class ProfileView extends React.Component {
                           name="username"
                           placeholder="insert your new username here"
                           onChange={(e) => this.changeUsername(e.target.value)}
-                          defaultValue={this.props.value}
+                          defaultValue={userData.username}
                           required
                         />
                         <Form.Text className="text-muted">
@@ -158,6 +158,7 @@ export class ProfileView extends React.Component {
                           type="text"
                           name="password"
                           placeholder="insert your new password here"
+                          
                           onChange={(e) => this.setPassword(e.target.value)}
                           required
                         />
@@ -170,6 +171,7 @@ export class ProfileView extends React.Component {
                         <FormControl
                           type="email"
                           name="email"
+                          defaultValue={userData.email}
                           placeholder="insert your new email here"
                           onChange={(e) => this.setEmail(e.target.value)}
                           required
@@ -180,6 +182,7 @@ export class ProfileView extends React.Component {
                         <FormControl
                           type="date"
                           name="birthday"
+                          defaultValue={userData.birthday}
                           placeholder="insert your new email here"
                           onChange={(e) => this.setBirthday(e.target.value)}
                           required
