@@ -1,5 +1,92 @@
-$color: steelblue;
+//color variables
+$buttons-primary: #75ca60;
+$buttons-hover: #58aa43;
+$buttons-delete: #972d2d;
+$buttons-delete-darker: #641212;
+$backgrounds: #202020;
+$card-bg: #110307;
+$text-main: #eeeeee;
+$titles: #cf6628;
+$titles-hover: #92461a;
+$buttons-primary-text: #141414;
+$borders: #dffd71;
 
-.my-flix {
-  color: $color;
+//google fonts
+@import url("https://fonts.googleapis.com/css2?family=Anek+Tamil&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anek+Tamil&display=swap");
+
+//font variables
+$main-font: "Anek Tamil", sans-serif;
+$titles-font: "Lobster", cursive;
+
+.card-body,
+.container .card-custom {
+  background-color: $card-bg !important;
 }
+:root{
+  background-color: $backgrounds !important;
+}
+
+.navbar-brand,
+h1,
+.nav-link,
+.titles, .titles-expand {
+  color: $titles !important;
+  font-family: $titles-font !important;
+  .custom-icon {
+    color: $borders !important;
+  }
+}
+
+.titles-expand:hover{
+  color: $titles-hover !important;
+}
+.custom-form-label{
+  color: #000000 !important;
+  background-color: #e6e6e6 !important;
+  font-weight: 700 !important;
+}
+
+.navbar-brand,
+.nav-link,
+.custom-card-title {
+  font-size: 1.7rem !important;
+}
+
+.navbar-brand {
+  font-size: 4rem !important;
+}
+
+p,
+.card-text {
+  color: $text-main;
+}
+
+.app-container {
+  background-color: $backgrounds;
+  font-family: $main-font !important;
+}
+
+.custom-btn {
+  background-color: $buttons-primary !important;
+  border-color: $buttons-primary !important;
+  color: $buttons-primary-text !important;
+}
+.custom-btn:hover {
+  background-color: $buttons-hover !important;
+}
+
+
+.custom-btn-delete {
+  background-color: $buttons-delete !important;
+  border-color: $buttons-delete !important;
+}
+.custom-btn-delete:hover {
+  background-color: $buttons-delete-darker !important;
+
+}
+.card {
+  border: 2px solid $borders !important;
+}
+
