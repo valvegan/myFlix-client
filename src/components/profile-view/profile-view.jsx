@@ -25,11 +25,11 @@ class ProfileView extends React.Component {
       password: "",
       email: "",
       birthday: "",
-    }
+    };
   }
 
   componentDidMount() {
-    this.updateState()
+    this.updateState();
   }
 
   // componentDidUpdate() {
@@ -42,8 +42,8 @@ class ProfileView extends React.Component {
       password: this.props.userData.password || "",
       email: this.props.userData.email || "",
       birthday: this.props.userData.birthday || "",
-    })
-  }
+    });
+  };
 
   onLoggedOut() {
     localStorage.removeItem("token");
@@ -61,7 +61,7 @@ class ProfileView extends React.Component {
     e.preventDefault();
     const user = localStorage.getItem("user");
     const token = localStorage.getItem("token");
-    const  { password, username, email, birthday } = this.state
+    const { password, username, email, birthday } = this.state;
     // console.log({ password, username, email, birthday })
 
     // console.log(newUser);
@@ -311,4 +311,4 @@ let mapStateToProps = (state) => {
     userData: state.userData,
   };
 };
-export default connect(mapStateToProps, {setUserData})(ProfileView);
+export default connect(mapStateToProps, { setUserData })(ProfileView);
