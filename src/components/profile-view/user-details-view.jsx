@@ -9,7 +9,7 @@ import {
   Col,
 } from "react-bootstrap";
 import PropTypes, { string } from "prop-types";
-import { ProfileView } from "./profile-view";
+import ProfileView from "./profile-view";
 ///here im retaining the user's old details
 export class UserDetailsView extends React.Component {
   constructor(props) {

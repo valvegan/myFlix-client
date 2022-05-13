@@ -11,13 +11,38 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
-import { deleteProfile } from "../../actions/actions";
+import { deleteProfile, setUserData } from "../../actions/actions";
 import { connect } from "react-redux";
 
-export class ProfileView extends React.Component {
+class ProfileView extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.userData;
+    // this.state = this.props.userData;
+    this.state = {
+      userData: this.props.userData,
+      password: "",
+      username: "",
+      password: "",
+      email: "",
+      birthday: "",
+    }
+  }
+
+  componentDidMount() {
+    this.updateState()
+  }
+
+  // componentDidUpdate() {
+  //   // this.updateState()
+  // }
+
+  updateState = () => {
+    this.setState({
+      username: this.props.userData.username || "",
+      password: this.props.userData.password || "",
+      email: this.props.userData.email || "",
+      birthday: this.props.userData.birthday || "",
+    })
   }
 
   onLoggedOut() {
@@ -27,8 +52,8 @@ export class ProfileView extends React.Component {
   }
 
   changeUsername(value) {
-    console.log({
-      value,
+    this.setState({
+      username: value,
     });
   }
 
@@ -36,27 +61,33 @@ export class ProfileView extends React.Component {
     e.preventDefault();
     const user = localStorage.getItem("user");
     const token = localStorage.getItem("token");
-    let newUser = this.state.username;
+    const  { password, username, email, birthday } = this.state
+    // console.log({ password, username, email, birthday })
+
     // console.log(newUser);
     axios
       .put(
         `https://my-flix-api-2022.herokuapp.com/users/${user}`,
         {
-          username: this.props.username,
-          password: this.props.password,
-          email: this.props.email,
-          birthday: this.props.birthday,
+          username: this.state.username,
+          password: this.state.password,
+          email: this.state.email,
+          birthday: this.state.birthday,
         },
         { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((response) => {
-        this.setState({
-          username: response.data.username,
-          password: response.data.password,
-          email: response.data.email,
-          birthday: response.data.birthday,
-        });
-        localStorage.setItem("user", this.props.username);
+        // this.setState({
+        //   username: response.data.username,
+        //   password: response.data.password,
+        //   email: response.data.email,
+        //   birthday: response.data.birthday,
+        // });
+
+        this.props.setUserData(response.data);
+        let newUser = response.data.username;
+
+        localStorage.setItem("user", newUser);
         alert("profile updated successfully!");
         window.open(`/users/${newUser}`, "_self");
       });
@@ -118,6 +149,7 @@ export class ProfileView extends React.Component {
 
   render() {
     const { movies, userData, token } = this.props;
+    const { password, username, email, birthday } = this.state;
     let favoriteMovies = userData.favoriteMovies;
 
     return (
@@ -146,7 +178,7 @@ export class ProfileView extends React.Component {
                           name="username"
                           placeholder="insert your new username here"
                           onChange={(e) => this.changeUsername(e.target.value)}
-                          defaultValue={userData.username}
+                          defaultValue={username}
                           required
                         />
                         <Form.Text className="text-muted">
@@ -171,7 +203,7 @@ export class ProfileView extends React.Component {
                         <FormControl
                           type="email"
                           name="email"
-                          defaultValue={userData.email}
+                          defaultValue={email}
                           placeholder="insert your new email here"
                           onChange={(e) => this.setEmail(e.target.value)}
                           required
@@ -182,7 +214,7 @@ export class ProfileView extends React.Component {
                         <FormControl
                           type="date"
                           name="birthday"
-                          defaultValue={userData.birthday}
+                          defaultValue={birthday}
                           placeholder="insert your new email here"
                           onChange={(e) => this.setBirthday(e.target.value)}
                           required
@@ -274,3 +306,9 @@ export class ProfileView extends React.Component {
     );
   }
 }
+let mapStateToProps = (state) => {
+  return {
+    userData: state.userData,
+  };
+};
+export default connect(mapStateToProps, {setUserData})(ProfileView);
