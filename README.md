@@ -61,11 +61,22 @@ the movie rating
 - [x] Displays favorite movies
 - [x] Allows users to remove a movie from their list of favorites
 
-## Launch
-1) Install parcel locally 
+## Setting up the development environment and dependencies
+- Install parcel locally 
 >npm install --save-dev parcel @parcel/transformer-sass
+- Installing React
+>npm install --save react react-dom
+- Installing the Axios library to make asynchronous calls to the API
+>npm install axios --save
+- Installing React bootstrap
+>npm install --save react-bootstrap
+- Installing React-router (for state-routing)
+>npm install react-router-dom
+- Installing Redux
+>npm install redux --save
+>npm install react-redux --save
 
-2) Run parcel build
+## Launch
+- Run parcel build
 >npm run start
-
-3) Navigate to http://localhost:1234 
+- Navigate to http://localhost:1234 
