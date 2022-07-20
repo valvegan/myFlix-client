@@ -20,6 +20,7 @@ The server-side development for myFlix can be accessed [here](https://github.com
 
 ### Single movie view
 <img src="images/movie-view2.PNG" height="auto" width="500" alt="movie-view2">
+
 - [x] Returns data (description, genre, director, image) about a single movie to the user
 - [x] Allows users to add a movie to their list of favorites
 - [x] Allow users to view more information about different movies, such as the release date and
@@ -27,35 +28,40 @@ the movie rating
 
 ### Login view
 <img src="images/1.PNG" height="auto" width="500" alt="signin">
+
 - [x] Allows users to log in with a username and password
 
 ### Registration view
 <img src="images/signup.PNG" height="auto" width="500" alt="signup" >
+
 - [x] Allows new users to register (username, password, email, birthday)
 
 ### Genre view
 <img src="images/genre.PNG" height="auto" width="500" alt="genre">
+
 - [x] Returns data about a genre, with a name and description
 - [x] Displays example movies
 
 ### Director view
 <img src="images/director.PNG" height="auto" width="500" alt="director">
+
 - [x] Returns data about a director (name, bio, birth year, death year)
 - [x] Displays example movies
 
 ### Actors view
 <img src="images/actor.PNG" height="auto" width="500" alt="actor">
+
 - [x] Allows users to view information about different actors
 
 ### Profile view
 <img src="images/profile.PNG" height="auto" width="500" alt="profile">
+
 - [x] Allows users to update their user info (username, password, email, date of birth)
 - [x] Allows existing users to deregister
 - [x] Displays favorite movies
 - [x] Allows users to remove a movie from their list of favorites
 
 ## Launch
-1)
 1) Install parcel locally 
 >npm install --save-dev parcel @parcel/transformer-sass
 
