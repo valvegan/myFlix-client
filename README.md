@@ -1,13 +1,21 @@
 # myFlix-client
-MyFlix is a small app that showcases various informations from a small database (REST API) of movies. Users can register, update/add information about themselves (securely via password hashing) and add/remove movie titles to a list of their favourites. 
+MyFlix is a small Single Page Application (SPA) that showcases various informations from a small database (REST API) of movies. Users can register, update/add information about themselves (securely via password hashing) and add/remove movie titles to a list of their favourites. 
 
-The client-side for myFlix is developed using REACT, HTML5, and SCSS
+## Languages 
+- React
+- Html5
+- Scss
+
+## Technologies
+- react-router-dom to navigate between views and 
+- Build tools: Parcel
+- react-bootstrap for the UI
+- React Redux for state management (Flux pattern)
+- Axios to connect to the API 
 
 The server-side development for myFlix can be accessed [here](https://github.com/valvegan/movie_api)
 
 ## A live preview of the app can be accessed [here](https://valentina-my-flix-client.netlify.app/)
-
-## Build tools: Parcel
 
 ## App features
 ### Essential Views and Features:
